@@ -93,7 +93,7 @@ const Header = () => {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-black/10 backdrop-blur-[6px]">
+        <div className="fixed top-0 left-0 w-full z-50 bg-black/10 backdrop-blur-[6px]">
             <div className="max-w-308 mx-auto border-b border-[#0663CD] pb-3 sm:pb-5.75 px-4.25 xl:px-0">
                 <div className="flex justify-between items-center pt-3 sm:pt-5.75">
                     {/* Logo */}
@@ -102,7 +102,7 @@ const Header = () => {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex items-center gap-6">
+                    <div className="hidden xl:flex items-center gap-6">
                         {NAV_ITEMS.map((item) => (
                             <div key={item.label} className="relative group">
                                 <Link
@@ -135,7 +135,7 @@ const Header = () => {
                                 )}
                             </div>
                         ))}
-                    </nav>
+                    </div>
 
                     {/* Right Side Actions */}
                     <div className="flex items-center gap-4">
@@ -243,7 +243,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
     );
 };
 
