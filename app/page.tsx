@@ -8,6 +8,7 @@ import EagleLikesIsSeenOn from "./components/EagleLikesIsSeenOn";
 import BenefitsOfBuyingFollowers from "./components/BenefitsOfBuyingFollowers";
 import SocialMediaGrowth from "./components/SocialMediaGrowth";
 import HowItWorks from "./components/HowItWorks";
+import WhyAreInstagramFollowersImportant from "./components/WhyAreInstagramFollowersImportant";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <WhyEagleLikes />
       <SocialMediaGrowth/>
       <HowItWorks/>
+      <WhyAreInstagramFollowersImportant/>
       <div className="relative z-10">
         <BenefitsOfBuyingFollowers />
         <Faq />

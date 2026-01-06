@@ -65,7 +65,7 @@ const SocialMediaGrowth = () => {
     return (
         <section className="relative w-full pt-24 px-5 overflow-hidden">
             {/* Left Side Shadow */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[20%] pointer-events-none z-0 opacity-50 md:opacity-100">
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[20%] pointer-events-none z-0">
                 <svg width="323" height="918" viewBox="0 0 323 918" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_f_1_97)">
                         <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fillOpacity="0.32" />
