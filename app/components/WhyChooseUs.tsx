@@ -100,7 +100,7 @@ const WhyChooseUs = () => {
     ];
 
     return (
-        <section className="pb-24 px-5 flex flex-col items-center bg-black overflow-hidden select-none">
+        <section className="pb-24 px-5 flex flex-col items-center overflow-hidden select-none">
             <h2 className="text-[48px] leading-12 font-semibold font-inter text-white mb-11 text-center">
                 Why Choose us?
             </h2>
@@ -111,7 +111,7 @@ const WhyChooseUs = () => {
                 <div className="hidden lg:flex flex-col">
                     {/* Spacer to align with middle column's header area */}
                     <div className="h-16" />
-                    <div className="bg-[#121212] border border-[#FFFFFF26] rounded-l-[40px] py-3 pl-6 pr-9 pb-7">
+                    <div className="bg-[#FFFFFF0D] border border-[#FFFFFF26] rounded-l-[40px] py-3 pl-6 pr-9 pb-7">
                         {categories.map((cat, idx) => (
                             <div key={idx} className="w-full h-11.5 flex items-center gap-2.5 border-b-[0.81px] border-white">
                                 <div className="w-5 h-5 flex items-center justify-center text-white/90">
@@ -125,7 +125,7 @@ const WhyChooseUs = () => {
 
                 {/* Column 2: Eagle Likes */}
                 <div className="flex flex-col relative z-20">
-                    <div className="bg-[#0c0c0c] border-4 border-[#01AAFF] rounded-[40px] pb-11 pt-2 px-[18.74px] shadow-[0_0_60px_rgba(1,170,255,0.15)] scale-[1.02]">
+                    <div className="bg-[#121212] border-4 border-[#01AAFF] rounded-[40px] pb-11 pt-2 px-[18.74px] shadow-[0_0_60px_rgba(1,170,255,0.15)] scale-[1.02]">
                         {/* Header inside the blue card */}
                         <div className="flex items-center justify-center h-16">
                             <Image src="/assets/logo.png" alt="" width={196} height={42} />
