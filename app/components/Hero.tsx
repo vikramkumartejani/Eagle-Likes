@@ -158,8 +158,10 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        <button className="w-full sm:w-auto px-[89.5px] h-17 cursor-pointer text-white font-bold text-[22px] rounded-[10px]" style={{ background: "linear-gradient(90deg, #0663CD 0%, #01AAFF 100%)" }}>
-                            Buy Now
+                        <button
+                            className="btn-liquid w-full sm:w-auto px-[89.5px] h-17 cursor-pointer text-white font-bold text-[22px] rounded-[10px]"
+                        >
+                            <span className="relative z-10">Buy Now</span>
                         </button>
                     </div>
 

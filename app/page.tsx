@@ -9,6 +9,8 @@ import BenefitsOfBuyingFollowers from "./components/BenefitsOfBuyingFollowers";
 import SocialMediaGrowth from "./components/SocialMediaGrowth";
 import HowItWorks from "./components/HowItWorks";
 import WhyAreInstagramFollowersImportant from "./components/WhyAreInstagramFollowersImportant";
+import WhyChooseUs from "./components/WhyChooseUs";
+import YourPrivacyIsOurFocus from "./components/YourPrivacyIsOurFocus";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
       <SocialMediaGrowth/>
       <HowItWorks/>
       <WhyAreInstagramFollowersImportant/>
+      <WhyChooseUs/>
+      <YourPrivacyIsOurFocus/>
       <div className="relative z-10">
         <BenefitsOfBuyingFollowers />
         <Faq />
