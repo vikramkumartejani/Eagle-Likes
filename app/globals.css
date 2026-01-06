@@ -1,23 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Arial Custom';
+  src: url('/font-arial/ARIAL.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-arial-custom {
+  font-family: 'Arial Custom', sans-serif;
+}
+
 
 @theme {
   --font-rethink: var(--font-rethink);
   --font-inter: var(--font-inter);
+  --font-open-sans: var(--font-open-sans);
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-open-sans), sans-serif;
   box-sizing: border-box;
   background: #050505;
   color: white;
 }
 
-.font-inter {
-  font-family: var(--font-inter);
+
+
+
+.custom-scroll {
+  overflow-x: auto;
 }
 
-.font-rethink {
+/* ===== Chrome, Edge, Safari ===== */
+.custom-scroll::-webkit-scrollbar {
+  height: 14.24px;
+  width: 14.24px;
+  background: #FFFFFF1A;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #FFFFFF1A;
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+      #FFFFFF1A,
+      #FFFFFF1A);
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+/* ===== Firefox ===== */
+.custom-scroll {
+  scrollbar-width: 14px;
+  scrollbar-color: #e6e6e6 #FFFFFF1A;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+.font-responsive-heading {
   font-family: var(--font-rethink);
+}
+
+@media (min-width: 768px) {
+  .font-responsive-heading {
+    font-family: var(--font-inter);
+  }
 }

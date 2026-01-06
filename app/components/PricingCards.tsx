@@ -189,17 +189,20 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
 };
 
 
-const PricingCards: React.FC = () => {
-    const [selectedPlan, setSelectedPlan] = useState<PlanType>('premium');
+interface PricingCardsProps {
+    selectedPlan: PlanType;
+    onSelect: (plan: PlanType) => void;
+}
 
+const PricingCards: React.FC<PricingCardsProps> = ({ selectedPlan, onSelect }) => {
     return (
-        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 sm:gap-5 w-full max-w-169.5 mx-auto mt-7.5 overflow-x-auto pb-4 snap-x scrollbar-hide">
+        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 sm:gap-5 w-full max-w-169.5 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
             {PLANS.map((plan) => (
                 <PricingCard
                     key={plan.type}
                     plan={plan}
                     isSelected={selectedPlan === plan.type}
-                    onSelect={setSelectedPlan}
+                    onSelect={onSelect}
                 />
             ))}
         </div>

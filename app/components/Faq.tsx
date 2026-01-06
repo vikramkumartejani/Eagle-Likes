@@ -37,7 +37,7 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex items-center justify-between px-3 sm:px-5 py-3.5 sm:py-6 text-left cursor-pointer"
             >
-                <span className="text-[14px] sm:text-[22px] leading-5.5 sm:leading-7.5 font-semibold font-rethink sm:font-inter text-white pr-4">
+                <span className="text-[14px] sm:text-[22px] leading-5.5 sm:leading-7.5 font-semibold font-responsive-heading text-white pr-4">
                     {question}
                 </span>
                 <span className={`min-w-4 shrink-0 text-white transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
@@ -59,16 +59,16 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
 
 const Faq = () => {
     return (
-        <section className="relative w-full py-24 bg-black overflow-hidden">
+        <section className="relative w-full pb-14.75 lg:pb-24 overflow-hidden">
             {/* Left Bottom Shadow */}
             <div className="absolute left-0 bottom-0 z-0 pointer-events-none md:block hidden">
                 <svg width="323" height="918" viewBox="0 0 323 918" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_f_1_110)">
-                        <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fill-opacity="0.32" />
+                        <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fillOpacity="0.32" />
                     </g>
                     <defs>
-                        <filter id="filter0_f_1_110" x="-594.378" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <filter id="filter0_f_1_110" x="-594.378" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
                             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                             <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_110" />
                         </filter>

@@ -93,8 +93,8 @@ const Header = () => {
     };
 
     return (
-        <div className="fixed top-0 left-0 w-full z-50 bg-black/10 backdrop-blur-[6px]">
-            <div className="max-w-308 mx-auto border-b border-[#0663CD] pb-3 sm:pb-5.75 px-4.25 xl:px-0">
+        <div className="fixed top-0 left-0 w-full z-50 bg-black/10 backdrop-blur-[6px] border-b border-[#0663CD]">
+            <div className="max-w-308 mx-auto pb-3 sm:pb-5.75 px-4.25 xl:px-0">
                 <div className="flex justify-between items-center pt-3 sm:pt-5.75">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group">

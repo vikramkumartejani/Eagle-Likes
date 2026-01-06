@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rethink_Sans, Inter } from "next/font/google";
+import { Rethink_Sans, Inter, Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const rethink = Rethink_Sans({
@@ -11,6 +11,12 @@ const rethink = Rethink_Sans({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
   display: "swap",
 });
 
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rethink.variable} ${inter.variable} font-sans`}>
+      <body className={`${openSans.variable} ${rethink.variable} ${inter.variable} font-sans`}>
         {children}
       </body>
     </html>
