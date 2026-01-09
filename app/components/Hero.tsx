@@ -70,14 +70,12 @@ const Hero = () => {
             <div className="relative z-10 container mx-auto px-4 max-w-5xl flex flex-col items-center">
 
                 {/* Headlines */}
-                <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-6 sm:mb-7.5">
-                    Buy Instagram Followers
-                    <br />
-                    with <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]">Fast Delivery!</span>
+                <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4">
+                    Buy TikTok and Instagram Followers Views & Likes and <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]"> other Interactions!</span>
                 </h1>
 
-                <p className="text-[#99A1AF] text-[14px] sm:text-[18px] leading-6 sm:leading-7 font-normal sm:font-medium font-inter text-center max-w-2xl mb-10 sm:mb-12.5">
-                    Quickly get premium Instagram followers safely and easily! Boost your IG influence and engagement instantly! Always great prices and offers!
+                <p className="text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-[35px] sm:px-4 mb-6 sm:mb-10">
+                    Enhance your brand's online presence and increase engagement with our social media growth solutions.
                 </p>
 
                 {/* VIP Toggle (Preserved aesthetics) */}

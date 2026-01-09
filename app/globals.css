@@ -1,5 +1,76 @@
 @import "tailwindcss";
 
+:root {
+  /* Background Colors */
+  --bg-primary: #050505;
+  --bg-accent: #0663cd;
+  --bg-green-100: #1ed760;
+  --bg-dark: #101828;
+  --bg-green-bright: #00c950;
+
+  /* Text Colors */
+  --text-primary: #fff;
+  --text-accent: #2577ff;
+  --text-accent-10: #62abff;
+  --blue-300: #01aaff;
+  --text-secondary: #e5e5e5;
+  --text-secondary-10: #84858d;
+  --text-secondary-20: #5c5d60;
+  --text-secondary-30: #d4e3ef;
+  --text-secondary-40: #4d4c4c;
+  --text-secondary-50: #121212;
+  --text-secondary-60: #d1d5dc;
+  --text-secondary-70: #99a1af;
+  --text-secondary-80: #e5e7eb;
+  --text-secondary-90: #52525c;
+  --text-secondary-100: #9f9fa9;
+  --text-purple-light: #e9d4ff;
+
+  --text-pink-10: #fe06a3;
+  --text-red-10: #ff0000;
+
+  /* Border Colors */
+  --border-dark: #1e2939;
+
+  /* Font Families */
+  --font-rethinksans: "Rethink_Sans", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-opensans: "Open_Sans", sans-serif;
+  --font-arial: "Arial", sans-serif;
+}
+
+@theme inline {
+  --color-black-100: var(--bg-primary);
+  --color-white: var(--text-primary);
+  --color-blue-100: var(--bg-accent);
+  --color-blue-200: var(--text-accent);
+  --color-blue-300: var(--text-accent);
+  --color-blue-400: var(--text-accent-10);
+  --color-gray-100: var(--text-secondary);
+  --color-gray-200: var(--text-secondary-10);
+  --color-gray-300: var(--text-secondary-20);
+  --color-gray-400: var(--text-secondary-30);
+  --color-gray-500: var(--text-secondary-40);
+  --color-gray-600: var(--text-secondary-50);
+  --color-gray-700: var(--text-secondary-60);
+  --color-gray-800: var(--text-secondary-70);
+  --color-gray-900: var(--text-secondary-80);
+  --color-gray-dark: var(--text-secondary-90);
+  --color-gray-1000: var(--text-secondary-100);
+  --color-purple-light: var(--text-purple-light);
+  --color-green-100: var(--bg-green-100);
+  --color-green-bright: var(--bg-green-bright);
+  --color-pink-100: var(--text-pink-10);
+  --color-red-100: var(--text-red-10);
+  --color-dark: var(--bg-dark);
+  --color-border-dark: var(--border-dark);
+
+  --font-inter: var(--font-inter);
+  --font-opensans: var(--font-opensans);
+  --font-rethinksans: var(--font-rethinksans);
+  --font-arial: var(--font-arial);
+}
+
 @font-face {
   font-family: 'Arial Custom';
   src: url('/font-arial/ARIAL.TTF') format('truetype');
@@ -135,9 +206,6 @@ body {
   width: max-content;
 }
 
-.pause-on-hover:hover .animate-marquee {
-  animation-play-state: paused;
-}
 
 .font-responsive-heading {
   font-family: var(--font-rethink);
