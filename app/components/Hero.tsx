@@ -59,7 +59,7 @@ const Hero = () => {
 
 
     return (
-        <section className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-42.5 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
+        <section className="bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-42.5 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <BackgroundElements />
             <HeroRightImage />
             <LeftShadow />
@@ -267,37 +267,28 @@ const HeroRightImage = () => (
 );
 
 const LeftShadow = () => (
-    <div className="absolute left-0 top-12 z-0 pointer-events-none mix-blend-screen md:block hidden">
-        <svg width="420" height="979" viewBox="0 0 420 979" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_f_1_17)">
-                <circle cx="-69.5" cy="489.5" r="289.5" fill="#0067DB" fillOpacity="0.8" />
-            </g>
-            <defs>
-                <filter id="filter0_f_1_17" x="-559" y="0" width="979" height="979" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_17" />
-                </filter>
-            </defs>
-        </svg>
-    </div>
+    <div
+        className="absolute -z-10 -left-[143px] top-[10%] lg:-left-[352px] lg:top-[350px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
+        style={{
+            background: "rgba(0, 103, 219, 0.80)",
+            filter: "blur(100px)",
+            WebkitFilter: "blur(100px)",
+            willChange: "filter",
+        }}
+    ></div>
+
 );
 
 const RightShadow = () => (
-    <div className="absolute right-0 top-20 z-0 pointer-events-none mix-blend-screen md:block hidden">
-        <svg width="307" height="979" viewBox="0 0 307 979" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_f_1_16)">
-                <circle cx="489.5" cy="489.5" r="289.5" fill="#0067DB" fillOpacity="0.8" />
-            </g>
-            <defs>
-                <filter id="filter0_f_1_16" x="0" y="0" width="979" height="979" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_16" />
-                </filter>
-            </defs>
-        </svg>
-    </div>
+    <div
+        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[350px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+        style={{
+            background: "rgba(0, 103, 219, 0.80)",
+            filter: "blur(100px)",
+            WebkitFilter: "blur(100px)",
+            willChange: "filter",
+        }}
+    ></div>
 );
 
 const LeftBottomShadow = () => (
@@ -318,31 +309,16 @@ const LeftBottomShadow = () => (
 );
 
 const TopBlueGlow = () => (
-    <div className="w-full md:w-fit absolute top-0 left-1/2 -translate-x-1/2 z-0 pointer-events-none">
-        <svg width="979" height="490" viewBox="0 0 979 490" className='md:block hidden' fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_f_1_15)">
-                <circle cx="489.5" cy="0.5" r="289.5" fill="#0067DB" fillOpacity="0.8" />
-            </g>
-            <defs>
-                <filter id="filter0_f_1_15" x="0" y="-489" width="979" height="979" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_15" />
-                </filter>
-            </defs>
-        </svg>
-        <svg width="375" height="346" viewBox="0 0 375 346" className='block md:hidden w-full' fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_f_1_1181)">
-                <ellipse cx="179" cy="23" rx="155" ry="123" fill="#0067DB" />
-            </g>
-            <defs>
-                <filter id="filter0_f_1_1181" x="-176" y="-300" width="710" height="646" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_1181" />
-                </filter>
-            </defs>
-        </svg>
+    <div className="flex w-full justify-center ">
+        <div
+            className="absolute -top-[100px] lg:-top-[289px] w-[310px] h-[246px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+            style={{
+                background: "rgba(0, 103, 219, 0.80)",
+                filter: "blur(100px)",
+                WebkitFilter: "blur(100px)",
+                willChange: "filter",
+            }}
+        ></div>
     </div>
 );
 

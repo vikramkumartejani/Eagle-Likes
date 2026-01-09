@@ -92,7 +92,7 @@ const YourPrivacyIsOurFocus = () => {
                     </div>
 
                     {/* Main Background Image */}
-                    <div className="w-[460px] h-full rounded-[40px] overflow-hidden">
+                    <div className="lg:w-[460px] h-full rounded-[40px] overflow-hidden">
                         <Image
                             src="/assets/get-thousands-of.svg"
                             alt="Creator using laptop"
