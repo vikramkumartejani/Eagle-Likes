@@ -59,7 +59,8 @@ const Hero = () => {
 
 
     return (
-        <section className="bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-42.5 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
+        <section className=" relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-42.5 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
+            <div className='bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-[950px] absolute inset-0 top-0'></div>
             <BackgroundElements />
             <HeroRightImage />
             <LeftShadow />
@@ -271,7 +272,7 @@ const HeroRightImage = () => (
 
 const LeftShadow = () => (
     <div
-        className="absolute -z-10 -left-[143px] top-[10%] lg:-left-[352px] lg:top-[350px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
+        className="absolute -z-10 -left-[143px] top-[10%] lg:-left-[400px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",
@@ -284,7 +285,7 @@ const LeftShadow = () => (
 
 const RightShadow = () => (
     <div
-        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[350px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[280px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",

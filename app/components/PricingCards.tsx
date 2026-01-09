@@ -104,12 +104,12 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
     return (
         <div
             onClick={() => onSelect(plan.type)}
-            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-hidden group flex min-w-40 flex-col h-full bg-[#FFFFFF1A] snap-center
-                ${isSelected ? 'border shadow-lg' : 'border hover:border-white/10'}
+            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-hidden group flex min-w-40 flex-col h-full bg-[#FFFFFF1A] snap-center border
+                ${isSelected ? '' : 'hover:border-white/10'}
             `}
             style={{
                 borderColor: isSelected ? plan.borderColor : '#FFFFFF80',
-                boxShadow: isSelected ? `0 0 20px ${plan.borderColor}40` : 'none'
+                boxShadow: isSelected ? `inset 0 0 0 1px ${plan.borderColor}` : 'none'
             }}
         >
 
