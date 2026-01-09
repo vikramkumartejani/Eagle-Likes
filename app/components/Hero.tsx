@@ -74,7 +74,7 @@ const Hero = () => {
                     Buy TikTok and Instagram Followers Views & Likes and <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]"> other Interactions!</span>
                 </h1>
 
-                <p className="text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-[35px] sm:px-4 mb-6 sm:mb-10">
+                <p className="text-[#99a1af] text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-[35px] sm:px-4 mb-6 sm:mb-16">
                     Enhance your brand's online presence and increase engagement with our social media growth solutions.
                 </p>
 
@@ -256,7 +256,7 @@ export default Hero;
 
 // Sub-components
 const BackgroundElements = () => (
-    <div className="absolute inset-0 z-0 w-full mx-auto max-w-190.5 mt-12.75 md:mt-24.5 h-91.25 pointer-events-none">
+    <div className="absolute inset-0 z-20 w-full mx-auto max-w-190.5 mt-12.75 md:mt-24.5 h-20 pointer-events-none">
         <Image src="/assets/hero-lines.png" alt="Background Grid" width={762} height={365} className='md:block hidden' />
         <Image src="/assets/mobile-view-line.png" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' />
     </div>
