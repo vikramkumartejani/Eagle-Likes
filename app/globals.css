@@ -216,3 +216,24 @@ body {
     font-family: var(--font-inter);
   }
 }
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-rotate {
+  from {
+    --border-angle: 0deg;
+  }
+
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.animate-vip-border {
+  --border-angle: 0deg;
+  animation: border-rotate 1.5s linear infinite;
+}

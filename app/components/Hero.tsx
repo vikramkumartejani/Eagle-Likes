@@ -81,11 +81,14 @@ const Hero = () => {
                 {/* VIP Toggle (Preserved aesthetics) */}
                 <div className="flex items-center justify-center mb-0 w-full">
                     <div
-                        className="relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group"
+                        className={`${!isVip ? 'animate-vip-border' : ''} relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group`}
                         style={{
-                            background: "linear-gradient(#101828, #101828) padding-box, linear-gradient(90deg, #EE1D52 0%, #F64C50 50%, #9146FF 100%) border-box",
+                            background: "linear-gradient(#101828, #101828) padding-box, " +
+                                (!isVip
+                                    ? "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
+                                    : "linear-gradient(90deg, #EE1D52 0%, #F64C50 50%, #9146FF 100%) border-box"),
                             border: "1px solid transparent",
-                            boxShadow: "0px 0px 8px 0px #00000026"
+                            boxShadow: !isVip ? "0px 0px 12px 0px rgba(145, 70, 255, 0.3)" : "0px 0px 8px 0px #00000026"
                         }}
                         onClick={() => handleVipToggle(!isVip)}
                     >
@@ -256,9 +259,9 @@ export default Hero;
 
 // Sub-components
 const BackgroundElements = () => (
-    <div className="absolute inset-0 z-20 w-full mx-auto max-w-190.5 mt-12.75 md:mt-24.5 h-20 pointer-events-none">
-        <Image src="/assets/hero-lines.png" alt="Background Grid" width={762} height={365} className='md:block hidden' />
-        <Image src="/assets/mobile-view-line.png" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' />
+    <div className="absolute inset-0 z-20 w-full mx-auto mt-12.75 md:mt-24 pointer-events-none -ml-[5px]">
+        <Image src="/assets/grid.svg" alt="Background Grid" width={762} height={365} className='md:block hidden object-contain mx-auto' />
+        <Image src="/assets/svg-grid-mb.svg" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' />
     </div>
 );
 
