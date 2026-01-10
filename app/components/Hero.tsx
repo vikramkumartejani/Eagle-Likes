@@ -8,22 +8,40 @@ import PricingCards, { PlanType } from './PricingCards';
 // Types
 interface Package {
     count: number;
-    discount: number;
+    discount: {
+        premium: number;
+        active: number;
+        vip: number;
+    };
     price: number;
     originalPrice: number;
 }
 
 // Data
 const PACKAGES: Package[] = [
-    { count: 100, discount: 18, price: 2.97, originalPrice: 3.62 },
-    { count: 250, discount: 40, price: 6.99, originalPrice: 11.65 },
-    { count: 500, discount: 52, price: 11.99, originalPrice: 24.99 },
-    { count: 1000, discount: 63, price: 18.99, originalPrice: 51.32 },
-    { count: 2500, discount: 68, price: 29.99, originalPrice: 93.72 },
-    { count: 5000, discount: 70, price: 49.99, originalPrice: 166.63 },
-    { count: 10000, discount: 83, price: 89.99, originalPrice: 529.35 },
-    { count: 20000, discount: 85, price: 149.99, originalPrice: 999.99 },
+    { count: 100, discount: { premium: 18, active: 22, vip: 25 }, price: 2.97, originalPrice: 3.62 },
+    { count: 250, discount: { premium: 40, active: 45, vip: 50 }, price: 6.99, originalPrice: 11.65 },
+    { count: 500, discount: { premium: 52, active: 56, vip: 60 }, price: 11.99, originalPrice: 24.99 },
+    { count: 1000, discount: { premium: 63, active: 67, vip: 70 }, price: 18.99, originalPrice: 51.32 },
+    { count: 2500, discount: { premium: 68, active: 72, vip: 75 }, price: 29.99, originalPrice: 93.72 },
+    { count: 5000, discount: { premium: 70, active: 74, vip: 78 }, price: 49.99, originalPrice: 166.63 },
+    { count: 10000, discount: { premium: 83, active: 86, vip: 88 }, price: 89.99, originalPrice: 529.35 },
+    { count: 20000, discount: { premium: 85, active: 88, vip: 90 }, price: 149.99, originalPrice: 999.99 },
 ];
+
+// Price multipliers for different plan types
+const getPriceForPlan = (basePrice: number, planType: PlanType): number => {
+    switch (planType) {
+        case 'premium':
+            return basePrice;
+        case 'active':
+            return basePrice * 2; // Active followers cost 2x
+        case 'vip':
+            return basePrice * 3; // VIP followers cost 3x
+        default:
+            return basePrice;
+    }
+};
 
 const REVIEWS = {
     count: 38571,
@@ -153,7 +171,24 @@ const ReviewCarousel: React.FC = () => {
 
 const Hero = () => {
     const [selectedPlanType, setSelectedPlanType] = useState<PlanType>('premium');
-    const [selectedPackage, setSelectedPackage] = useState<Package>(PACKAGES[0]);
+
+    // Separate selected packages for each plan type
+    const [selectedPackages, setSelectedPackages] = useState<Record<PlanType, Package>>({
+        premium: PACKAGES[0],
+        active: PACKAGES[0],
+        vip: PACKAGES[0],
+    });
+
+    // Get current selected package based on plan type
+    const selectedPackage = selectedPackages[selectedPlanType];
+
+    // Update selected package for current plan type
+    const handlePackageSelect = (pkg: Package) => {
+        setSelectedPackages(prev => ({
+            ...prev,
+            [selectedPlanType]: pkg
+        }));
+    };
 
     const isVip = selectedPlanType === 'vip';
 
@@ -217,33 +252,46 @@ const Hero = () => {
 
                 {/* Package Selection Grid */}
                 <div className="mt-11.25 grid grid-cols-2 sm:grid-cols-4 gap-6.5 mb-11.25 w-full max-w-157.5">
-                    {PACKAGES.map((pkg) => (
-                        <button
-                            key={pkg.count}
-                            onClick={() => setSelectedPackage(pkg)}
-                            className={`bg-[#FFFFFF1A] flex flex-col cursor-pointer items-center justify-center rounded-[26px] border transition-all duration-200 overflow-hidden group
-                                 ${selectedPackage.count === pkg.count
-                                    ? 'border-[#FFFFFF33]'
-                                    : 'border-[#FFFFFF1A]'
-                                }
-                            `}
-                        >
-                            {/* Top part: Count */}
-                            <div className={`rounded-[25px] w-full py-[27.22px] text-[35px] leading-8.75 font-semibold font-inter text-center
-                                ${selectedPackage.count === pkg.count
-                                    ? 'bg-[linear-gradient(90deg,#0663CD_0%,#01AAFF_100%)] text-white'
-                                    : 'bg-[#FFFFFF1A] text-white'
-                                }
-                            `}>
-                                {pkg.count}
-                            </div>
+                    {PACKAGES.map((pkg) => {
+                        // Dynamic gradient based on selected plan type
+                        const getGradient = () => {
+                            if (selectedPackage.count !== pkg.count) return 'bg-[#FFFFFF1A]';
 
-                            {/* Bottom part: Discount */}
-                            <div className="w-full pt-3.75 pb-3.5 text-center text-[23.43px] leading-7.25 font-normal">
-                                {pkg.discount}% off
-                            </div>
-                        </button>
-                    ))}
+                            switch (selectedPlanType) {
+                                case 'premium':
+                                    return 'bg-[linear-gradient(90deg,#0663CD_0%,#01AAFF_100%)]';
+                                case 'active':
+                                    return 'bg-[linear-gradient(90deg,#D71E77_0%,#B0125D_100%)]';
+                                case 'vip':
+                                    return 'bg-[linear-gradient(90deg,#00C853_0%,#00E676_100%)]';
+                                default:
+                                    return 'bg-[#FFFFFF1A]';
+                            }
+                        };
+
+                        return (
+                            <button
+                                key={pkg.count}
+                                onClick={() => handlePackageSelect(pkg)}
+                                className={`bg-[#FFFFFF1A] flex flex-col cursor-pointer items-center justify-center rounded-[26px] border transition-all duration-200 overflow-hidden group
+                                     ${selectedPackage.count === pkg.count
+                                        ? 'border-[#FFFFFF33]'
+                                        : 'border-[#FFFFFF1A]'
+                                    }
+                                `}
+                            >
+                                {/* Top part: Count */}
+                                <div className={`rounded-[25px] w-full py-[27.22px] text-[35px] leading-8.75 font-semibold font-inter text-center text-white ${getGradient()}`}>
+                                    {pkg.count}
+                                </div>
+
+                                {/* Bottom part: Discount */}
+                                <div className="w-full pt-3.75 pb-3.5 text-center text-[23.43px] leading-7.25 font-normal">
+                                    {pkg.discount[selectedPlanType]}% off
+                                </div>
+                            </button>
+                        );
+                    })}
                 </div>
 
                 {/* Pricing & Action Area */}
@@ -251,19 +299,19 @@ const Hero = () => {
                     <div className="flex items-center gap-9 mb-11.25">
                         <div className='space-y-2.5 w-68.75'>
                             <div className='flex items-start gap-1.5'>
-                                <span className="text-[48px] leading-9 font-semibold font-inter text-white">
-                                    ${selectedPackage.price}
+                                <span className="text-[46px] leading-9 font-semibold font-inter text-white">
+                                    ${getPriceForPlan(selectedPackage.price, selectedPlanType).toFixed(2)}
                                 </span>
                                 <span className="text-[20px] leading-5 text-[#B1B0B0] font-rethink line-through font-semibold">
-                                    ${selectedPackage.originalPrice}
+                                    ${getPriceForPlan(selectedPackage.originalPrice, selectedPlanType).toFixed(2)}
                                 </span>
                             </div>
 
                             <div className='flex items-center gap-3.75'>
-                                <span className='text-[20px] leading-4.5 font-inter font-medium text-white'>you're saving</span>
+                                <span className='text-[18px] leading-4.5 font-inter font-medium text-white'>you're saving</span>
                                 <Image src='/assets/saving.svg' alt='saving' width={30} height={30} />
                                 <span className='text-[20px] leading-4.5 font-inter font-semibold text-[#01AAFF]'>
-                                    ${(selectedPackage.originalPrice - selectedPackage.price).toFixed(2)}
+                                    ${(getPriceForPlan(selectedPackage.originalPrice, selectedPlanType) - getPriceForPlan(selectedPackage.price, selectedPlanType)).toFixed(2)}
                                 </span>
                             </div>
                         </div>
