@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const FAQS = [
     {
@@ -28,26 +28,50 @@ const FAQS = [
     },
 ];
 
-const FaqItem = ({ question, answer }: { question: string; answer: string }) => {
-    const [isOpen, setIsOpen] = useState(false);
+const FaqItem = ({ question, answer, isOpen, onToggle }: {
+    question: string;
+    answer: string;
+    isOpen: boolean;
+    onToggle: () => void;
+}) => {
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!contentRef.current) return;
+
+        const updateHeight = () => {
+            if (contentRef.current) {
+                contentRef.current.style.height = isOpen ? `${contentRef.current.scrollHeight}px` : '0px';
+            }
+        };
+
+        updateHeight();
+
+        const resizeObserver = new ResizeObserver(updateHeight);
+        resizeObserver.observe(contentRef.current);
+
+        return () => resizeObserver.disconnect();
+    }, [isOpen]);
 
     return (
         <div className="bg-[#FFFFFF0D] border border-[#FFFFFF26] rounded-[15px] overflow-hidden">
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={onToggle}
                 className="w-full flex items-center justify-between px-3 sm:px-5 py-3.5 sm:py-6 text-left cursor-pointer"
             >
                 <span className="text-[14px] sm:text-[22px] leading-5.5 sm:leading-7.5 font-semibold font-responsive-heading text-white pr-4">
                     {question}
                 </span>
-                <span className={`min-w-4 shrink-0 text-white transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
+                <span className={`min-w-4 shrink-0 text-white transition-transform duration-300 ease-out ${isOpen ? 'rotate-180' : ''}`}>
                     <svg className='sm:w-4 w-3 h-3' viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.7" d="M1.90735e-05 1.49435C-0.000854492 1.69184 0.0280972 1.88762 0.0852137 2.07045C0.14233 2.25328 0.22649 2.41958 0.332864 2.5598L7.21929 11.5636C7.43433 11.8431 7.72523 12 8.02844 12C8.33166 12 8.62255 11.8431 8.8376 11.5636L15.724 2.5598C15.912 2.27272 16.0103 1.90345 15.9991 1.52578C15.988 1.1481 15.8682 0.789844 15.6638 0.522588C15.4594 0.255333 15.1854 0.0987663 14.8966 0.0841789C14.6077 0.0695906 14.3253 0.198055 14.1057 0.443899L8.03418 8.38227L1.96265 0.443899C1.8028 0.233177 1.59875 0.08916 1.37631 0.030057C1.15386 -0.0290461 0.923006 -0.000579834 0.712933 0.111856C0.50286 0.224293 0.323004 0.415648 0.196107 0.661729C0.0692101 0.907808 0.00097084 1.19756 1.90735e-05 1.49435Z" fill="white" />
                     </svg>
                 </span>
             </button>
             <div
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
+                ref={contentRef}
+                style={{ opacity: isOpen ? 1 : 0 }}
+                className="transition-all duration-300 ease-out overflow-hidden will-change-[height,opacity]"
             >
                 <div className="px-3 sm:px-6 pb-4 sm:pb-6 text-[#99A1AF] text-[13px] sm:text-[16px] leading-6 sm:leading-6.5 font-medium">
                     {answer}
@@ -58,6 +82,8 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
 };
 
 const Faq = () => {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
     return (
         <section className="relative w-full pb-14.75 lg:pb-24 overflow-hidden">
             {/* Left Bottom Shadow */}
@@ -90,7 +116,13 @@ const Faq = () => {
                 {/* Questions Grid/List */}
                 <div className="flex flex-col gap-3.75">
                     {FAQS.map((faq, index) => (
-                        <FaqItem key={index} question={faq.question} answer={faq.answer} />
+                        <FaqItem
+                            key={index}
+                            question={faq.question}
+                            answer={faq.answer}
+                            isOpen={openIndex === index}
+                            onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                        />
                     ))}
                 </div>
             </div>
