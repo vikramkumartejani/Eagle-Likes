@@ -146,7 +146,10 @@ const SocialMediaGrowth = () => {
                     {/* Stats Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
                         {STATS_DATA.map((stat, idx) => (
-                            <div key={idx} className="bg-[#FFFFFF0D] border border-[#FFFFFF1A] rounded-[30px] p-6 flex flex-col items-start gap-3 justify-between">
+                            <div
+                                key={idx}
+                                className="bg-[#FFFFFF0D] border border-[#FFFFFF1A] rounded-[30px] p-6 flex flex-col items-start gap-3 justify-between transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26] cursor-pointer"
+                            >
                                 <div
                                     className="w-12 h-12 rounded-[14px] flex items-center justify-center shadow-lg"
                                     style={{ background: stat.iconBg }}
