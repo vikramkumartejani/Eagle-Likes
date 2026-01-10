@@ -1,173 +1,15 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import ToggleSwitch from './ui/ToggleSwitch';
 import PricingCards, { PlanType } from './PricingCards';
-
-// Types
-interface Package {
-    count: number;
-    discount: {
-        premium: number;
-        active: number;
-        vip: number;
-    };
-    price: number;
-    originalPrice: number;
-}
-
-// Data
-const PACKAGES: Package[] = [
-    { count: 100, discount: { premium: 18, active: 22, vip: 25 }, price: 2.97, originalPrice: 3.62 },
-    { count: 250, discount: { premium: 40, active: 45, vip: 50 }, price: 6.99, originalPrice: 11.65 },
-    { count: 500, discount: { premium: 52, active: 56, vip: 60 }, price: 11.99, originalPrice: 24.99 },
-    { count: 1000, discount: { premium: 63, active: 67, vip: 70 }, price: 18.99, originalPrice: 51.32 },
-    { count: 2500, discount: { premium: 68, active: 72, vip: 75 }, price: 29.99, originalPrice: 93.72 },
-    { count: 5000, discount: { premium: 70, active: 74, vip: 78 }, price: 49.99, originalPrice: 166.63 },
-    { count: 10000, discount: { premium: 83, active: 86, vip: 88 }, price: 89.99, originalPrice: 529.35 },
-    { count: 20000, discount: { premium: 85, active: 88, vip: 90 }, price: 149.99, originalPrice: 999.99 },
-];
-
-// Price multipliers for different plan types
-const getPriceForPlan = (basePrice: number, planType: PlanType): number => {
-    switch (planType) {
-        case 'premium':
-            return basePrice;
-        case 'active':
-            return basePrice * 2; // Active followers cost 2x
-        case 'vip':
-            return basePrice * 3; // VIP followers cost 3x
-        default:
-            return basePrice;
-    }
-};
-
-const REVIEWS = {
-    count: 38571,
-};
-
-const FOLLOWERS_UPDATES = [
-    { name: "started foll", time: "10m" },
-    { name: "started full", time: "30m" },
-    { name: "started full", time: "15m" },
-    { name: "started full", time: "50m" },
-    { name: "started full", time: "20m" },
-    { name: "started full", time: "55m" },
-    { name: "started full", time: "1h" },
-    { name: "started full", time: "1h" },
-    { name: "started full", time: "2h" },
-    { name: "started full", time: "3h" },
-    { name: "started full", time: "5h" },
-    { name: "started full", time: "6h" },
-];
-
-interface ReviewSlide {
-    count: number;
-    text: string;
-    subtext: string;
-    prefix?: string;
-}
-
-const REVIEW_SLIDES: ReviewSlide[] = [
-    { count: 38571, text: "people", subtext: "purchased 2+ times", prefix: "" },
-    { count: 1312, text: "people", subtext: "gave a 5-star review", prefix: "🌟 " },
-    { count: 773, text: "", subtext: "purchased today", prefix: "❤️‍🔥️ In demand! " },
-];
-
-const ReviewSlideComponent: React.FC<{
-    slide: ReviewSlide;
-    isFirstRound: boolean;
-    onDone: () => void
-}> = ({ slide, isFirstRound, onDone }) => {
-    // Round 1 starts at 0, Round 2+ starts at full target number
-    const [count, setCount] = useState(isFirstRound ? 0 : slide.count);
-    const hasStarted = useRef(false);
-
-    useEffect(() => {
-        if (!isFirstRound) {
-            // Round 2+: Stay for 2 seconds then move on
-            const timer = setTimeout(onDone, 2000);
-            return () => clearTimeout(timer);
-        }
-
-        if (hasStarted.current) return;
-        hasStarted.current = true;
-
-        // Round 1: Wait 0.5s for entry, count for 1.5s, then wait 3s for readability
-        const sequence = async () => {
-            // Wait for slide entry animation to settle
-            await new Promise(r => setTimeout(r, 600));
-
-            // Count up animation
-            const controls = animate(0, slide.count, {
-                duration: 1.5,
-                ease: "easeOut",
-                onUpdate: (v) => setCount(Math.floor(v))
-            });
-            await controls;
-
-            // Post-count readability pause
-            await new Promise(r => setTimeout(r, 3000));
-
-            onDone();
-        };
-
-        sequence();
-    }, [isFirstRound, slide.count, onDone]);
-
-    return (
-        <div className="flex flex-col items-start ml-4 w-full">
-            <p className='text-[18px] sm:text-[22px] leading-6 sm:leading-7.5 font-normal text-white whitespace-nowrap'>
-                {slide.prefix}{count.toLocaleString()} {slide.text}
-            </p>
-            <p className='text-[18px] sm:text-[22px] leading-6 sm:leading-7.5 text-[#01AAFF] font-inter font-medium whitespace-nowrap'>
-                {slide.subtext}
-            </p>
-        </div>
-    );
-};
-
-const ReviewCarousel: React.FC = () => {
-    const [index, setIndex] = useState(0);
-    const [roundCount, setRoundCount] = useState(0);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(containerRef, { once: true });
-
-    const handleSlideDone = () => {
-        setIndex((prev) => {
-            const next = (prev + 1) % REVIEW_SLIDES.length;
-            if (next === 0) {
-                setRoundCount(r => r + 1);
-            }
-            return next;
-        });
-    };
-
-    if (!isInView) return <div ref={containerRef} className="h-[60px] min-w-[300px]" />;
-
-    return (
-        <div ref={containerRef} className="h-[60px] flex items-center overflow-hidden relative min-w-[300px]">
-            <AnimatePresence mode="wait">
-                <motion.div
-                    // Crucial: unique key per slide AND round to ensure re-mount and fresh lifecycle
-                    key={`${roundCount}-${index}`}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="w-full"
-                >
-                    <ReviewSlideComponent
-                        slide={REVIEW_SLIDES[index]}
-                        isFirstRound={roundCount === 0}
-                        onDone={handleSlideDone}
-                    />
-                </motion.div>
-            </AnimatePresence>
-        </div>
-    );
-};
+import { Package } from './hero/types';
+import { PACKAGES } from './hero/data';
+import { getPriceForPlan } from './hero/utils';
+import ReviewCarousel from './hero/ReviewCarousel';
+import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, LeftBottomShadow, TopBlueGlow } from './hero/BackgroundElements';
+import PackageGrid from './hero/PackageGrid';
+import FollowersPreview from './hero/FollowersPreview';
 
 const Hero = () => {
     const [selectedPlanType, setSelectedPlanType] = useState<PlanType>('premium');
@@ -204,7 +46,7 @@ const Hero = () => {
     return (
         <section className=" relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-42.5 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <div className='bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-[950px] absolute inset-0 top-0'></div>
-            <BackgroundElements />
+            <BackgroundGrid />
             <HeroRightImage />
             <LeftShadow />
             <RightShadow />
@@ -215,7 +57,7 @@ const Hero = () => {
 
                 {/* Headlines */}
                 <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4">
-                    Buy TikTok and Instagram Followers Views & Likes and <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]"> other Interactions!</span>
+                    Buy TikTok and Instagram Followers Views &amp; Likes and <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]">other Interactions!</span>
                 </h1>
 
                 <p className="text-[#99a1af] text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-[35px] sm:px-4 mb-6 sm:mb-16">
@@ -251,48 +93,11 @@ const Hero = () => {
                 <PricingCards selectedPlan={selectedPlanType} onSelect={setSelectedPlanType} />
 
                 {/* Package Selection Grid */}
-                <div className="mt-11.25 grid grid-cols-2 sm:grid-cols-4 gap-6.5 mb-11.25 w-full max-w-157.5">
-                    {PACKAGES.map((pkg) => {
-                        // Dynamic gradient based on selected plan type
-                        const getGradient = () => {
-                            if (selectedPackage.count !== pkg.count) return 'bg-[#FFFFFF1A]';
-
-                            switch (selectedPlanType) {
-                                case 'premium':
-                                    return 'bg-[linear-gradient(90deg,#0663CD_0%,#01AAFF_100%)]';
-                                case 'active':
-                                    return 'bg-[linear-gradient(90deg,#D71E77_0%,#B0125D_100%)]';
-                                case 'vip':
-                                    return 'bg-[linear-gradient(90deg,#00C853_0%,#00E676_100%)]';
-                                default:
-                                    return 'bg-[#FFFFFF1A]';
-                            }
-                        };
-
-                        return (
-                            <button
-                                key={pkg.count}
-                                onClick={() => handlePackageSelect(pkg)}
-                                className={`bg-[#FFFFFF1A] flex flex-col cursor-pointer items-center justify-center rounded-[26px] border transition-all duration-200 overflow-hidden group
-                                     ${selectedPackage.count === pkg.count
-                                        ? 'border-[#FFFFFF33]'
-                                        : 'border-[#FFFFFF1A]'
-                                    }
-                                `}
-                            >
-                                {/* Top part: Count */}
-                                <div className={`rounded-[25px] w-full py-[27.22px] text-[35px] leading-8.75 font-semibold font-inter text-center text-white ${getGradient()}`}>
-                                    {pkg.count}
-                                </div>
-
-                                {/* Bottom part: Discount */}
-                                <div className="w-full pt-3.75 pb-3.5 text-center text-[23.43px] leading-7.25 font-normal">
-                                    {pkg.discount[selectedPlanType]}% off
-                                </div>
-                            </button>
-                        );
-                    })}
-                </div>
+                <PackageGrid
+                    selectedPlanType={selectedPlanType}
+                    selectedPackage={selectedPackage}
+                    onPackageSelect={handlePackageSelect}
+                />
 
                 {/* Pricing & Action Area */}
                 <div className="flex flex-col items-center">
@@ -361,38 +166,7 @@ const Hero = () => {
                 </div>
 
                 {/* Followers Preview Section */}
-                <div className="w-full max-w-196.5 bg-[#FFFFFF1A] border border-[#FFFFFF26] rounded-3xl overflow-hidden mb-10 flex flex-col" style={{ boxShadow: "0px 0px 4.75px 0px #00000033" }}>
-                    <div className="pb-6">
-                        <div className="flex items-center justify-between px-4 py-3.25 border-b border-[#FFFFFF33]">
-                            <div className="flex items-center gap-3.5">
-                                <Image src='/assets/user-icon.svg' alt='user-icon' width={24} height={26} />
-                                <span className="text-[24px] leading-6 font-semibold text-white">Followers Preview</span>
-                            </div>
-                            <div className="bg-[#FFFFFF33] px-3 h-10.75 rounded-[60px] flex items-center gap-1.5">
-                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.13104 0.820138C7.48634 -0.273351 9.03333 -0.273349 9.38863 0.82014L10.5248 4.31706C10.6837 4.80609 11.1395 5.13718 11.6536 5.13718H15.3305C16.4803 5.13718 16.9583 6.60846 16.0282 7.28427L13.0535 9.44549C12.6375 9.74772 12.4634 10.2834 12.6223 10.7725L13.7586 14.2694C14.1139 15.3629 12.8623 16.2722 11.9321 15.5964L8.95747 13.4351C8.54148 13.1329 7.97819 13.1329 7.5622 13.4351L4.58754 15.5964C3.65736 16.2722 2.40582 15.3629 2.76112 14.2694L3.89733 10.7725C4.05623 10.2834 3.88216 9.74772 3.46617 9.44549L0.491512 7.28427C-0.438665 6.60846 0.0393848 5.13718 1.18915 5.13718H4.86603C5.38022 5.13718 5.83593 4.80608 5.99482 4.31706L7.13104 0.820138Z" fill="#01AAFF" />
-                                </svg>
-                                <span className="text-[16.62px] leading-9 font-semibold text-[#01AAFF]">Real Followers</span>
-                            </div>
-                        </div>
-                        {/* Scrollable List */}
-                        <div className="mx-4 pt-5.75 grid grid-rows-3 grid-flow-col gap-x-[23.74px] gap-y-3.25 custom-scroll overflow-x-auto pb-6">
-                            {FOLLOWERS_UPDATES.map((update, idx) => (
-                                <div key={idx} className="text-nowrap flex items-center gap-3 pl-[7.12px] pr-[14.24px] rounded-[17px] bg-[#EDEDED0D] border border-[#FFFFFF1A] shrink-0 w-auto h-14.25">
-                                    <div className="w-11 h-11 rounded-full bg-gray-700 overflow-hidden relative shrink-0">
-                                        <Image src={`/assets/profile-1.png`} alt="User" fill className="object-cover" />
-                                    </div>
-                                    <div className="flex gap-3">
-                                        <p className='text-[14.24px] leading-6 font-normal'>
-                                            <span className="text-white blur-xs select-none">{update.name}</span>
-                                        </p>
-                                        <p className="text-[16.62px] leading-6 font-normal text-white">started following you. <span className='ml-2.5'>{update.time}</span></p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                <FollowersPreview />
 
                 {/* Footer Reviews Text */}
                 <div className="flex items-center gap-3.5">
@@ -408,71 +182,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-// Sub-components
-const BackgroundElements = () => (
-    <div className="absolute inset-0 z-20 w-full mx-auto mt-12.75 md:mt-24 pointer-events-none -ml-[5px]">
-        <Image src="/assets/grid.svg" alt="Background Grid" width={762} height={365} className='md:block hidden object-contain mx-auto' />
-        <Image src="/assets/svg-grid-mb.svg" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' />
-    </div>
-);
-
-const HeroRightImage = () => (
-    <Image src="/assets/hero-right.png" alt="Background Grid" width={213} height={447} className='absolute right-0 top-12 md:block hidden' />
-);
-
-const LeftShadow = () => (
-    <div
-        className="absolute -z-10 -left-[143px] top-[10%] lg:-left-[400px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
-        style={{
-            background: "rgba(0, 103, 219, 0.80)",
-            filter: "blur(100px)",
-            WebkitFilter: "blur(100px)",
-            willChange: "filter",
-        }}
-    ></div>
-
-);
-
-const RightShadow = () => (
-    <div
-        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[280px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
-        style={{
-            background: "rgba(0, 103, 219, 0.80)",
-            filter: "blur(100px)",
-            WebkitFilter: "blur(100px)",
-            willChange: "filter",
-        }}
-    ></div>
-);
-
-const LeftBottomShadow = () => (
-    <div className="absolute left-0 bottom-0 z-0 pointer-events-none mix-blend-screen md:block hidden">
-        <svg width="323" height="918" viewBox="0 0 323 918" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_f_1_95)">
-                <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fillOpacity="0.32" />
-            </g>
-            <defs>
-                <filter id="filter0_f_1_95" x="-594.378" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_95" />
-                </filter>
-            </defs>
-        </svg>
-    </div>
-);
-
-const TopBlueGlow = () => (
-    <div className="flex w-full justify-center ">
-        <div
-            className="absolute -top-[100px] lg:-top-[289px] w-[310px] h-[246px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
-            style={{
-                background: "rgba(0, 103, 219, 0.80)",
-                filter: "blur(100px)",
-                WebkitFilter: "blur(100px)",
-                willChange: "filter",
-            }}
-        ></div>
-    </div>
-);
