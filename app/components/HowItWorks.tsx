@@ -60,7 +60,7 @@ const STEPS: Step[] = [
 
 const HowItWorks = () => {
     return (
-        <section className="relative w-full pb-31 pt-47.75 border-b-[1.5px] border-[#0663CD4D] px-5 overflow-hidden">
+        <section className="relative w-full py-20 border-b-[1.5px] border-[#0663CD4D] px-5 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12.5">
                     <h2 className="text-[32px] sm:text-[48px] leading-12 font-bold text-white mb-6 font-inter">
