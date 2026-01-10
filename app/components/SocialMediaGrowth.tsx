@@ -79,12 +79,12 @@ const SocialMediaGrowth = () => {
                     </defs>
                 </svg>
             </div>
-            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-end justify-between">
+            <div className="max-w-249 mx-auto flex flex-col lg:flex-row items-center justify-between">
                 {/* Left Side */}
-                <div className="relative w-full max-w-164 aspect-656/756 mx-auto lg:mx-0">
+                <div className="relative w-full max-w-100 h-125 mx-auto lg:mx-0">
                     <div className="relative w-full h-full rounded-3xl overflow-hidden">
                         <Image
-                            src="/assets/left-image.png"
+                            src="/assets/social-media-growth-left.png"
                             alt="Instagram Growth Strategy"
                             fill
                             className="object-cover"
@@ -92,8 +92,79 @@ const SocialMediaGrowth = () => {
                         />
                     </div>
 
+                    {/* instagram icon */}
+                    <div className='rounded-[14px] w-16 h-16 flex items-center justify-center absolute -top-[35.23px] left-[31.61px] animate-float' style={{ background: "linear-gradient(135deg, #9810FA 0%, #E60076 100%)", boxShadow: "0px 25px 50px -12px #AD46FF80", animationDelay: "0s" }}>
+                        <Image src='/assets/svgs/instagram.svg' alt='instagram' width={32} height={32} />
+                    </div>
+
+                    {/* heart icon */}
+                    <div className="rounded-full w-11.5 h-11.5 flex items-center justify-center absolute top-[158.82px] -left-8.25 animate-float"
+                        style={{
+                            background: "linear-gradient(135deg, #F6339A 0%, #FF2056 100%)",
+                            boxShadow:
+                                "0px 4px 6px -4px #F6339A66, 0px 10px 15px -3px #F6339A66",
+                            animationDelay: "0.5s"
+                        }}
+                    >
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.74261 8.27744C1.74263 7.30786 2.03676 6.36108 2.58615 5.56216C3.13555 4.76325 3.91436 4.14977 4.81972 3.80277C5.72509 3.45576 6.71442 3.39155 7.65704 3.61861C8.59967 3.84568 9.45124 4.35333 10.0993 5.07453C10.1449 5.12333 10.2001 5.16224 10.2614 5.18884C10.3227 5.21544 10.3888 5.22917 10.4557 5.22917C10.5225 5.22917 10.5886 5.21544 10.6499 5.18884C10.7112 5.16224 10.7664 5.12333 10.812 5.07453C11.458 4.34864 12.3098 3.83672 13.254 3.6069C14.1981 3.37708 15.1899 3.44026 16.0973 3.78803C17.0046 4.1358 17.7845 4.75167 18.3332 5.55366C18.8819 6.35565 19.1733 7.30573 19.1687 8.27744C19.1687 10.2727 17.8618 11.7627 16.5548 13.0696L11.7696 17.6989C11.6072 17.8853 11.4071 18.0351 11.1824 18.1383C10.9577 18.2414 10.7136 18.2956 10.4664 18.2971C10.2191 18.2987 9.9744 18.2476 9.74841 18.1473C9.52243 18.047 9.32038 17.8998 9.15568 17.7154L4.35653 13.0696C3.04957 11.7627 1.74261 10.2814 1.74261 8.27744Z" fill="white" stroke="white" strokeWidth="1.74261" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+
+                    {/* msg icon */}
+                    <div className="rounded-full w-[44.55px] h-[44.55px] flex items-center justify-center absolute top-[92.85px] right-[15.43px] animate-float"
+                        style={{
+                            background: "linear-gradient(135deg, #51A2FF 0%, #00D3F2 100%)",
+                            boxShadow: "0px 4px 6px -4px #00B8DB66, 0px 10px 15px -3px #00B8DB66",
+                            animationDelay: "1s"
+                        }}
+                    >
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5244 13.7882C2.64846 14.1012 2.67608 14.4441 2.60371 14.7729L1.70514 17.5487C1.67619 17.6895 1.68367 17.8353 1.72689 17.9724C1.7701 18.1095 1.84761 18.2332 1.95207 18.3319C2.05653 18.4306 2.18447 18.501 2.32376 18.5364C2.46305 18.5718 2.60908 18.5711 2.74799 18.5342L5.62763 17.6921C5.93788 17.6306 6.25918 17.6575 6.55488 17.7698C8.35657 18.6112 10.3975 18.7892 12.3177 18.2724C14.2378 17.7556 15.9137 16.5773 17.0498 14.9453C18.1858 13.3133 18.7089 11.3325 18.5268 9.35237C18.3447 7.37226 17.4691 5.52009 16.0545 4.12265C14.6398 2.72521 12.7771 1.87229 10.7949 1.7144C8.81275 1.5565 6.83849 2.10377 5.22048 3.25964C3.60247 4.4155 2.44469 6.1057 1.95142 8.03201C1.45814 9.95832 1.66107 11.9969 2.5244 13.7882Z" stroke="white" strokeWidth="1.68745" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+
+                    {/* youtube icon */}
+                    <div className='rounded-[14px] w-16 h-16 flex items-center justify-center absolute top-[63.77px] -right-12 animate-float' style={{ background: "linear-gradient(135deg, #E7000B 0%, #FB2C36 100%)", boxShadow: "0px 25px 50px -12px #FB2C3680", animationDelay: "1.5s" }}>
+                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33627 22.6863C2.40402 18.2868 2.40402 13.7408 3.33627 9.34134C3.45876 8.89457 3.69543 8.48737 4.02301 8.15979C4.35058 7.83222 4.75778 7.59554 5.20456 7.47305C12.362 6.2873 19.6659 6.2873 26.8233 7.47305C27.2701 7.59554 27.6773 7.83222 28.0049 8.15979C28.3325 8.48737 28.5691 8.89457 28.6916 9.34134C29.6239 13.7408 29.6239 18.2868 28.6916 22.6863C28.5691 23.133 28.3325 23.5402 28.0049 23.8678C27.6773 24.1954 27.2701 24.4321 26.8233 24.5546C19.6659 25.7406 12.362 25.7406 5.20456 24.5546C4.75778 24.4321 4.35058 24.1954 4.02301 23.8678C3.69543 23.5402 3.45876 23.133 3.33627 22.6863Z" stroke="white" stroke-width="2.66899" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13.3449 20.0175L20.0174 16.014L13.3449 12.0105V20.0175Z" stroke="white" stroke-width="2.66899" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    {/* tiktok icon */}
+                    <div className='rounded-[14px] border border-[#FFFFFF33] w-[70.75px] h-[70.75px] flex items-center justify-center absolute bottom-35.75 -right-[34.38px] animate-float' style={{ background: "linear-gradient(135deg, #000000 0%, #101828 100%)", boxShadow: "0px 25px 50px -12px #00B8DB4D", animationDelay: "2s" }}>
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.0006 9.56221C26.5758 9.24889 25.2869 8.49226 24.3188 7.4009C23.3507 6.30955 22.7532 4.93956 22.6121 3.48755V2.85864H17.6809V22.3976C17.6819 23.2646 17.4101 24.1099 16.9039 24.8138C16.3978 25.5177 15.6831 26.0445 14.8609 26.3197C14.0387 26.5948 13.1508 26.6042 12.323 26.3467C11.4951 26.0891 10.7693 25.5776 10.2483 24.8846C9.78159 24.2712 9.49578 23.5395 9.42323 22.7721C9.35068 22.0047 9.49429 21.2323 9.83781 20.5423C10.1813 19.8523 10.7111 19.2722 11.3671 18.8675C12.0231 18.4629 12.7793 18.2499 13.5501 18.2525C13.9764 18.2501 14.4005 18.3128 14.8079 18.4384V13.4357C14.3338 13.377 13.8561 13.3531 13.3786 13.3642C11.6195 13.4112 9.91233 13.9702 8.46608 14.9726C7.01984 15.975 5.8973 17.3775 5.23593 19.0081C4.57456 20.6388 4.40306 22.427 4.74244 24.1536C5.08182 25.8803 5.91734 27.4705 7.14669 28.7295C8.40663 30.0105 10.0189 30.888 11.7787 31.2506C13.5385 31.6132 15.3664 31.4444 17.03 30.7658C18.6937 30.0871 20.1181 28.9292 21.1222 27.4392C22.1263 25.9492 22.6648 24.1944 22.6692 22.3976V12.3923C24.6581 13.813 27.043 14.5729 29.4871 14.5649V9.70514C29.007 9.70712 28.528 9.65922 28.0578 9.56221H28.0006Z" fill="white" />
+                        </svg>
+                    </div>
+
+                    {/* twitter icon */}
+                    <div className='rounded-[14px] w-[65.87px] h-[65.87px] flex items-center justify-center absolute bottom-[185.86px] -left-[64.83px] animate-float' style={{ background: "linear-gradient(135deg, #2B7FFF 0%, #155DFC 100%)", boxShadow: "0px 25px 50px -12px #2B7FFF80", animationDelay: "2.5s" }}>
+                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.1896 5.48902C30.1896 5.48902 29.229 8.37076 27.4451 10.1547C29.6407 23.8772 14.5459 33.8947 2.74451 26.0728C5.76347 26.2101 8.78243 25.2495 10.978 23.3283C4.11676 21.27 0.686125 13.1736 4.11676 6.86128C7.13572 10.4291 11.8014 12.4875 16.4671 12.3503C15.232 6.58683 21.9561 3.29342 26.0728 7.13573C27.5823 7.13573 30.1896 5.48902 30.1896 5.48902Z" stroke="white" stroke-width="2.74451" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    {/* msg icon */}
+                    <div className="rounded-full w-[44.55px] h-[44.55px] flex items-center justify-center absolute bottom-[192.14px] left-4 animate-float"
+                        style={{
+                            background: "linear-gradient(135deg, #00C950 0%, #00BC7D 100%)",
+                            boxShadow: "0px 4px 6px -4px #00C95066, 0px 10px 15px -3px #00C95066",
+                            animationDelay: "3s"
+                        }}
+                    >
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.0161 6.67383C16.3983 6.67383 17.5188 5.55334 17.5188 4.17114C17.5188 2.78895 16.3983 1.66846 15.0161 1.66846C13.6339 1.66846 12.5134 2.78895 12.5134 4.17114C12.5134 5.55334 13.6339 6.67383 15.0161 6.67383Z" stroke="white" stroke-width="1.66846" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M5.00537 12.5134C6.38757 12.5134 7.50806 11.3929 7.50806 10.0107C7.50806 8.62855 6.38757 7.50806 5.00537 7.50806C3.62318 7.50806 2.50269 8.62855 2.50269 10.0107C2.50269 11.3929 3.62318 12.5134 5.00537 12.5134Z" stroke="white" stroke-width="1.66846" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15.0161 18.353C16.3983 18.353 17.5188 17.2325 17.5188 15.8503C17.5188 14.4681 16.3983 13.3477 15.0161 13.3477C13.6339 13.3477 12.5134 14.4681 12.5134 15.8503C12.5134 17.2325 13.6339 18.353 15.0161 18.353Z" stroke="white" stroke-width="1.66846" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.16602 11.2705L12.8638 14.5907" stroke="white" stroke-width="1.66846" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12.8555 5.43091L7.16602 8.75114" stroke="white" stroke-width="1.66846" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
                     {/* Stats Overlay Card */}
-                    <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-full max-w-90 mx-auto bg-[#101828F2] backdrop-blur-md rounded-[14px] border border-[#FFFFFF33] px-6 py-4 grid grid-cols-3 shadow-[0px_25px_50px_-12px_#00000040]">
+                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-90 mx-auto bg-[#101828F2] backdrop-blur-md rounded-[14px] border border-[#FFFFFF33] px-6 py-4 grid grid-cols-3 shadow-[0px_25px_50px_-12px_#00000040]">
                         <div className="flex flex-col">
                             <span className="text-white text-[24px] leading-8 font-bold font-inter text-nowrap">125K</span>
                             <span className="text-[#FFFFFF99] text-[12px] leading-4 font-semibold font-inter">Followers</span>
