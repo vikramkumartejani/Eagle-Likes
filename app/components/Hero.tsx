@@ -7,7 +7,7 @@ import { Package } from './hero/types';
 import { PACKAGES } from './hero/data';
 import { getPriceForPlan } from './hero/utils';
 import ReviewCarousel from './hero/ReviewCarousel';
-import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, LeftBottomShadow, TopBlueGlow } from './hero/BackgroundElements';
+import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, LeftBottomShadow, TopBlueGlow, HeroLeftImage } from './hero/BackgroundElements';
 import PackageGrid from './hero/PackageGrid';
 import FollowersPreview from './hero/FollowersPreview';
 
@@ -44,25 +44,26 @@ const Hero = () => {
 
 
     return (
-        <section className=" relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-42.5 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
+        <section className=" relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-48 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <div className='md:block hidden bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-237.5 absolute inset-0 top-0'></div>
-            <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%)"}}></div>
+            <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{ background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%)" }}></div>
             <BackgroundGrid />
             <HeroRightImage />
+            <HeroLeftImage />
             <LeftShadow />
             <RightShadow />
             <LeftBottomShadow />
             <TopBlueGlow />
 
-            <div className="relative z-10 container mx-auto px-4 max-w-5xl flex flex-col items-center">
+            <div className="relative z-10 container mx-auto px-4 flex flex-col items-center">
 
                 {/* Headlines */}
-                <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4">
-                    Buy TikTok and Instagram Followers Views &amp; Likes and <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]">other Interactions!</span>
+                <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4  max-w-2xl">
+                    Buy Instagram Followers with <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]"> Fast Delivery!</span>
                 </h1>
 
-                <p className="text-[#99a1af] text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-8.75 sm:px-4 mb-6 sm:mb-16">
-                    Enhance your brand's online presence and increase engagement with our social media growth solutions.
+                <p className="text-[#99a1af] text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-8.75 sm:px-4 mb-6 sm:mb-16 max-w-[800px]">
+                    Quickly get premium Instagram followers safely and easily! Boost your IG influence and engagement instantly! Always great prices and offers!
                 </p>
 
                 {/* VIP Toggle (Preserved aesthetics) */}

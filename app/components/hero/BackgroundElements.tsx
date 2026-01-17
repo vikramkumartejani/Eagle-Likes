@@ -9,7 +9,11 @@ export const BackgroundGrid = () => (
 );
 
 export const HeroRightImage = () => (
-    <Image src="/assets/hero-right.png" alt="Background Grid" width={213} height={447} className='absolute right-0 top-12 md:block hidden' />
+    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
+);
+
+export const HeroLeftImage = () => (
+    <Image src="/assets/left-shadow-hero.svg" alt="Background Grid" width={213} height={447} className='absolute left-0 top-80 md:block hidden' />
 );
 
 export const LeftShadow = () => (
@@ -27,7 +31,7 @@ export const LeftShadow = () => (
 
 export const RightShadow = () => (
     <div
-        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[280px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[370px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",
