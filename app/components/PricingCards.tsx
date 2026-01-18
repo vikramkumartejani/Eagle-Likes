@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import DifferenceTooltip from './ui/DifferenceTooltip';
 
 
 export type PlanType = 'premium' | 'active' | 'vip';
@@ -10,6 +11,8 @@ export interface PlanFeature {
     text: string | React.ReactNode;
     subtext?: string | React.ReactNode;
     highlight?: boolean;
+    tooltipTitle?: string;
+    tooltipContent?: React.ReactNode;
 }
 
 export interface PlanConfig {
@@ -26,8 +29,20 @@ export interface PlanConfig {
     features: PlanFeature[];
 }
 
+const COMBINED_TOOLTIP_CONTENT = (
+    <div className="flex flex-col gap-4">
+        <div>
+            <h5 className="font-bold text-[#1A1A1A] mb-1">Premium Followers</h5>
+            <p className="text-[#5A5A5A]">These are Followers with profile pictures but no further uploads on their account. Auto-refill is enabled within the warranty.</p>
+        </div>
+        <div>
+            <h5 className="font-bold text-[#1A1A1A] mb-1">Active Followers</h5>
+            <p className="text-[#5A5A5A]">New Active followers are for those who are serious about their instagram growth. These are guaranteed with very little to NO drop!</p>
+        </div>
+    </div>
+);
 
-const PLANS: PlanConfig[] = [
+const PLAN_CONFIGS: PlanConfig[] = [
     {
         type: 'premium',
         title: 'Premium Followers',
@@ -42,7 +57,9 @@ const PLANS: PlanConfig[] = [
         features: [
             {
                 text: <><span className="font-semibold">Premium followers</span></>,
-                subtext: "What's the difference?"
+                subtext: "What's the difference?",
+                tooltipTitle: "",
+                tooltipContent: COMBINED_TOOLTIP_CONTENT
             },
             { text: <><span className="font-semibold sm:font-bold">Super Fast</span> Delivery</> },
             { text: <><span className="font-semibold sm:font-bold">No password</span> needed</> },
@@ -59,12 +76,14 @@ const PLANS: PlanConfig[] = [
         iconHeight: 54,
         mobileIconWidth: 40,
         mobileIconHeight: 50,
-        gradient: 'linear-gradient(90deg, #B0125D 0%, #D71E77 100%)',
+        gradient: 'linear-gradient(90deg, #D71E77 0%, #D71E77 100%)',
         features: [
             {
                 text: <><span className="font-semibold text-white">Real Active followers</span></>,
                 subtext: "What's the difference?",
-                highlight: true
+                highlight: true,
+                tooltipTitle: "",
+                tooltipContent: COMBINED_TOOLTIP_CONTENT
             },
             { text: <><span className="font-semibold sm:font-bold">Trusted</span> Delivery</> },
             { text: <><span className="font-semibold sm:font-bold">30 day</span> refills</> },
@@ -82,7 +101,7 @@ const PLANS: PlanConfig[] = [
         iconHeight: 54,
         mobileIconWidth: 40,
         mobileIconHeight: 50,
-        gradient: 'linear-gradient(90deg, #01802E 0%, #02A83D 100%)',
+        gradient: 'linear-gradient(90deg, #02A83D 0%, #00D66E 100%)',
         features: [
             { text: <><span className="font-semibold">All features</span> of Active, plus:</>, highlight: true },
             { text: <><span className="font-semibold sm:font-bold">Real followers</span> from Targeted users</> },
@@ -104,7 +123,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
     return (
         <div
             onClick={() => onSelect(plan.type)}
-            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-hidden group flex min-w-40 flex-col h-full bg-[#FFFFFF1A] snap-center border
+            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-visible group flex min-w-40 flex-col h-full bg-[#FFFFFF1A] snap-center border z-10
                 ${isSelected ? '' : 'hover:border-white/10'}
             `}
             style={{
@@ -112,8 +131,10 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                 boxShadow: isSelected ? `inset 0 0 0 2px ${plan.borderColor}` : 'none'
             }}
         >
-
-            <div className="relative z-10 flex justify-between items-start h-13.75 sm:h-18 pt-2.5 sm:pt-4.5 px-3 pb-2.25 sm:pb-3.5" style={{ backgroundColor: plan.color }}>
+            <div
+                className="relative z-10 flex justify-between items-start h-13.75 sm:h-18 pt-2.5 sm:pt-4.5 px-3 pb-2.25 sm:pb-3.5 rounded-t-[15px] sm:rounded-t-[19px]"
+                style={{ background: plan.gradient }}
+            >
                 <div className="text-white relative z-10">
                     <h3 className="text-[14px] sm:text-[18px] leading-5 font-inter font-semibold wrap-break-word text-left">
                         {plan.title.split(' ').map((word, i) => (
@@ -137,7 +158,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                 </div>
             </div>
 
-            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.75 pb-6.25">
+            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.75 pb-6.25 overflow-visible">
                 <ul className="space-y-4">
                     {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-1.5 sm:gap-3">
@@ -153,7 +174,21 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                                 >
                                     {feature.text}
                                 </p>
-                                {feature.subtext && (
+                                {feature.subtext && feature.tooltipContent && (
+                                    <DifferenceTooltip
+                                        title={feature.tooltipTitle}
+                                        content={feature.tooltipContent}
+                                        color={plan.color}
+                                    >
+                                        <p
+                                            className="text-[10.59px] sm:text-[14px] leading-3.5 sm:leading-4.5 mt-0.5 font-normal cursor-pointer hover:underline"
+                                            style={{ color: plan.color }}
+                                        >
+                                            {feature.subtext}
+                                        </p>
+                                    </DifferenceTooltip>
+                                )}
+                                {feature.subtext && !feature.tooltipContent && (
                                     <p
                                         className="text-[10.59px] sm:text-[14px] leading-3.5 sm:leading-4.5 mt-0.5 font-normal"
                                         style={{ color: plan.color }}
@@ -184,7 +219,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
@@ -197,7 +232,7 @@ interface PricingCardsProps {
 const PricingCards: React.FC<PricingCardsProps> = ({ selectedPlan, onSelect }) => {
     return (
         <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 sm:gap-5 w-full max-w-169.5 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
-            {PLANS.map((plan) => (
+            {PLAN_CONFIGS.map((plan) => (
                 <PricingCard
                     key={plan.type}
                     plan={plan}

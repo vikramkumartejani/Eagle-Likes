@@ -10,15 +10,16 @@ import ReviewCarousel from './hero/ReviewCarousel';
 import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, LeftBottomShadow, TopBlueGlow, HeroLeftImage } from './hero/BackgroundElements';
 import PackageGrid from './hero/PackageGrid';
 import FollowersPreview from './hero/FollowersPreview';
+import DifferenceTooltip from './ui/DifferenceTooltip';
 
 const Hero = () => {
     const [selectedPlanType, setSelectedPlanType] = useState<PlanType>('premium');
 
     // Separate selected packages for each plan type
     const [selectedPackages, setSelectedPackages] = useState<Record<PlanType, Package>>({
-        premium: PACKAGES[0],
-        active: PACKAGES[0],
-        vip: PACKAGES[0],
+        premium: PACKAGES[3],
+        active: PACKAGES[3],
+        vip: PACKAGES[3],
     });
 
     // Get current selected package based on plan type
@@ -34,19 +35,30 @@ const Hero = () => {
 
     const isVip = selectedPlanType === 'vip';
 
+    const handlePlanSelect = (type: PlanType) => {
+        setSelectedPlanType(type);
+        // Reset package selection for the newly selected plan to 1000 (index 3)
+        setSelectedPackages(prev => ({
+            ...prev,
+            [type]: PACKAGES[3]
+        }));
+    };
+
     const handleVipToggle = (checked: boolean) => {
-        if (checked) {
-            setSelectedPlanType('vip');
-        } else {
-            setSelectedPlanType('premium');
-        }
+        const newPlan = checked ? 'vip' : 'premium';
+        setSelectedPlanType(newPlan);
+        // Reset package selection when toggling VIP
+        setSelectedPackages(prev => ({
+            ...prev,
+            [newPlan]: PACKAGES[3]
+        }));
     };
 
 
     return (
         <section className=" relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-48 pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <div className='md:block hidden bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-237.5 absolute inset-0 top-0'></div>
-            <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{ background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%)" }}></div>
+            <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{ background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%" }}></div>
             <BackgroundGrid />
             <HeroRightImage />
             <HeroLeftImage />
@@ -59,7 +71,7 @@ const Hero = () => {
 
                 {/* Headlines */}
                 <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4  max-w-2xl">
-                    Buy Instagram Followers with <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]"> Fast Delivery!</span>
+                    Buy Instagram Followers with <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]">Fast Delivery!</span>
                 </h1>
 
                 <p className="text-[#99a1af] text-center text-sm lg:text-[22px] font-normal leading-6 lg:leading-8.75 sm:px-4 mb-6 sm:mb-16 max-w-[800px]">
@@ -67,14 +79,14 @@ const Hero = () => {
                 </p>
 
                 {/* VIP Toggle (Preserved aesthetics) */}
-                <div className="flex items-center justify-center mb-0 w-full">
+                <div className="flex items-center justify-center mb-0 w-full px-4">
                     <div
-                        className={`${!isVip ? 'animate-vip-border' : ''} relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group`}
+                        className="animate-vip-border relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group"
                         style={{
                             background: "linear-gradient(#101828, #101828) padding-box, " +
-                                (!isVip
-                                    ? "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
-                                    : "linear-gradient(90deg, #EE1D52 0%, #F64C50 50%, #9146FF 100%) border-box"),
+                                (isVip
+                                    ? "conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
+                                    : "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"),
                             border: "1px solid transparent",
                             boxShadow: !isVip ? "0px 0px 12px 0px rgba(145, 70, 255, 0.3)" : "0px 0px 8px 0px #00000026"
                         }}
@@ -86,13 +98,19 @@ const Hero = () => {
                                 I need vip followers
                             </span>
                         </div>
-                        <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
-                            <Image src='/assets/info.svg' alt='info' width={20} height={20} />
-                        </div>
+                        <DifferenceTooltip
+                            title="VIP Followers"
+                            content="Fit for high-engaged Instagrammers! VIP treatment followers are our highest quality packages, highly active, with real engagement, interactive stories, dynamic carousels, and have 5-10x more followers than following."
+                            color="#9146FF"
+                        >
+                            <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
+                                <Image src='/assets/info.svg' alt='info' width={20} height={20} />
+                            </div>
+                        </DifferenceTooltip>
                     </div>
                 </div>
 
-                <PricingCards selectedPlan={selectedPlanType} onSelect={setSelectedPlanType} />
+                <PricingCards selectedPlan={selectedPlanType} onSelect={handlePlanSelect} />
 
                 {/* Package Selection Grid */}
                 <PackageGrid
