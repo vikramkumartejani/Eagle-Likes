@@ -263,11 +263,11 @@ export default function Header() {
                                 >
                                     <Link
                                         href={menu.ref}
-                                        className="flex items-center gap-2.5 text-white text-base font-normal leading-normal hover:underline transition-colors duration-250"
+                                        className="relative group flex items-center gap-2.5 text-white text-base font-normal leading-normal transition-colors duration-250 py-1"
                                         data-testid={`button-menu-${menu.id}`}
                                         onClick={() => console.log(`${menu.title} clicked`)}
                                     >
-                                        {menu.title}
+                                        <span>{menu.title}</span>
                                         {menu.dropdown && (
                                             <Image
                                                 src="/assets/svgs/chevron-svg.svg"
@@ -278,6 +278,8 @@ export default function Header() {
                                                     }`}
                                             />
                                         )}
+                                        {/* Animated underline */}
+                                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-100 transition-all duration-300 group-hover:w-full"></span>
                                     </Link>
 
                                     {/* Desktop Dropdown */}
