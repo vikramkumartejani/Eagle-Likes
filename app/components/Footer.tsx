@@ -87,7 +87,7 @@ const Footer = () => {
             {/* Background Image - Left Side */}
             <div className="absolute left-0 bottom-0 w-62.5 select-none z-0">
                 <Image
-                    src="/assets/footer-left-image.png"
+                    src="/assets/footer-left-image.svg"
                     alt="layer"
                     width={230}
                     height={100}
