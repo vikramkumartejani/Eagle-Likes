@@ -28,36 +28,18 @@ const FAQS = [
     },
 ];
 
-const FaqItem = ({ question, answer, isOpen, onToggle }: {
+const FaqItem = ({ question, answer, initialOpen = false }: {
     question: string;
     answer: string;
-    isOpen: boolean;
-    onToggle: () => void;
+    initialOpen?: boolean;
 }) => {
-    const contentRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (!contentRef.current) return;
-
-        const updateHeight = () => {
-            if (contentRef.current) {
-                contentRef.current.style.height = isOpen ? `${contentRef.current.scrollHeight}px` : '0px';
-            }
-        };
-
-        updateHeight();
-
-        const resizeObserver = new ResizeObserver(updateHeight);
-        resizeObserver.observe(contentRef.current);
-
-        return () => resizeObserver.disconnect();
-    }, [isOpen]);
+    const [isOpen, setIsOpen] = useState(initialOpen);
 
     return (
-        <div className="bg-[#FFFFFF0D] border border-[#FFFFFF26] rounded-[15px] overflow-hidden">
+        <div className={`bg-[#FFFFFF0D] border border-[#FFFFFF26] rounded-[15px] overflow-hidden ${isOpen ? "shadow-lg" : ""}`}>
             <button
-                onClick={onToggle}
-                className="w-full flex items-center justify-between px-3 sm:px-5 py-3.5 sm:py-6 text-left cursor-pointer"
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex items-center justify-between px-3 sm:px-5 py-3.5 sm:py-6 text-left cursor-pointer group"
             >
                 <span className="text-[14px] sm:text-[22px] leading-5.5 sm:leading-7.5 font-semibold font-responsive-heading text-white pr-4">
                     {question}
@@ -68,13 +50,11 @@ const FaqItem = ({ question, answer, isOpen, onToggle }: {
                     </svg>
                 </span>
             </button>
-            <div
-                ref={contentRef}
-                style={{ opacity: isOpen ? 1 : 0 }}
-                className="transition-all duration-300 ease-out overflow-hidden will-change-[height,opacity]"
-            >
-                <div className="px-3 sm:px-6 pb-4 sm:pb-6 text-[#99A1AF] text-[13px] sm:text-[16px] leading-6 sm:leading-6.5 font-medium">
-                    {answer}
+            <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                <div className="overflow-hidden">
+                    <div className="px-3 sm:px-6 pb-4 sm:pb-6 text-[#99A1AF] text-[13px] sm:text-[16px] leading-6 sm:leading-6.5 font-medium">
+                        {answer}
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,26 +62,8 @@ const FaqItem = ({ question, answer, isOpen, onToggle }: {
 };
 
 const Faq = () => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-
     return (
         <section className="relative w-full pb-14.75 lg:pb-24 overflow-hidden">
-            {/* Left Bottom Shadow */}
-            <div className="absolute left-0 bottom-0 z-0 pointer-events-none md:block hidden">
-                <svg width="323" height="918" viewBox="0 0 323 918" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_f_1_110)">
-                        <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fillOpacity="0.32" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_1_110" x="-594.378" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_110" />
-                        </filter>
-                    </defs>
-                </svg>
-            </div>
-
             <div className="relative z-10 container mx-auto px-4 xl:px-0 max-w-269.5">
                 {/* Heading */}
                 <div className="text-center mb-8 sm:mb-16">
@@ -120,8 +82,7 @@ const Faq = () => {
                             key={index}
                             question={faq.question}
                             answer={faq.answer}
-                            isOpen={openIndex === index}
-                            onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                            initialOpen={index === 0}
                         />
                     ))}
                 </div>

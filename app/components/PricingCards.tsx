@@ -109,7 +109,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
             `}
             style={{
                 borderColor: isSelected ? plan.borderColor : '#FFFFFF80',
-                boxShadow: isSelected ? `inset 0 0 0 1px ${plan.borderColor}` : 'none'
+                boxShadow: isSelected ? `inset 0 0 0 2px ${plan.borderColor}` : 'none'
             }}
         >
 
