@@ -31,7 +31,7 @@ export const FOLLOWERS_UPDATES = [
 ];
 
 export const REVIEW_SLIDES: ReviewSlide[] = [
-    { count: 38571, text: "people", subtext: "purchased 2+ times", prefix: "" },
-    { count: 1312, text: "people", subtext: "gave a 5-star review", prefix: "🌟 " },
-    { count: 773, text: "", subtext: "purchased today", prefix: "❤️‍🔥️ In demand! " },
+    { count: 42389, text: "customers", subtext: "ordered multiple times", prefix: "" },
+    { count: 1547, text: "users", subtext: "left a 5-star rating", prefix: "🌟 " },
+    { count: 891, text: "", subtext: "bought in last 24h", prefix: "❤️‍🔥️ Trending! " },
 ];
