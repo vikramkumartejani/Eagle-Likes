@@ -133,7 +133,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
         >
             <div
                 className="relative z-10 flex justify-between items-start h-13.75 sm:h-18 pt-2.5 sm:pt-4.5 px-3 pb-2.25 sm:pb-3.5 rounded-t-[15px] sm:rounded-t-[19px]"
-                style={{ background: plan.gradient }}
+                style={{ background: plan.color }}
             >
                 <div className="text-white relative z-10">
                     <h3 className="text-[14px] sm:text-[18px] leading-5 font-inter font-semibold wrap-break-word text-left">
