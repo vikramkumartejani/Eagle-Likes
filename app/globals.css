@@ -236,3 +236,21 @@ body {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+@keyframes stars-animation {
+  0% {
+    scale: 0;
+  }
+
+  10% {
+    scale: 1.2;
+  }
+
+  15% {
+    scale: 1;
+  }
+}
+
+.animate-star-scale {
+  animation: stars-animation 3s ease infinite both;
+}

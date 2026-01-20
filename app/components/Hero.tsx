@@ -198,7 +198,17 @@ const Hero = () => {
                 {/* Footer Reviews Text */}
                 <div className="flex items-center gap-3.5">
                     <div className="flex gap-1.25">
-                        {[1, 2, 3, 4, 5].map(i => <Image key={i} src='/assets/star-2.svg' alt='star' width={22} height={22} />)}
+                        {[1, 2, 3, 4, 5].map((i, index) => (
+                            <Image
+                                key={i}
+                                src='/assets/star-2.svg'
+                                alt='star'
+                                width={22}
+                                height={22}
+                                className="animate-star-scale"
+                                style={{ animationDelay: `${index * 0.15}s` }}
+                            />
+                        ))}
                     </div>
                     <span className='text-white text-[16px] leading-6 font-normal'>8000+ Verified Customer Reviews</span>
                 </div>
