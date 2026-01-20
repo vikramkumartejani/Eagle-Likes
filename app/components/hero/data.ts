@@ -16,18 +16,18 @@ export const REVIEWS = {
 };
 
 export const FOLLOWERS_UPDATES = [
-    { name: "started foll", time: "10m" },
-    { name: "started full", time: "30m" },
-    { name: "started full", time: "15m" },
-    { name: "started full", time: "50m" },
-    { name: "started full", time: "20m" },
-    { name: "started full", time: "55m" },
-    { name: "started full", time: "1h" },
-    { name: "started full", time: "1h" },
-    { name: "started full", time: "2h" },
-    { name: "started full", time: "3h" },
-    { name: "started full", time: "5h" },
-    { name: "started full", time: "6h" },
+    { name: "Sarah Jenkins", time: "10m", avatar: "https://randomuser.me/api/portraits/women/44.jpg" },
+    { name: "Michael Chen", time: "12m", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { name: "Jessica Williams", time: "15m", avatar: "https://randomuser.me/api/portraits/women/68.jpg" },
+    { name: "David Miller", time: "18m", avatar: "https://randomuser.me/api/portraits/men/85.jpg" },
+    { name: "Emily Wilson", time: "20m", avatar: "https://randomuser.me/api/portraits/women/22.jpg" },
+    { name: "James Anderson", time: "25m", avatar: "https://randomuser.me/api/portraits/men/15.jpg" },
+    { name: "Olivia Taylor", time: "30m", avatar: "https://randomuser.me/api/portraits/women/90.jpg" },
+    { name: "Daniel Thomas", time: "35m", avatar: "https://randomuser.me/api/portraits/men/54.jpg" },
+    { name: "Sophia Martinez", time: "40m", avatar: "https://randomuser.me/api/portraits/women/28.jpg" },
+    { name: "William Roberts", time: "45m", avatar: "https://randomuser.me/api/portraits/men/62.jpg" },
+    { name: "Ava Robinson", time: "50m", avatar: "https://randomuser.me/api/portraits/women/45.jpg" },
+    { name: "Alexander White", time: "55m", avatar: "https://randomuser.me/api/portraits/men/33.jpg" },
 ];
 
 export const REVIEW_SLIDES: ReviewSlide[] = [

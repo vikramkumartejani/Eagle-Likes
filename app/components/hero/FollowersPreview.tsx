@@ -24,7 +24,7 @@ const FollowersPreview: React.FC = () => {
                     {FOLLOWERS_UPDATES.map((update, idx) => (
                         <div key={idx} className="text-nowrap flex items-center gap-3 pl-[7.12px] pr-[14.24px] rounded-[17px] bg-[#EDEDED0D] border border-[#FFFFFF1A] shrink-0 w-auto h-14.25">
                             <div className="w-11 h-11 rounded-full bg-gray-700 overflow-hidden relative shrink-0">
-                                <Image src={`/assets/profile-1.png`} alt="User" fill className="object-cover" />
+                                <Image src={update.avatar} alt="User" fill className="object-cover" />
                             </div>
                             <div className="flex gap-3">
                                 <p className='text-[14.24px] leading-6 font-normal'>
