@@ -128,10 +128,10 @@ const WhyEagleLikes = () => {
                     {FEATURES.map((feature, idx) => (
                         <div
                             key={idx}
-                            className="bg-[#FFFFFF0D] rounded-[40px] px-8 py-6 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26] "
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-8 pt-3 pb-6 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26] "
                         >
                             {/* Icon Container with Polygon */}
-                            <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-4">
+                            <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-2">
                                 {/* Polygon Background */}
                                 <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter={`url(#filter_polygon_${idx})`}>

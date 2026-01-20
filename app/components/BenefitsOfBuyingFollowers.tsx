@@ -2,7 +2,13 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-const POLYGON_PATH = "M37.2391 0L74.4782 21.5V64.5L37.2391 86L0 64.5V21.5L37.2391 0Z";
+// Helper function to convert hex color to RGB values for feColorMatrix
+const hexToRgbMatrix = (hex: string) => {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+    return `0 0 0 0 ${r.toFixed(6)} 0 0 0 0 ${g.toFixed(6)} 0 0 0 0 ${b.toFixed(6)} 0 0 0 0.5 0`;
+};
 
 interface Benefits {
     title: string;
@@ -17,7 +23,7 @@ const BENEFITS: Benefits[] = [
     {
         title: "Higher Visibility",
         description: "Instagram’s algorithm favors the most popular accounts, giving them greater visibility across the platform. By gaining real followers with authentic profiles, you instantly boost your popularity, increase exposure, and attract new audiences who may have never discovered your content before.",
-        color: "#FFFFFF",
+        color: "#1ED760",
         icon: "/assets/higher-visibility.svg",
         iconWidth: 46,
         iconHeight: 46
@@ -25,7 +31,7 @@ const BENEFITS: Benefits[] = [
     {
         title: "Strengthen Trust",
         description: "Having more followers instantly boosts your Instagram credibility. When new users discover your profile, they see your popularity as proof of quality and trust. A strong follower base shows that others value your content, encouraging even more people to follow and engage with your posts.",
-        color: "#FFFFFF",
+        color: "#F7FF00",
         icon: "/assets/strengthen-trust.svg",
         iconWidth: 43.36,
         iconHeight: 44.37
@@ -33,7 +39,7 @@ const BENEFITS: Benefits[] = [
     {
         title: "Get Real Followers",
         description: "As your followers increase, your posts reach more people who naturally want to follow you. With engaging, high-quality content, your audience will keep growing. Buying active followers is a quick and effective way to jumpstart your Instagram growth and boost organic engagement.",
-        color: "#FFFFFF",
+        color: "#FF0000",
         icon: "/assets/get-real-followers.svg",
         iconWidth: 43,
         iconHeight: 40
@@ -81,25 +87,33 @@ const BenefitsOfBuyingFollowers = () => {
                     {BENEFITS.map((benefit, idx) => (
                         <div
                             key={idx}
-                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 py-6 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26]"
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pb-6 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26]"
                         >
                             {/* Icon Container with Polygon */}
-                            <div className="relative w-21.5 h-21.5 flex items-center justify-center mb-4 sm:mb-6">
+                            <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-4">
                                 {/* Polygon Background */}
                                 <svg
                                     className="absolute inset-0 w-full h-full"
-                                    viewBox="0 0 75 86"
+                                    viewBox="0 0 117 129"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    <path
-                                        d={POLYGON_PATH}
-                                        fill={benefit.color}
-                                        fillOpacity="0.1"
-                                        stroke={benefit.color}
-                                        strokeOpacity="0.10"
-                                        strokeWidth="0"
-                                    />
+                                    <defs>
+                                        <filter id={`filter0_d_${idx}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                            <feOffset/>
+                                            <feGaussianBlur stdDeviation="10"/>
+                                            <feComposite in2="hardAlpha" operator="out"/>
+                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(benefit.color)}/>
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_${idx}`}/>
+                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_${idx}`} result="shape"/>
+                                        </filter>
+                                    </defs>
+                                    <g filter={`url(#filter0_d_${idx})`}>
+                                        <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={benefit.color} fillOpacity="0.1" shapeRendering="crispEdges"/>
+                                        <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={benefit.color} strokeOpacity="0.5" shapeRendering="crispEdges"/>
+                                    </g>
                                 </svg>
 
                                 {/* Icon */}
@@ -135,18 +149,26 @@ const BenefitsOfBuyingFollowers = () => {
                             {/* Polygon Background */}
                             <svg
                                 className="absolute inset-0 w-full h-full"
-                                viewBox="0 0 75 86"
+                                viewBox="0 0 117 129"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path
-                                    d={POLYGON_PATH}
-                                    fill={BENEFITS[currentIndex].color}
-                                    fillOpacity="0.1"
-                                    stroke={BENEFITS[currentIndex].color}
-                                    strokeOpacity="0.10"
-                                    strokeWidth="0"
-                                />
+                                <defs>
+                                    <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                        <feOffset/>
+                                        <feGaussianBlur stdDeviation="10"/>
+                                        <feComposite in2="hardAlpha" operator="out"/>
+                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color)}/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`}/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape"/>
+                                    </filter>
+                                </defs>
+                                <g filter={`url(#filter0_d_mobile_${currentIndex})`}>
+                                    <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges"/>
+                                    <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={BENEFITS[currentIndex].color} strokeOpacity="0.5" shapeRendering="crispEdges"/>
+                                </g>
                             </svg>
 
                             {/* Icon */}
