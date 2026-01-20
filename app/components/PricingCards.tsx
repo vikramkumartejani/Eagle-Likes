@@ -26,6 +26,7 @@ export interface PlanConfig {
     mobileIconWidth: number;
     mobileIconHeight: number;
     gradient?: string;
+    shadowColor?: string;
     features: PlanFeature[];
 }
 
@@ -54,6 +55,7 @@ const PLAN_CONFIGS: PlanConfig[] = [
         mobileIconWidth: 40,
         mobileIconHeight: 43,
         gradient: 'linear-gradient(90deg, #0663CD 0%, #01AAFF 100%)',
+        shadowColor: '#0663CD',
         features: [
             {
                 text: <><span className="font-semibold">Premium followers</span></>,
@@ -76,7 +78,8 @@ const PLAN_CONFIGS: PlanConfig[] = [
         iconHeight: 54,
         mobileIconWidth: 40,
         mobileIconHeight: 50,
-        gradient: 'linear-gradient(90deg, #D71E77 0%, #D71E77 100%)',
+        gradient: 'linear-gradient(90deg, #D71E77 0%, #FF3C97 100%)',
+        shadowColor: '#D71E77',
         features: [
             {
                 text: <><span className="font-semibold text-white">Real Active followers</span></>,
@@ -102,6 +105,7 @@ const PLAN_CONFIGS: PlanConfig[] = [
         mobileIconWidth: 40,
         mobileIconHeight: 50,
         gradient: 'linear-gradient(90deg, #02A83D 0%, #00D66E 100%)',
+        shadowColor: '#02A83D',
         features: [
             { text: <><span className="font-semibold">All features</span> of Active, plus:</>, highlight: true },
             { text: <><span className="font-semibold sm:font-bold">Real followers</span> from Targeted users</> },
@@ -128,7 +132,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
             `}
             style={{
                 borderColor: isSelected ? plan.borderColor : '#FFFFFF80',
-                boxShadow: isSelected ? `inset 0 0 0 2px ${plan.borderColor}` : 'none'
+                boxShadow: isSelected ? `inset 0 0 0 2px ${plan.borderColor}, 0px 0px 8px 0px ${plan.shadowColor || plan.borderColor}` : 'none'
             }}
         >
             <div

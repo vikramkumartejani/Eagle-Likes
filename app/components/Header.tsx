@@ -285,20 +285,20 @@ export default function Header() {
                                     {/* Desktop Dropdown */}
                                     {menu.dropdown && (
                                         <div
-                                            className={`absolute top-full left-0 w-56 shadow-lg z-50 py-4 transition-all duration-300 ease-in-out overflow-hidden ${activeDropdown === menu.id
+                                            className={`absolute top-full left-0 w-64 pt-3 z-50 transition-all duration-300 ease-in-out ${activeDropdown === menu.id
                                                 ? "opacity-100 translate-y-0 pointer-events-auto"
-                                                : "opacity-0 translate-y-4 pointer-events-none"
+                                                : "opacity-0 translate-y-2 pointer-events-none"
                                                 }`}
                                             role="menu"
                                             aria-label={`${menu.title} submenu`}
                                             aria-hidden={activeDropdown !== menu.id}
                                         >
-                                            <div className="bg-black-100 rounded-[10px] border border-blue-100/50">
+                                            <div className="bg-[#050505]/95 border border-white/10 rounded-xl shadow-2xl overflow-hidden py-1.5 ring-1 ring-white/5">
                                                 {menu.dropdown.map((item) => (
                                                     <Link
                                                         key={item.id}
                                                         href={item.ref}
-                                                        className="block px-4 py-3 text-white text-sm font-normal leading-normal hover:bg-blue-100/20 hover:text-blue-100 transition-colors duration-250"
+                                                        className="group relative flex items-center px-5 py-3 text-[#A0A0A0] text-[15px] font-medium transition-all duration-200 hover:text-white"
                                                         role="menuitem"
                                                         data-testid={`dropdown-item-${item.id}`}
                                                         onClick={() => {
@@ -306,7 +306,15 @@ export default function Header() {
                                                             setActiveDropdown(null);
                                                         }}
                                                     >
-                                                        {item.title}
+                                                        {/* Hover Gradient Background */}
+                                                        <div className="absolute inset-0 bg-linear-to-r from-[#0663CD]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+                                                        {/* Left Accent Line */}
+                                                        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#0663CD] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+                                                        <span className="relative z-10 transition-transform duration-200 group-hover:translate-x-1">
+                                                            {item.title}
+                                                        </span>
                                                     </Link>
                                                 ))}
                                             </div>
