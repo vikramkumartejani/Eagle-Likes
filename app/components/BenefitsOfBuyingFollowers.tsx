@@ -100,7 +100,7 @@ const BenefitsOfBuyingFollowers = () => {
                                 >
                                     <defs>
                                         <filter id={`filter0_d_${idx}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                             <feOffset/>
                                             <feGaussianBlur stdDeviation="10"/>
@@ -155,7 +155,7 @@ const BenefitsOfBuyingFollowers = () => {
                             >
                                 <defs>
                                     <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                         <feOffset/>
                                         <feGaussianBlur stdDeviation="10"/>
