@@ -4,6 +4,15 @@ import Image from 'next/image';
 
 const POLYGON_PATH = "M37.2391 0L74.4782 21.5V64.5L37.2391 86L0 64.5V21.5L37.2391 0Z";
 
+// Helper function to convert hex color to RGB values for feColorMatrix
+const hexToRgbMatrix = (hex: string) => {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+    return `0 0 0 0 ${r.toFixed(6)} 0 0 0 0 ${g.toFixed(6)} 0 0 0 0 ${b.toFixed(6)} 0 0 0 0.5 0`;
+};
+
+
 interface Feature {
     title: string;
     description: string;
@@ -19,24 +28,24 @@ const FEATURES: Feature[] = [
         description: "At Eagle Likes, we believe social media growth should be for everyone. That's why we offer affordable packages for individuals, influencers, and businesses alike.",
         color: "#FDC700",
         icon: "/assets/icon-affordable.svg",
-        iconWidth: 42,
-        iconHeight: 40
+        iconWidth: 40,
+        iconHeight: 38
     },
     {
         title: "Quality That Speaks",
         description: "While affordability matters, quality is our top priority. At Eagle Likes, we never compromise on service standards and every like, follower, and view is delivered with care to ensure authentic, natural growth.",
         color: "#FB64B6",
         icon: "/assets/icon-quality.svg",
-        iconWidth: 42,
-        iconHeight: 40
+        iconWidth: 40,
+        iconHeight: 38
     },
     {
         title: "Speed You Can Trust",
         description: "In today’s fast-paced digital world, timing is key. Eagle Likes ensures fast, reliable delivery and whether you need instant likes or steady, natural growth for your profile.",
         color: "#51A2FF",
         icon: "/assets/icon-speed.svg",
-        iconWidth: 32,
-        iconHeight: 42
+        iconWidth: 30,
+        iconHeight: 40
     },
     {
         title: "Safe And Secure Services",
@@ -122,32 +131,38 @@ const WhyEagleLikes = () => {
                             className="bg-[#FFFFFF0D] rounded-[40px] px-8 py-6 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26] "
                         >
                             {/* Icon Container with Polygon */}
-                            <div className="relative w-21.5 h-21.5 flex items-center justify-center mb-4 sm:mb-6">
+                            <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-4">
                                 {/* Polygon Background */}
-                                <svg
-                                    className="absolute inset-0 w-full h-full"
-                                    viewBox="0 0 75 86"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d={POLYGON_PATH}
-                                        fill={feature.color}
-                                        fillOpacity="0.1"
-                                        stroke={feature.color}
-                                        strokeOpacity="0.10"
-                                        strokeWidth="0"
-                                    />
+                                <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g filter={`url(#filter_polygon_${idx})`}>
+                                        <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={feature.color} fillOpacity="0.1" shapeRendering="crispEdges" />
+                                        <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={feature.color} strokeOpacity="0.5" shapeRendering="crispEdges" />
+                                    </g>
+                                    <defs>
+                                        <filter id={`filter_polygon_${idx}`} x="0" y="0" width="116.478" height="128.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset />
+                                            <feGaussianBlur stdDeviation="10" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(feature.color)} />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_${idx}`} />
+                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_${idx}`} result="shape" />
+                                        </filter>
+                                    </defs>
                                 </svg>
 
                                 {/* Icon */}
-                                <div className="relative z-10 flex items-center justify-center">
+                                <div className="absolute inset-0 flex items-center justify-center z-10">
                                     <Image
                                         src={feature.icon}
                                         alt={feature.title}
                                         width={feature.iconWidth}
                                         height={feature.iconHeight}
                                         className="object-contain"
+                                        style={{
+                                            filter: `drop-shadow(0px 0px 6px ${feature.color})`
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -169,32 +184,38 @@ const WhyEagleLikes = () => {
                         className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-300 min-h-90"
                     >
                         {/* Icon Container with Polygon */}
-                        <div className="relative w-21.5 h-21.5 flex items-center justify-center mb-6">
+                        <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-4">
                             {/* Polygon Background */}
-                            <svg
-                                className="absolute inset-0 w-full h-full"
-                                viewBox="0 0 75 86"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d={POLYGON_PATH}
-                                    fill={FEATURES[currentIndex].color}
-                                    fillOpacity="0.1"
-                                    stroke={FEATURES[currentIndex].color}
-                                    strokeOpacity="0.10"
-                                    strokeWidth="0"
-                                />
+                            <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter={`url(#filter_polygon_mobile_${currentIndex})`}>
+                                    <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
+                                    <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={FEATURES[currentIndex].color} strokeOpacity="0.5" shapeRendering="crispEdges" />
+                                </g>
+                                <defs>
+                                    <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                        <feOffset />
+                                        <feGaussianBlur stdDeviation="10" />
+                                        <feComposite in2="hardAlpha" operator="out" />
+                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(FEATURES[currentIndex].color)} />
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
+                                        <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
+                                    </filter>
+                                </defs>
                             </svg>
 
                             {/* Icon */}
-                            <div className="relative z-10 flex items-center justify-center">
+                            <div className="absolute inset-0 flex items-center justify-center z-10">
                                 <Image
                                     src={FEATURES[currentIndex].icon}
                                     alt={FEATURES[currentIndex].title}
                                     width={FEATURES[currentIndex].iconWidth}
                                     height={FEATURES[currentIndex].iconHeight}
                                     className="object-contain"
+                                    style={{
+                                        filter: `drop-shadow(0px 0px 6px ${FEATURES[currentIndex].color})`
+                                    }}
                                 />
                             </div>
                         </div>
