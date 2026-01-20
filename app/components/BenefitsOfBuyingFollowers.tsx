@@ -142,10 +142,10 @@ const BenefitsOfBuyingFollowers = () => {
                 {/* Mobile Carousel */}
                 <div className="md:hidden flex flex-col items-center">
                     <div
-                        className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-300 min-h-85"
+                        className="bg-[#FFFFFF0D] rounded-[40px] px-5 pt-2.5 pb-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-300 min-h-85"
                     >
                         {/* Icon Container with Polygon */}
-                        <div className="relative w-21.5 h-21.5 flex items-center justify-center mb-6">
+                        <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-2">
                             {/* Polygon Background */}
                             <svg
                                 className="absolute inset-0 w-full h-full"
