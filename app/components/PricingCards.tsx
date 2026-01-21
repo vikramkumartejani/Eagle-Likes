@@ -78,7 +78,7 @@ const PLAN_CONFIGS: PlanConfig[] = [
         iconHeight: 54,
         mobileIconWidth: 40,
         mobileIconHeight: 50,
-        gradient: 'linear-gradient(90deg, #D71E77 0%, #FF3C97 100%)',
+        gradient: 'linear-gradient(90deg, #D71E77 0%, #E85A97 100%)',
         shadowColor: '#D71E77',
         features: [
             {

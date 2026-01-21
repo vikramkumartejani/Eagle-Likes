@@ -18,7 +18,7 @@ const PackageGrid: React.FC<PackageGridProps> = ({ selectedPlanType, selectedPac
             case 'premium':
                 return 'bg-[linear-gradient(90deg,#0663CD_0%,#01AAFF_100%)]';
             case 'active':
-                return 'bg-[linear-gradient(90deg,#D71E77_0%,#FF3C97_100%)]';
+                return 'bg-[linear-gradient(90deg,#D71E77_0%,#E85A97_100%)]';
             case 'vip':
                 return 'bg-[linear-gradient(90deg,#02A83D_0%,#00D66E_100%)]';
             default:
