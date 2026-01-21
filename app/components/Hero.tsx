@@ -61,11 +61,11 @@ const Hero = () => {
             <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{ background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%" }}></div>
             <BackgroundGrid />
             <HeroRightImage />
-            {/* <HeroLeftImage /> */}
-            {/* <LeftShadow /> */}
-            {/* <RightShadow /> */}
+            <HeroLeftImage />
+            <LeftShadow />
+            <RightShadow />
             <LeftBottomShadow />
-            {/* <TopBlueGlow /> */}
+            <TopBlueGlow />
 
             <div className="relative z-10 container mx-auto px-4 flex flex-col items-center">
 

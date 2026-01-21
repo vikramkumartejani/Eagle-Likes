@@ -9,11 +9,11 @@ export const BackgroundGrid = () => (
 );
 
 export const HeroRightImage = () => (
-    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
+    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" unoptimized width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
 );
 
 export const HeroLeftImage = () => (
-    <Image src="/assets/left-shadow-hero.svg" alt="Background Grid" width={213} height={447} className='absolute left-0 top-80 md:block hidden' />
+    <Image src="/assets/left-shadow-hero.svg" alt="Background Grid" unoptimized width={213} height={447} className='absolute left-0 top-80 md:block hidden' />
 );
 
 export const LeftShadow = () => (
@@ -23,7 +23,8 @@ export const LeftShadow = () => (
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",
             WebkitFilter: "blur(100px)",
-            willChange: "filter",
+            contain: "paint",
+            transform: "translateZ(0)",
         }}
     ></div>
 
@@ -36,7 +37,8 @@ export const RightShadow = () => (
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",
             WebkitFilter: "blur(100px)",
-            willChange: "filter",
+            contain: "paint",
+            transform: "translateZ(0)",
         }}
     ></div>
 );
@@ -66,7 +68,8 @@ export const TopBlueGlow = () => (
                 background: "rgba(0, 103, 219, 0.80)",
                 filter: "blur(100px)",
                 WebkitFilter: "blur(100px)",
-                willChange: "filter",
+                contain: "paint",
+                transform: "translateZ(0)",
             }}
         ></div>
     </div>
