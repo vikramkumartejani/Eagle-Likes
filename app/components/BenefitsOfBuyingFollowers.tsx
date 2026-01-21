@@ -112,7 +112,7 @@ const BenefitsOfBuyingFollowers = () => {
                                     </defs>
                                     <g filter={`url(#filter0_d_${idx})`}>
                                         <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={benefit.color} fillOpacity="0.1" shapeRendering="geometricPrecision"/>
-                                        <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={benefit.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" shapeRendering="geometricPrecision"/>
+                                        <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={benefit.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke"/>
                                     </g>
                                 </svg>
 
@@ -167,7 +167,7 @@ const BenefitsOfBuyingFollowers = () => {
                                 </defs>
                                 <g filter={`url(#filter0_d_mobile_${currentIndex})`}>
                                     <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="geometricPrecision"/>
-                                    <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={BENEFITS[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" shapeRendering="geometricPrecision"/>
+                                    <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={BENEFITS[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke"/>
                                 </g>
                             </svg>
 
