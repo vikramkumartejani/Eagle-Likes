@@ -46,11 +46,11 @@ const ReviewSlideComponent: React.FC<{
     }, [isFirstRound, slide.count, onDone]);
 
     return (
-        <div className="flex flex-col items-center ml-4 w-full">
-            <p className='text-[18px] sm:text-[22px] leading-6 sm:leading-7.5 font-normal text-white whitespace-nowrap'>
+        <div className="flex flex-col items-center sm:ml-4 w-full">
+            <p className='text-[14px] sm:text-[22px] leading-5 sm:leading-7.5 font-normal text-white whitespace-nowrap'>
                 {slide.prefix}{count.toLocaleString()} {slide.text}
             </p>
-            <p className='text-[18px] sm:text-[22px] leading-6 sm:leading-7.5 text-[#01AAFF] font-inter font-medium whitespace-nowrap'>
+            <p className='text-[14px] sm:text-[22px] leading-5 sm:leading-7.5 text-[#01AAFF] font-inter font-medium whitespace-nowrap'>
                 {slide.subtext}
             </p>
         </div>
@@ -73,10 +73,10 @@ const ReviewCarousel: React.FC = () => {
         });
     };
 
-    if (!isInView) return <div ref={containerRef} className="h-15 min-w-75" />;
+    if (!isInView) return <div ref={containerRef} className="h-15 min-w-[166px] sm:min-w-68" />;
 
     return (
-        <div ref={containerRef} className="h-15 flex items-center overflow-hidden relative min-w-75">
+        <div ref={containerRef} className="h-15 flex items-center overflow-hidden relative min-w-[166px] sm:min-w-68">
             <AnimatePresence mode="wait">
                 <motion.div
                     // Crucial: unique key per slide AND round to ensure re-mount and fresh lifecycle

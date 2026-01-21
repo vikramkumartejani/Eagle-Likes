@@ -13,15 +13,15 @@ const BRANDS: { src: string; alt: string; width: number; height: number; classNa
 
 const EagleLikesIsSeenOn = () => {
     return (
-        <section className="w-full bg-[#050505] py-18 px-5 overflow-hidden">
-            <p className="text-center text-[#99A1AF] mb-6 text-[18px] leading-6.25 font-semibold">
+        <section className="w-full bg-[#050505] pb-[55px] pt-[27px] sm:py-18 px-3 overflow-hidden">
+            <p className="text-center text-[#99A1AF] mb-6 text-[14px] sm:text-[18px] leading-[17px] sm:leading-6.25 font-semibold">
                 Eagle Likes is seen on...
             </p>
 
             <div className="relative w-full overflow-hidden max-w-266.25 mx-auto">
                 <div className="flex flex-nowrap animate-marquee items-center">
                     {/* First set of items */}
-                    <div className="flex items-center gap-12 sm:gap-10 mx-6 sm:mx-7">
+                    <div className="flex items-center gap-10 mx-5 sm:mx-7">
                         {BRANDS.map((brand, idx) => (
                             <div key={`brand-1-${idx}`} className="flex items-center justify-center transition-opacity duration-300 shrink-0">
                                 <Image
@@ -29,7 +29,7 @@ const EagleLikesIsSeenOn = () => {
                                     alt={brand.alt}
                                     width={brand.width}
                                     height={brand.height}
-                                    className="object-contain w-auto transition-all duration-300"
+                                    className="object-contain max-h-[43px] sm:max-h-[58px] w-auto transition-all duration-300"
                                 />
                             </div>
                         ))}
@@ -44,7 +44,7 @@ const EagleLikesIsSeenOn = () => {
                                     alt={brand.alt}
                                     width={brand.width}
                                     height={brand.height}
-                                    className="object-contain w-auto transition-all duration-300"
+                                    className="object-contain max-h-[43px] sm:max-h-[58px] w-auto transition-all duration-300"
                                 />
                             </div>
                         ))}

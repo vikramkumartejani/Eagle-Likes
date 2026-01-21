@@ -18,7 +18,7 @@ export const HeroLeftImage = () => (
 
 export const LeftShadow = () => (
     <div
-        className="absolute -z-10 -left-[143px] top-[10%] lg:-left-[400px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
+        className="hidden md:block absolute -z-10 -left-[143px] top-[10%] lg:-left-[400px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",
@@ -32,7 +32,7 @@ export const LeftShadow = () => (
 
 export const RightShadow = () => (
     <div
-        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[370px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+        className="hidden md:block absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[370px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             filter: "blur(100px)",

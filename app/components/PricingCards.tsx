@@ -185,7 +185,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                                         color={plan.color}
                                     >
                                         <p
-                                            className="text-[10.59px] sm:text-[14px] leading-3.5 sm:leading-4.5 mt-0.5 font-normal cursor-pointer hover:underline"
+                                            className="text-[10.59px] sm:text-[14px] leading-3.5 sm:leading-4.5 sm:mt-0.5 font-normal cursor-pointer hover:underline"
                                             style={{ color: plan.color }}
                                         >
                                             {feature.subtext}
