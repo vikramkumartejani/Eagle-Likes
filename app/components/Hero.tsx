@@ -88,7 +88,7 @@ const Hero = () => {
                                     ? "conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
                                     : "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"),
                             border: "1px solid transparent",
-                            boxShadow: !isVip ? "0px 0px 12px 0px rgba(145, 70, 255, 0.3)" : "0px 0px 8px 0px #00000026"
+                            boxShadow: "0px 0px 12px 0px rgba(145, 70, 255, 0.3)"
                         }}
                         onClick={() => handleVipToggle(!isVip)}
                     >
