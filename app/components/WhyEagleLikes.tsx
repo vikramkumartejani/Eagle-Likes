@@ -128,7 +128,7 @@ const WhyEagleLikes = () => {
                     {FEATURES.map((feature, idx) => (
                         <div
                             key={idx}
-                            className="bg-[#FFFFFF0D] rounded-[40px] px-8 pt-3 pb-6 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26] "
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-8 pt-3 pb-6 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] "
                         >
                             {/* Icon Container with Polygon */}
                             <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-2">
@@ -181,7 +181,7 @@ const WhyEagleLikes = () => {
                 {/* Mobile Carousel */}
                 <div className="md:hidden flex flex-col items-center">
                     <div
-                        className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-300 min-h-90"
+                        className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] min-h-90"
                     >
                         {/* Icon Container with Polygon */}
                         <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-4">

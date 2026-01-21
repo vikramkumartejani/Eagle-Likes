@@ -222,7 +222,7 @@ const SocialMediaGrowth = () => {
                         {STATS_DATA.map((stat, idx) => (
                             <div
                                 key={idx}
-                                className="bg-[#FFFFFF0D] border border-[#FFFFFF1A] rounded-[30px] pb-6 p-5 sm:p-6 flex flex-col items-start gap-3 justify-between transition-all duration-150 ease-out hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-[#FFFFFF26] cursor-pointer"
+                                className="bg-[#FFFFFF0D] border border-[#FFFFFF1A] rounded-[30px] pb-6 p-5 sm:p-6 flex flex-col items-start gap-3 justify-between transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] cursor-pointer"
                             >
                                 <div
                                     className="w-12 h-12 rounded-[14px] flex items-center justify-center shadow-lg"
