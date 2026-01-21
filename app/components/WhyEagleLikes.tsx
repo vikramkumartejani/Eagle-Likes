@@ -135,8 +135,8 @@ const WhyEagleLikes = () => {
                                 {/* Polygon Background */}
                                 <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter={`url(#filter_polygon_${idx})`}>
-                                        <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={feature.color} fillOpacity="0.1" shapeRendering="crispEdges" />
-                                        <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={feature.color} strokeOpacity="0.5" shapeRendering="crispEdges" />
+                                        <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={feature.color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
+                                        <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={feature.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" shapeRendering="geometricPrecision" />
                                     </g>
                                     <defs>
                                         <filter id={`filter_polygon_${idx}`} x="0" y="0" width="116.478" height="128.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -188,8 +188,8 @@ const WhyEagleLikes = () => {
                             {/* Polygon Background */}
                             <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter={`url(#filter_polygon_mobile_${currentIndex})`}>
-                                    <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
-                                    <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={FEATURES[currentIndex].color} strokeOpacity="0.5" shapeRendering="crispEdges" />
+                                    <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
+                                    <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={FEATURES[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" shapeRendering="geometricPrecision" />
                                 </g>
                                 <defs>
                                     <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
