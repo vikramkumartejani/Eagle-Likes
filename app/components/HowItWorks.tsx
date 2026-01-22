@@ -60,22 +60,22 @@ const STEPS: Step[] = [
 
 const HowItWorks = () => {
     return (
-        <section className="relative w-full py-20 border-b-[1.5px] border-[#0663CD4D] px-5 overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-12.5">
-                    <h2 className="text-[32px] sm:text-[48px] leading-12 font-bold text-white mb-6 font-inter">
+        <section className="relative w-full pt-10 pb-[43px] sm:py-20 border-b-[1.5px] border-[#0663CD4D] px-5 overflow-hidden">
+            <div className="max-w-7xl mx-auto relative z-10">
+                <div className="text-center mb-8 md:mb-12.5">
+                    <h2 className="text-[30px] sm:text-[48px] leading-8 sm:leading-12 font-bold text-white mb-4 sm:mb-6 font-inter">
                         How it works
                     </h2>
-                    <p className="text-[#99A1AF] text-[16px] sm:text-[18px] font-medium max-w-162.5 mx-auto font-inter">
+                    <p className="text-[#99A1AF] text-[13px] sm:text-[18px] font-medium max-w-162.5 mx-auto font-inter">
                         Ordering services is simple — pick your package, pay quickly, and watch your growth begin instantly
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     {STEPS.map((step, idx) => (
                         <div
                             key={step.id}
-                            className="relative rounded-3xl border border-[#27272A] p-8 overflow-hidden group min-h-57 flex flex-col justify-between"
+                            className="relative rounded-3xl border-2 sm:border border-[#27272A] p-8 overflow-hidden group min-h-57 flex flex-col justify-between"
                             style={{ background: "linear-gradient(135deg, #18181B 0%, #09090B 100%)" }}
                         >
                             {/* Background Number */}
