@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
+import LeftShadow from './ui/LeftShadow'
+import RightShadow from './ui/RightShadow'
 
 const WhyAreInstagramFollowersImportant = () => {
     return (
-        <div className='w-full pt-[43px] lg:pt-31 pb-20 md:pb-40.25 px-3.5'>
+        <div className='w-full pt-[43px] lg:pt-31 pb-20 md:pb-40.25 px-3.5 relative'>
             <div className='max-w-269.5 mx-auto'>
                 {/* Heading */}
                 <div className="text-center">
@@ -42,7 +44,15 @@ const WhyAreInstagramFollowersImportant = () => {
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div className='absolute -bottom-155 md:-bottom-120 left-0'>
+                <LeftShadow/>
+            </div>
+            <div className='absolute -bottom-10 right-0 md:hidden block'>
+                <RightShadow/>
+            </div>
+            <div className='absolute top-30 left-0 md:hidden block'>
+                <LeftShadow/>
             </div>
         </div>
     )

@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import RightShadow from './ui/RightShadow';
+import LeftShadow from './ui/LeftShadow';
 
 interface Step {
     id: string;
@@ -60,7 +62,7 @@ const STEPS: Step[] = [
 
 const HowItWorks = () => {
     return (
-        <section className="relative w-full pt-10 pb-[43px] sm:py-20 border-b-[1.5px] border-[#0663CD4D] px-5 overflow-hidden">
+        <section className="w-full pt-10 pb-[43px] sm:py-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative">
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12.5">
                     <h2 className="text-[30px] sm:text-[48px] leading-8 sm:leading-12 font-bold text-white mb-4 sm:mb-6 font-inter">
@@ -110,20 +112,11 @@ const HowItWorks = () => {
                 </div>
             </div>
 
-            {/* Bottom Right Shadow */}
-            <div className="absolute right-0 -bottom-32 z-0 pointer-events-none block">
-                <svg width="313" height="800" viewBox="0 0 313 918" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_f_1_106)">
-                        <circle cx="458.55" cy="458.55" r="258.5" transform="rotate(-61.6906 458.55 458.55)" fill="#0067DB" fillOpacity="0.32" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_1_106" x="0" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_106" />
-                        </filter>
-                    </defs>
-                </svg>
+            <div className="absolute right-0 -bottom-50 md:-top-20">
+                <RightShadow/>
+            </div>
+            <div className="absolute left-0 -top-20 md:hidden block">
+                <LeftShadow/>
             </div>
         </section>
     );

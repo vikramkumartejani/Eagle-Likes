@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import RightShadow from './ui/RightShadow';
 
 // Helper function to convert hex color to RGB values for feColorMatrix
 const hexToRgbMatrix = (hex: string) => {
@@ -63,8 +64,10 @@ const BenefitsOfBuyingFollowers = () => {
 
     return (
         <div className="relative w-full pt-12.25 pb-18 md:py-25 lg:pb-50.5 lg:pt-38 border-t-[1.5px] border-[#0663CD4D]">
-
-            <div className="relative z-10 max-w-269.5 mx-auto px-4 xl:px-0">
+            <div className='absolute -bottom-60 md:-bottom-80 right-0'>
+                <RightShadow />
+            </div>
+            <div className="relative z-20 max-w-269.5 mx-auto px-4 xl:px-0">
                 {/* Heading */}
                 <div className="text-center mb-8 sm:mb-11">
                     <h2 className="text-[30px] sm:text-[48px] leading-9 sm:leading-11 font-responsive-heading font-bold text-white">
@@ -100,19 +103,19 @@ const BenefitsOfBuyingFollowers = () => {
                                 >
                                     <defs>
                                         <filter id={`filter0_d_${idx}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                            <feOffset/>
-                                            <feGaussianBlur stdDeviation="10"/>
-                                            <feComposite in2="hardAlpha" operator="out"/>
-                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(benefit.color)}/>
-                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_${idx}`}/>
-                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_${idx}`} result="shape"/>
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset />
+                                            <feGaussianBlur stdDeviation="10" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(benefit.color)} />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_${idx}`} />
+                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_${idx}`} result="shape" />
                                         </filter>
                                     </defs>
                                     <g filter={`url(#filter0_d_${idx})`}>
-                                        <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={benefit.color} fillOpacity="0.1" shapeRendering="geometricPrecision"/>
-                                        <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={benefit.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke"/>
+                                        <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={benefit.color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
+                                        <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={benefit.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
                                     </g>
                                 </svg>
 
@@ -155,19 +158,19 @@ const BenefitsOfBuyingFollowers = () => {
                             >
                                 <defs>
                                     <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                        <feOffset/>
-                                        <feGaussianBlur stdDeviation="10"/>
-                                        <feComposite in2="hardAlpha" operator="out"/>
-                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color)}/>
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`}/>
-                                        <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape"/>
+                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                        <feOffset />
+                                        <feGaussianBlur stdDeviation="10" />
+                                        <feComposite in2="hardAlpha" operator="out" />
+                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color)} />
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
+                                        <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
                                     </filter>
                                 </defs>
                                 <g filter={`url(#filter0_d_mobile_${currentIndex})`}>
-                                    <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="geometricPrecision"/>
-                                    <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={BENEFITS[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke"/>
+                                    <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
+                                    <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={BENEFITS[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
                                 </g>
                             </svg>
 

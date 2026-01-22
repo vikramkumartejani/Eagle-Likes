@@ -44,8 +44,9 @@ export const RightShadow = () => (
 );
 
 export const LeftBottomShadow = () => (
-    <div className="absolute left-0 bottom-0 z-0 pointer-events-none mix-blend-screen md:block hidden">
-        <svg width="323" height="918" viewBox="0 0 323 918" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className="absolute left-0 bottom-45 md:bottom-0 z-0 pointer-events-none">
+        {/* Desktop */}
+        <svg width="323" height="918" viewBox="0 0 323 918" className='md:block hidden' fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_f_1_95)">
                 <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fillOpacity="0.32" />
             </g>
@@ -54,6 +55,20 @@ export const LeftBottomShadow = () => (
                     <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_95" />
+                </filter>
+            </defs>
+        </svg>
+
+        {/* Mobile */}
+        <svg width="301" height="678"  className='block md:hidden' viewBox="0 0 301 678" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_f_1_1220)">
+                <ellipse cx="146.206" cy="128" rx="146.206" ry="128" transform="matrix(0.655505 0.755191 0.755191 -0.655505 -228.297 312.175)" fill="#0067DB" fill-opacity="0.32" />
+            </g>
+            <defs>
+                <filter id="filter0_f_1_1220" x="-371.915" y="0" width="672.243" height="677.367" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                    <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_1220" />
                 </filter>
             </defs>
         </svg>

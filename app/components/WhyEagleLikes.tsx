@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import RightShadow from './ui/RightShadow';
 
 const POLYGON_PATH = "M37.2391 0L74.4782 21.5V64.5L37.2391 86L0 64.5V21.5L37.2391 0Z";
 
@@ -91,22 +92,11 @@ const WhyEagleLikes = () => {
     return (
         <section className="relative w-full pb-12 sm:pb-24 overflow-hidden border-b border-[#0663CD4D]">
             {/* Right Shadow */}
-            <div className="absolute right-0 -top-28 sm:top-0 z-0 pointer-events-none mix-blend-screen">
-                <svg width="313" height="918" viewBox="0 0 313 918" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_f_1_104)">
-                        <circle cx="458.55" cy="458.55" r="258.5" transform="rotate(-61.6906 458.55 458.55)" fill="#0067DB" fillOpacity="0.32" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_1_104" x="3.05176e-05" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_104" />
-                        </filter>
-                    </defs>
-                </svg>
+            <div className="absolute right-0 -top-20 md:top-0 z-0 pointer-events-none">
+                <RightShadow/>
             </div>
 
-            <div className="relative z-10 max-w-269.5 mx-auto px-4 xl:px-0">
+            <div className="relative z-20 max-w-269.5 mx-auto px-4 xl:px-0">
                 {/* Heading */}
                 <div className="text-center mb-7 sm:mb-11">
                     <h2 className="text-[30px] sm:text-[48px] leading-11 font-inter font-bold text-white">

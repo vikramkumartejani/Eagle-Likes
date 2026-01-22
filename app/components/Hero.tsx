@@ -121,7 +121,7 @@ const Hero = () => {
 
                 {/* Pricing & Action Area */}
                 <div className="flex flex-col items-center">
-                    <div className="w-full sm:w-auto flex items-center sm:flex-row flex-col gap-2.5 mb-[28px] sm:mb-11.25">
+                    <div className="w-full sm:w-auto flex items-center sm:flex-row flex-col gap-2.5 sm:gap-8 mb-[28px] sm:mb-11.25">
                         <div className='space-y-2.5 w-full flex items-center sm:items-start flex-col sm:w-68.75'>
                             <div className='flex items-start gap-1.5'>
                                 <span className="text-[35px] sm:text-[46px] leading-9 font-semibold font-inter text-white">

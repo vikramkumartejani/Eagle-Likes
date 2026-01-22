@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import LeftShadow from './ui/LeftShadow';
+import RightShadow from './ui/RightShadow';
 
 interface StatData {
     value: string;
@@ -63,23 +65,15 @@ const STATS_DATA: StatData[] = [
 
 const SocialMediaGrowth = () => {
     return (
-        <section className="relative w-full pb-14 pt-8 md:py-24 px-4 lg:pl-20 lg:pr-5 overflow-hidden">
+        <section className="relative w-full pb-14 pt-8 md:py-24 px-4 lg:pl-20 lg:pr-5">
             {/* Left Side Shadow */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[20%] pointer-events-none z-0">
-                <svg width="323" height="918" viewBox="0 0 323 918" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_f_1_97)">
-                        <circle cx="258.5" cy="258.5" r="258.5" transform="matrix(-0.474232 -0.8804 -0.8804 0.474232 214.345 563.544)" fill="#0067DB" fillOpacity="0.32" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_1_97" x="-594.378" y="0" width="917.1" height="917.1" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_97" />
-                        </filter>
-                    </defs>
-                </svg>
+            <div className="absolute left-0 -top-60 md:top-1/2 md:-translate-y-1/2 pointer-events-none z-0">
+                <LeftShadow/>
             </div>
-            <div className="max-w-249 mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-14 lg:gap-1">
+            <div className="absolute right-0 bottom-24 z-0 md:hidden block">
+                <RightShadow/>
+            </div>
+            <div className="max-w-249 mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-14 lg:gap-1 relative z-20">
                 {/* Left Side */}
                 <div className="relative w-full max-w-[280px] sm:max-w-100 h-[350px] sm:h-125 mx-auto lg:mx-0">
                     <div className="relative w-full h-full rounded-3xl overflow-hidden">

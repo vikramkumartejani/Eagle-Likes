@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
+import RightShadow from './ui/RightShadow'
+import LeftShadow from './ui/LeftShadow'
 
 const YourPrivacyIsOurFocus = () => {
     return (
-        <div className='w-full pt-20 lg:pt-38.75 pb-[50px] md:pb-40.25 px-4'>
-            <div className='max-w-269.5 mx-auto'>
+        <div className='w-full pt-20 lg:pt-38.75 pb-[50px] md:pb-40.25 px-4 relative'>
+            <div className='max-w-269.5 mx-auto relative z-20'>
                 {/* Heading */}
                 <div className="text-center">
                     <h2 className="text-[30px] sm:text-[48px] leading-8 sm:leading-11 font-responsive-heading font-semibold text-white capitalize">
@@ -101,6 +103,18 @@ const YourPrivacyIsOurFocus = () => {
                         />
                     </div>
                 </div>
+            </div>
+            <div className='absolute top-180 md:-top-50 right-0'>
+                <RightShadow />
+            </div>
+            <div className='absolute bottom-84 right-0'>
+                <RightShadow />
+            </div>
+            <div className='absolute top-360 md:top-84 left-0'>
+                <LeftShadow/>
+            </div>
+            <div className='absolute -bottom-50 md:-bottom-110 left-0'>
+                <LeftShadow/>
             </div>
         </div>
     )
