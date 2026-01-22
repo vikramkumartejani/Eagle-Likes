@@ -101,7 +101,7 @@ const WhyChooseUs = () => {
 
     return (
         <section className="pb-2 px-[9px] sm:px-5 flex flex-col items-center overflow-hidden select-none">
-            <h2 className="text-[30px] sm:text-[48px] leading-12 font-semibold font-inter text-white mb-3.75 sm:mb-11 text-center">
+            <h2 className="text-[30px] sm:text-[48px] leading-14 sm:leading-12 font-semibold font-inter text-white mb-3.75 sm:mb-11 text-center">
                 Why Choose us?
             </h2>
 
