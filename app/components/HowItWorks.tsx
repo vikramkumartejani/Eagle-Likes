@@ -62,7 +62,7 @@ const STEPS: Step[] = [
 
 const HowItWorks = () => {
     return (
-        <section className="w-full pt-10 pb-[43px] sm:py-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative">
+        <section className="w-full pt-10 pb-[43px] sm:pb-[124px] sm:pt-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative">
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12.5">
                     <h2 className="text-[30px] sm:text-[48px] leading-8 sm:leading-12 font-bold text-white mb-4 sm:mb-6 font-inter">
@@ -113,10 +113,10 @@ const HowItWorks = () => {
             </div>
 
             <div className="absolute right-0 -bottom-50 md:-top-20">
-                <RightShadow/>
+                <RightShadow />
             </div>
             <div className="absolute left-0 -top-20 md:hidden block">
-                <LeftShadow/>
+                <LeftShadow />
             </div>
         </section>
     );
