@@ -79,36 +79,38 @@ const Hero = () => {
                 </p>
 
                 {/* VIP Toggle (Preserved aesthetics) */}
-                <div className="flex items-center justify-center mb-0 w-full px-4">
-                    <div
-                        className="animate-vip-border relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group"
-                        style={{
-                            background: "linear-gradient(#101828, #101828) padding-box, " +
-                                (isVip
-                                    ? "conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
-                                    : "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"),
-                            border: "1px solid transparent",
-                            boxShadow: !isVip ? "0px 0px 8px 0px #00000026" : "0px 0px 12px 0px rgba(145, 70, 255, 0.3) "
-                        }}
-                        onClick={() => handleVipToggle(!isVip)}
-                    >
-                        <div className='flex items-center gap-3'>
-                            <ToggleSwitch checked={isVip} onChange={handleVipToggle} />
-                            <span className="text-white font-normal text-[16.82px] sm:text-[18px] leading-8 select-none">
-                                I need vip followers
-                            </span>
-                        </div>
-                        <DifferenceTooltip
-                            title="VIP Followers"
-                            content="Fit for high-engaged Instagrammers! VIP treatment followers are our highest quality packages, highly active, with real engagement, interactive stories, dynamic carousels, and have 5-10x more followers than following."
-                            color="#9146FF"
-                        >
-                            <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
-                                <Image src='/assets/info.svg' alt='info' width={20} height={20} />
-                            </div>
-                        </DifferenceTooltip>
+                <div
+                    className="animate-vip-border relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group"
+                    style={{
+                        background: "linear-gradient(#101828, #101828) padding-box, " +
+                            (isVip
+                                ? "conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
+                                : "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"),
+                        border: "1px solid transparent",
+                        // Same glow effect with different intensity
+                        boxShadow: isVip
+                            ? "0px 0px 12px 0px rgba(145, 70, 255, 0.5)"  // stronger glow when VIP is ON
+                            : "0px 0px 8px 0px rgba(145, 70, 255, 0.3)"  // lighter glow when VIP is OFF
+                    }}
+                    onClick={() => handleVipToggle(!isVip)}
+                >
+                    <div className='flex items-center gap-3'>
+                        <ToggleSwitch checked={isVip} onChange={handleVipToggle} />
+                        <span className="text-white font-normal text-[16.82px] sm:text-[18px] leading-8 select-none">
+                            I need vip followers
+                        </span>
                     </div>
+                    <DifferenceTooltip
+                        title="VIP Followers"
+                        content="Fit for high-engaged Instagrammers! VIP treatment followers are our highest quality packages, highly active, with real engagement, interactive stories, dynamic carousels, and have 5-10x more followers than following."
+                        color="#9146FF"
+                    >
+                        <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
+                            <Image src='/assets/info.svg' alt='info' width={20} height={20} />
+                        </div>
+                    </DifferenceTooltip>
                 </div>
+
 
                 <PricingCards selectedPlan={selectedPlanType} onSelect={handlePlanSelect} />
 
