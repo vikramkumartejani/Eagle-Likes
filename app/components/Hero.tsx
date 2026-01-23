@@ -142,7 +142,7 @@ const Hero = () => {
                         </div>
 
                         <button
-                            className="group relative w-full sm:w-auto px-[89.5px] py-[13.5px] sm:py-[19px] cursor-pointer text-white font-bold text-[16px] sm:text-[22px] leading-[22px] sm:leading-[30px] rounded-[10px] overflow-hidden transition-all duration-500 ease-in-out"
+                            className="group relative w-full sm:w-auto px-[89.5px] py-[13.5px] sm:py-[19px] cursor-pointer text-white font-bold text-[16px] sm:text-[22px] leading-[22px] sm:leading-[30px] rounded-[10px] overflow-hidden transition-all duration-75 ease-in-out"
                             style={{
                                 background: 'linear-gradient(90deg, #0663CD 0%, #01AAFF 100%)',
                                 boxShadow: "0px 0px 8px 0px #0663CD"
@@ -153,6 +153,7 @@ const Hero = () => {
                             ></span>
                             <span className="relative z-10">Buy Now</span>
                         </button>
+
 
                     </div>
 
