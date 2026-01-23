@@ -17,7 +17,7 @@ export const HeroLeftImage = () => (
 );
 
 export const LeftShadow = () => (
-    <div className="hidden md:block absolute -z-10 top-[4%] left-0">
+    <div className="hidden md:block absolute -z-10 top-[4%] -left-10">
         <svg width="427" height="979" viewBox="0 0 427 979" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_f_1_17)">
                 <circle cx="-62.5" cy="489.5" r="289.5" fill="#0067DB" fillOpacity="0.8" />
