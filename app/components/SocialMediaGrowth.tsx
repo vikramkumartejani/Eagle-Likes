@@ -68,10 +68,10 @@ const SocialMediaGrowth = () => {
         <section className="relative w-full pb-14 pt-8 md:py-24 px-4 lg:pl-20 lg:pr-5">
             {/* Left Side Shadow */}
             <div className="absolute left-0 -top-60 md:top-1/2 md:-translate-y-1/2 pointer-events-none z-0">
-                <LeftShadow/>
+                <LeftShadow />
             </div>
             <div className="absolute right-0 bottom-24 z-0 md:hidden block">
-                <RightShadow/>
+                <RightShadow />
             </div>
             <div className="max-w-249 mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-14 lg:gap-1 relative z-20">
                 {/* Left Side */}
@@ -216,7 +216,7 @@ const SocialMediaGrowth = () => {
                         {STATS_DATA.map((stat, idx) => (
                             <div
                                 key={idx}
-                                className="bg-[#FFFFFF0D] border border-[#FFFFFF1A] rounded-[30px] pb-6 p-5 sm:p-6 flex flex-col items-start gap-3 justify-between transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] cursor-pointer"
+                                className="bg-[#FFFFFF0D] border border-[#FFFFFF1A] rounded-[30px] pb-6 p-5 sm:p-6 flex flex-col items-start gap-3 justify-between transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] cursor-pointer"
                             >
                                 <div
                                     className="w-12 h-12 rounded-[14px] flex items-center justify-center shadow-lg"

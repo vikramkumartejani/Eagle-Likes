@@ -90,7 +90,7 @@ const BenefitsOfBuyingFollowers = () => {
                     {BENEFITS.map((benefit, idx) => (
                         <div
                             key={idx}
-                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
                         >
                             {/* Icon Container with Polygon */}
                             <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-4">

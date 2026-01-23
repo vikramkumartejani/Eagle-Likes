@@ -63,7 +63,7 @@ const LeftShadow = () => {
                         ry="165.368"
                         transform="matrix(0.470923 0.882174 0.882174 -0.470923 -217.563 299.585)"
                         fill="#0067DB"
-                        fill-opacity="0.32"
+                        fillOpacity="0.32"
                     />
                 </g>
                 <defs>
@@ -74,9 +74,9 @@ const LeftShadow = () => {
                         width="722.706"
                         height="701.376"
                         filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB"
+                        colorInterpolationFilters="sRGB"
                     >
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
                         <feBlend
                             mode="normal"
                             in="SourceGraphic"
