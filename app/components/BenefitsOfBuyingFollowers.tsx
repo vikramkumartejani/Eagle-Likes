@@ -15,6 +15,8 @@ interface Benefits {
     title: string;
     description: string;
     icon: string;
+    iconNew: string;
+    iconNewOutline: string;
     iconWidth: number;
     iconHeight: number;
     color: string;
@@ -26,6 +28,8 @@ const BENEFITS: Benefits[] = [
         description: "Instagram’s algorithm favors the most popular accounts, giving them greater visibility across the platform. By gaining real followers with authentic profiles, you instantly boost your popularity, increase exposure, and attract new audiences who may have never discovered your content before.",
         color: "#1ED760",
         icon: "/assets/higher-visibility.svg",
+        iconNew: "/assets/svgs/higher-visibility-icon.svg",
+        iconNewOutline: "/assets/higher-visibility.svg",
         iconWidth: 46,
         iconHeight: 46
     },
@@ -34,6 +38,8 @@ const BENEFITS: Benefits[] = [
         description: "Having more followers instantly boosts your Instagram credibility. When new users discover your profile, they see your popularity as proof of quality and trust. A strong follower base shows that others value your content, encouraging even more people to follow and engage with your posts.",
         color: "#F7FF00",
         icon: "/assets/strengthen-trust.svg",
+        iconNew: "/assets/svgs/strengthen-trust-icon.svg",
+        iconNewOutline: "/assets/strengthen-trust.svg",
         iconWidth: 43.36,
         iconHeight: 44.37
     },
@@ -42,6 +48,8 @@ const BENEFITS: Benefits[] = [
         description: "As your followers increase, your posts reach more people who naturally want to follow you. With engaging, high-quality content, your audience will keep growing. Buying active followers is a quick and effective way to jumpstart your Instagram growth and boost organic engagement.",
         color: "#FF0000",
         icon: "/assets/get-real-followers.svg",
+        iconNew: "/assets/svgs/get-real-followers-icon.svg",
+        iconNewOutline: "/assets/get-real-followers.svg",
         iconWidth: 43,
         iconHeight: 40
     },
@@ -90,9 +98,10 @@ const BenefitsOfBuyingFollowers = () => {
                     {BENEFITS.map((benefit, idx) => (
                         <div
                             key={idx}
-                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
                         >
                             {/* Icon Container with Polygon */}
+                            <span className='text-[10px] text-white uppercase'>1. with Polygon code</span>
                             <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-4">
                                 {/* Polygon Background */}
                                 <svg
@@ -106,7 +115,7 @@ const BenefitsOfBuyingFollowers = () => {
                                             <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                             <feOffset />
-                                            <feGaussianBlur stdDeviation="10" />
+                                            <feGaussianBlur stdDeviation="8" />
                                             <feComposite in2="hardAlpha" operator="out" />
                                             <feColorMatrix type="matrix" values={hexToRgbMatrix(benefit.color)} />
                                             <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_${idx}`} />
@@ -129,6 +138,28 @@ const BenefitsOfBuyingFollowers = () => {
                                         className="object-contain"
                                     />
                                 </div>
+                            </div>
+
+                            <span className='text-[10px] text-white uppercase'>2. With complete svg icon</span>
+                            <div className="relative z-10 flex items-center justify-center">
+                                <Image
+                                    src={benefit.iconNew}
+                                    alt={benefit.title}
+                                    width={120}
+                                    height={120}
+                                    className="object-contain"
+                                />
+                            </div>
+
+                            <span className='text-[10px] text-white uppercase'>3. without outline</span>
+                            <div className="relative z-10 flex items-center justify-center py-6">
+                                <Image
+                                    src={benefit.iconNewOutline}
+                                    alt={benefit.title}
+                                    width={80}
+                                    height={80}
+                                    className="object-contain"
+                                />
                             </div>
 
                             <h3 className="text-white text-[20.76px] sm:text-[26px] leading-6.75 font-semibold text-wrap xl:text-nowrap mb-5">
