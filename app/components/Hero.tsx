@@ -88,9 +88,7 @@ const Hero = () => {
                                 : "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"),
                         border: "1px solid transparent",
                         // Same glow effect with different intensity
-                        boxShadow: isVip
-                            ? "0px 0px 12px 0px rgba(145, 70, 255, 0.5)"  // stronger glow when VIP is ON
-                            : "0px 0px 8px 0px rgba(145, 70, 255, 0.3)"  // lighter glow when VIP is OFF
+                        boxShadow: "0px 0px 12px 0px rgba(145, 70, 255, 0.5)"
                     }}
                     onClick={() => handleVipToggle(!isVip)}
                 >
