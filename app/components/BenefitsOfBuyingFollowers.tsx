@@ -4,22 +4,27 @@ import Image from 'next/image';
 import RightShadow from './ui/RightShadow';
 
 // Helper function to convert hex color to RGB values for feColorMatrix
-const hexToRgbMatrix = (hex: string) => {
+const hexToRgbMatrix = (hex: string, alpha: number = 0.5) => {
     const r = parseInt(hex.slice(1, 3), 16) / 255;
     const g = parseInt(hex.slice(3, 5), 16) / 255;
     const b = parseInt(hex.slice(5, 7), 16) / 255;
-    return `0 0 0 0 ${r.toFixed(6)} 0 0 0 0 ${g.toFixed(6)} 0 0 0 0 ${b.toFixed(6)} 0 0 0 0.5 0`;
+    return `0 0 0 0 ${r.toFixed(6)} 0 0 0 0 ${g.toFixed(6)} 0 0 0 0 ${b.toFixed(6)} 0 0 0 ${alpha} 0`;
 };
 
 interface Benefits {
     title: string;
     description: string;
     icon: string;
-    iconNew: string;
-    iconNewOutline: string;
     iconWidth: number;
     iconHeight: number;
     color: string;
+    // SVG specific props
+    path: string;
+    viewBox: string;
+    stdDeviation: number;
+    filterWidth: string;
+    filterHeight: string;
+    shadowOpacity: number;
 }
 
 const BENEFITS: Benefits[] = [
@@ -28,30 +33,42 @@ const BENEFITS: Benefits[] = [
         description: "Instagram’s algorithm favors the most popular accounts, giving them greater visibility across the platform. By gaining real followers with authentic profiles, you instantly boost your popularity, increase exposure, and attract new audiences who may have never discovered your content before.",
         color: "#1ED760",
         icon: "/assets/higher-visibility.svg",
-        iconNew: "/assets/svgs/higher-visibility-icon.svg",
-        iconNewOutline: "/assets/higher-visibility.svg",
         iconWidth: 46,
-        iconHeight: 46
+        iconHeight: 46,
+        path: "M57.2391 20L94.4782 41.5V84.5L57.2391 106L20 84.5V41.5L57.2391 20Z",
+        viewBox: "0 0 115 126",
+        stdDeviation: 10,
+        filterWidth: "114.478",
+        filterHeight: "126",
+        shadowOpacity: 0.5
     },
     {
         title: "Strengthen Trust",
         description: "Having more followers instantly boosts your Instagram credibility. When new users discover your profile, they see your popularity as proof of quality and trust. A strong follower base shows that others value your content, encouraging even more people to follow and engage with your posts.",
         color: "#F7FF00",
         icon: "/assets/strengthen-trust.svg",
-        iconNew: "/assets/svgs/strengthen-trust-icon.svg",
-        iconNewOutline: "/assets/strengthen-trust.svg",
         iconWidth: 43.36,
-        iconHeight: 44.37
+        iconHeight: 44.37,
+        path: "M62.2391 25L99.4782 46.5V89.5L62.2391 111L25 89.5V46.5L62.2391 25Z",
+        viewBox: "0 0 125 136",
+        stdDeviation: 12.5,
+        filterWidth: "124.478",
+        filterHeight: "136",
+        shadowOpacity: 0.5
     },
     {
         title: "Get Real Followers",
         description: "As your followers increase, your posts reach more people who naturally want to follow you. With engaging, high-quality content, your audience will keep growing. Buying active followers is a quick and effective way to jumpstart your Instagram growth and boost organic engagement.",
         color: "#FF0000",
         icon: "/assets/get-real-followers.svg",
-        iconNew: "/assets/svgs/get-real-followers-icon.svg",
-        iconNewOutline: "/assets/get-real-followers.svg",
         iconWidth: 43,
-        iconHeight: 40
+        iconHeight: 40,
+        path: "M62.2391 25L99.4782 46.5V89.5L62.2391 111L25 89.5V46.5L62.2391 25Z",
+        viewBox: "0 0 125 136",
+        stdDeviation: 12.5,
+        filterWidth: "124.478",
+        filterHeight: "136",
+        shadowOpacity: 0.7
     },
 ];
 
@@ -101,35 +118,33 @@ const BenefitsOfBuyingFollowers = () => {
                             className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
                         >
                             {/* Icon Container with Polygon */}
-                            <span className='text-[10px] text-white uppercase'>1. with Polygon code</span>
-                            <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-4">
+                            <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-8 mt-4">
                                 {/* Polygon Background */}
                                 <svg
                                     className="absolute inset-0 w-full h-full"
-                                    viewBox="0 0 117 129"
+                                    viewBox={benefit.viewBox}
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
+                                    <g filter={`url(#filter0_d_${idx})`}>
+                                        <path d={benefit.path} fill={benefit.color} fillOpacity="0.1" shapeRendering="crispEdges" />
+                                    </g>
                                     <defs>
-                                        <filter id={`filter0_d_${idx}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                        <filter id={`filter0_d_${idx}`} x="0" y="0" width={benefit.filterWidth} height={benefit.filterHeight} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                             <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                             <feOffset />
-                                            <feGaussianBlur stdDeviation="8" />
+                                            <feGaussianBlur stdDeviation={benefit.stdDeviation} />
                                             <feComposite in2="hardAlpha" operator="out" />
-                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(benefit.color)} />
+                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(benefit.color, benefit.shadowOpacity)} />
                                             <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_${idx}`} />
                                             <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_${idx}`} result="shape" />
                                         </filter>
                                     </defs>
-                                    <g filter={`url(#filter0_d_${idx})`}>
-                                        <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={benefit.color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
-                                        <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={benefit.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                                    </g>
                                 </svg>
 
-                                {/* Icon */}
-                                <div className="relative z-10 flex items-center justify-center">
+                                {/* Icon Wrapper for Perfect Centering */}
+                                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                                     <Image
                                         src={benefit.icon}
                                         alt={benefit.title}
@@ -138,28 +153,6 @@ const BenefitsOfBuyingFollowers = () => {
                                         className="object-contain"
                                     />
                                 </div>
-                            </div>
-
-                            <span className='text-[10px] text-white uppercase'>2. With complete svg icon</span>
-                            <div className="relative z-10 flex items-center justify-center">
-                                <Image
-                                    src={benefit.iconNew}
-                                    alt={benefit.title}
-                                    width={120}
-                                    height={120}
-                                    className="object-contain"
-                                />
-                            </div>
-
-                            <span className='text-[10px] text-white uppercase'>3. without outline</span>
-                            <div className="relative z-10 flex items-center justify-center py-6">
-                                <Image
-                                    src={benefit.iconNewOutline}
-                                    alt={benefit.title}
-                                    width={80}
-                                    height={80}
-                                    className="object-contain"
-                                />
                             </div>
 
                             <h3 className="text-white text-[20.76px] sm:text-[26px] leading-6.75 font-semibold text-wrap xl:text-nowrap mb-5">
@@ -179,34 +172,33 @@ const BenefitsOfBuyingFollowers = () => {
                         className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
                     >
                         {/* Icon Container with Polygon */}
-                        <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-2">
+                        <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-6 mt-4">
                             {/* Polygon Background */}
                             <svg
                                 className="absolute inset-0 w-full h-full"
-                                viewBox="0 0 117 129"
+                                viewBox={BENEFITS[currentIndex].viewBox}
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <defs>
-                                    <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.309" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                    <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width={BENEFITS[currentIndex].filterWidth} height={BENEFITS[currentIndex].filterHeight} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                         <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                         <feOffset />
-                                        <feGaussianBlur stdDeviation="10" />
+                                        <feGaussianBlur stdDeviation={BENEFITS[currentIndex].stdDeviation} />
                                         <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color)} />
+                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color, BENEFITS[currentIndex].shadowOpacity)} />
                                         <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
                                         <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
                                     </filter>
                                 </defs>
                                 <g filter={`url(#filter0_d_mobile_${currentIndex})`}>
-                                    <path d="M58.2391 21.1543L95.4782 42.6543V85.6543L58.2391 107.154L21 85.6543V42.6543L58.2391 21.1543Z" fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
-                                    <path d="M95.9784 85.9434L95.7284 86.0869L58.4891 107.587L58.2391 107.731L57.9891 107.587L20.7498 86.0869L20.4998 85.9434V42.3652L20.7498 42.2217L57.9891 20.7217L58.2391 20.5771L58.4891 20.7217L95.7284 42.2217L95.9784 42.3652V85.9434Z" stroke={BENEFITS[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                    <path d={BENEFITS[currentIndex].path} fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
                                 </g>
                             </svg>
 
-                            {/* Icon */}
-                            <div className="relative z-10 flex items-center justify-center">
+                            {/* Icon Wrapper for Perfect Centering */}
+                            <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                                 <Image
                                     src={BENEFITS[currentIndex].icon}
                                     alt={BENEFITS[currentIndex].title}
@@ -216,6 +208,8 @@ const BenefitsOfBuyingFollowers = () => {
                                 />
                             </div>
                         </div>
+
+
 
                         <h3 className="text-white text-[20.76px] font-semibold sm:font-inter mb-4">
                             {BENEFITS[currentIndex].title}
