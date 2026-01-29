@@ -27,7 +27,7 @@ const PackageGrid: React.FC<PackageGridProps> = ({ selectedPlanType, selectedPac
     };
 
     return (
-        <div className="mt-9 grid grid-cols-4 sm:grid-cols-4 gap-[15px] sm:gap-6.5 mb-8 sm:mb-11.25 w-full max-w-157.5">
+        <div className="mt-8 grid grid-cols-4 sm:grid-cols-4 gap-[15px] sm:gap-6.5 mb-8 sm:mb-11.25 w-full max-w-157.5">
             {PACKAGES.map((pkg) => (
                 <button
                     key={pkg.count}

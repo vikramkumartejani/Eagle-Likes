@@ -236,7 +236,7 @@ interface PricingCardsProps {
 
 const PricingCards: React.FC<PricingCardsProps> = ({ selectedPlan, onSelect }) => {
     return (
-        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 sm:gap-5 w-full max-w-[700px] px-4 py-3 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
+        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 sm:gap-5 w-full max-w-[700px] px-3 sm:px-4 py-3 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
             {PLAN_CONFIGS.map((plan) => (
                 <PricingCard
                     key={plan.type}

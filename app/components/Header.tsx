@@ -399,7 +399,7 @@ export default function Header() {
                 data-testid="mobile-menu"
                 aria-hidden={!mobileMenuOpen}
             >
-                <div className="px-4 py-4">
+                <div className="px-4 py-4 border-b border-blue-100/20">
                     {menuItems.map((menu) => (
                         <div
                             key={menu.id}
