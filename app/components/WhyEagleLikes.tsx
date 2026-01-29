@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import RightShadow from './ui/RightShadow';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const POLYGON_PATH = "M57.2391 20L94.4782 41.5V84.5L57.2391 106L20 84.5V41.5L57.2391 20Z";
 
@@ -165,51 +166,59 @@ const WhyEagleLikes = () => {
                 </div>
 
                 {/* Mobile Carousel */}
-                <div className="md:hidden flex flex-col items-center">
-                    <div
-                        className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] min-h-90"
-                    >
-                        {/* Icon Container with Polygon */}
-                        <div className="relative w-[115px] h-[126px] flex items-center justify-center mb-4">
-                            {/* Polygon Background */}
-                            <svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g filter={`url(#filter_polygon_mobile_${currentIndex})`}>
-                                    <path d={POLYGON_PATH} fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
-                                </g>
-                                <defs>
-                                    <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="114.478" height="126" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="10" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(FEATURES[currentIndex].color)} />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
-                                        <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
-                                    </filter>
-                                </defs>
-                            </svg>
+                <div className="md:hidden flex flex-col items-center w-full">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentIndex}
+                            initial={{ opacity: 0, y: 0 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0.2, y: 0 }}
+                            transition={{ duration: 0.1 }}
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] min-h-90"
+                        >
+                            {/* Icon Container with Polygon */}
+                            <div className="relative w-[115px] h-[126px] flex items-center justify-center mb-4">
+                                {/* Polygon Background */}
+                                <svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g filter={`url(#filter_polygon_mobile_${currentIndex})`}>
+                                        <path d={POLYGON_PATH} fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
+                                    </g>
+                                    <defs>
+                                        <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="114.478" height="126" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset />
+                                            <feGaussianBlur stdDeviation="10" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(FEATURES[currentIndex].color)} />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
+                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
 
-                            {/* Icon */}
-                            <div className="absolute inset-0 flex items-center justify-center z-10">
-                                <Image
-                                    src={FEATURES[currentIndex].icon}
-                                    alt={FEATURES[currentIndex].title}
-                                    width={FEATURES[currentIndex].iconWidth}
-                                    height={FEATURES[currentIndex].iconHeight}
-                                    className="object-contain"
-                                />
+                                {/* Icon */}
+                                <div className="absolute inset-0 flex items-center justify-center z-10">
+                                    <Image
+                                        src={FEATURES[currentIndex].icon}
+                                        alt={FEATURES[currentIndex].title}
+                                        width={FEATURES[currentIndex].iconWidth}
+                                        height={FEATURES[currentIndex].iconHeight}
+                                        className="object-contain"
+                                        priority
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <h3 className="text-white text-[23px] font-semibold font-inter mb-4">
-                            {FEATURES[currentIndex].title}
-                        </h3>
+                            <h3 className="text-white text-[23px] font-semibold font-inter mb-4">
+                                {FEATURES[currentIndex].title}
+                            </h3>
 
-                        <p className="text-[#99A1AF] text-[15px] leading-6.5 px-1 font-normal font-inter">
-                            {FEATURES[currentIndex].description}
-                        </p>
-                    </div>
+                            <p className="text-[#99A1AF] text-[15px] leading-6.5 px-1 font-normal font-inter">
+                                {FEATURES[currentIndex].description}
+                            </p>
+                        </motion.div>
+                    </AnimatePresence>
 
                     {/* Mobile Navigation Buttons */}
                     <div className="flex items-center gap-3 mt-8">

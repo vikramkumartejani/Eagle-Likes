@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import RightShadow from './ui/RightShadow';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Helper function to convert hex color to RGB values for feColorMatrix
 const hexToRgbMatrix = (hex: string, alpha: number = 0.5) => {
@@ -167,58 +168,64 @@ const BenefitsOfBuyingFollowers = () => {
                 </div>
 
                 {/* Mobile Carousel */}
-                <div className="md:hidden flex flex-col items-center">
-                    <div
-                        className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30]"
-                    >
-                        {/* Icon Container with Polygon */}
-                        <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-6 mt-4">
-                            {/* Polygon Background */}
-                            <svg
-                                className="absolute inset-0 w-full h-full"
-                                viewBox={BENEFITS[currentIndex].viewBox}
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <defs>
-                                    <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width={BENEFITS[currentIndex].filterWidth} height={BENEFITS[currentIndex].filterHeight} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation={BENEFITS[currentIndex].stdDeviation} />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color, BENEFITS[currentIndex].shadowOpacity)} />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
-                                        <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
-                                    </filter>
-                                </defs>
-                                <g filter={`url(#filter0_d_mobile_${currentIndex})`}>
-                                    <path d={BENEFITS[currentIndex].path} fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
-                                </g>
-                            </svg>
+                <div className="md:hidden flex flex-col items-center w-full">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentIndex}
+                            initial={{ opacity: 0, y: 0 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 0 }}
+                            transition={{ duration: 0.1 }}
+                            className="bg-[#FFFFFF0D] rounded-[40px] px-5.5 pt-3 pb-11.5 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-200 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] w-full"
+                        >
+                            {/* Icon Container with Polygon */}
+                            <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-6 mt-4">
+                                {/* Polygon Background */}
+                                <svg
+                                    className="absolute inset-0 w-full h-full"
+                                    viewBox={BENEFITS[currentIndex].viewBox}
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <defs>
+                                        <filter id={`filter0_d_mobile_${currentIndex}`} x="0" y="0" width={BENEFITS[currentIndex].filterWidth} height={BENEFITS[currentIndex].filterHeight} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset />
+                                            <feGaussianBlur stdDeviation={BENEFITS[currentIndex].stdDeviation} />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(BENEFITS[currentIndex].color, BENEFITS[currentIndex].shadowOpacity)} />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
+                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
+                                        </filter>
+                                    </defs>
+                                    <g filter={`url(#filter0_d_mobile_${currentIndex})`}>
+                                        <path d={BENEFITS[currentIndex].path} fill={BENEFITS[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
+                                    </g>
+                                </svg>
 
-                            {/* Icon Wrapper for Perfect Centering */}
-                            <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                                <Image
-                                    src={BENEFITS[currentIndex].icon}
-                                    alt={BENEFITS[currentIndex].title}
-                                    width={BENEFITS[currentIndex].iconWidth}
-                                    height={BENEFITS[currentIndex].iconHeight}
-                                    className="object-contain"
-                                />
+                                {/* Icon Wrapper for Perfect Centering */}
+                                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                    <Image
+                                        src={BENEFITS[currentIndex].icon}
+                                        alt={BENEFITS[currentIndex].title}
+                                        width={BENEFITS[currentIndex].iconWidth}
+                                        height={BENEFITS[currentIndex].iconHeight}
+                                        className="object-contain"
+                                        priority
+                                    />
+                                </div>
                             </div>
-                        </div>
 
+                            <h3 className="text-white text-[20.76px] font-semibold sm:font-inter mb-4">
+                                {BENEFITS[currentIndex].title}
+                            </h3>
 
-
-                        <h3 className="text-white text-[20.76px] font-semibold sm:font-inter mb-4">
-                            {BENEFITS[currentIndex].title}
-                        </h3>
-
-                        <p className="text-[#99A1AF] text-[12px] leading-5 sm:px-1 font-normal sm:font-inter">
-                            {BENEFITS[currentIndex].description}
-                        </p>
-                    </div>
+                            <p className="text-[#99A1AF] text-[12px] leading-5 sm:px-1 font-normal sm:font-inter">
+                                {BENEFITS[currentIndex].description}
+                            </p>
+                        </motion.div>
+                    </AnimatePresence>
 
                     {/* Mobile Navigation Buttons */}
                     <div className="flex items-center gap-3 mt-8">
