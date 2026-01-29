@@ -21,7 +21,7 @@ const EagleLikesIsSeenOn = () => {
             <div className="relative w-full overflow-hidden max-w-266.25 mx-auto">
                 <div className="flex flex-nowrap animate-marquee items-center">
                     {/* First set of items */}
-                    <div className="flex items-center gap-10 mx-5 sm:mx-7">
+                    <div className="flex items-center gap-10 mx-5 sm:mx-7 shrink-0">
                         {BRANDS.map((brand, idx) => (
                             <div key={`brand-1-${idx}`} className="flex items-center justify-center transition-opacity duration-300 shrink-0">
                                 <Image
@@ -36,7 +36,7 @@ const EagleLikesIsSeenOn = () => {
                     </div>
 
                     {/* Duplicate set for seamless scrolling */}
-                    <div className="flex items-center gap-12 sm:gap-10 mx-6 sm:mx-7">
+                    <div className="flex items-center gap-10 mx-5 sm:mx-7 shrink-0">
                         {BRANDS.map((brand, idx) => (
                             <div key={`brand-2-${idx}`} className="flex items-center justify-center transition-opacity duration-300 shrink-0">
                                 <Image
