@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import RightShadow from './ui/RightShadow';
 
-const POLYGON_PATH = "M37.2391 0L74.4782 21.5V64.5L37.2391 86L0 64.5V21.5L37.2391 0Z";
+const POLYGON_PATH = "M57.2391 20L94.4782 41.5V84.5L57.2391 106L20 84.5V41.5L57.2391 20Z";
 
 // Helper function to convert hex color to RGB values for feColorMatrix
 const hexToRgbMatrix = (hex: string) => {
@@ -121,15 +121,14 @@ const WhyEagleLikes = () => {
                             className="bg-[#FFFFFF0D] rounded-[40px] px-8 pt-3 pb-6 flex flex-col items-center text-center border border-[#FFFFFF26] group h-full transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] "
                         >
                             {/* Icon Container with Polygon */}
-                            <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-2">
+                            <div className="relative w-[115px] h-[126px] flex items-center justify-center mb-2">
                                 {/* Polygon Background */}
-                                <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter={`url(#filter_polygon_${idx})`}>
-                                        <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={feature.color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
-                                        <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={feature.color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                        <path d={POLYGON_PATH} fill={feature.color} fillOpacity="0.1" shapeRendering="crispEdges" />
                                     </g>
                                     <defs>
-                                        <filter id={`filter_polygon_${idx}`} x="0" y="0" width="116.478" height="128.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                        <filter id={`filter_polygon_${idx}`} x="0" y="0" width="114.478" height="126" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                             <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                             <feOffset />
@@ -150,9 +149,6 @@ const WhyEagleLikes = () => {
                                         width={feature.iconWidth}
                                         height={feature.iconHeight}
                                         className="object-contain"
-                                        style={{
-                                            filter: `drop-shadow(0px 0px 6px ${feature.color})`
-                                        }}
                                     />
                                 </div>
                             </div>
@@ -174,15 +170,14 @@ const WhyEagleLikes = () => {
                         className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] min-h-90"
                     >
                         {/* Icon Container with Polygon */}
-                        <div className="relative w-[110px] h-[110px] flex items-center justify-center mb-4">
+                        <div className="relative w-[115px] h-[126px] flex items-center justify-center mb-4">
                             {/* Polygon Background */}
-                            <svg width="117" height="129" viewBox="0 0 117 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter={`url(#filter_polygon_mobile_${currentIndex})`}>
-                                    <path d="M58.2391 21.1548L95.4782 42.6548V85.6548L58.2391 107.155L21 85.6548V42.6548L58.2391 21.1548Z" fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="geometricPrecision" />
-                                    <path d="M95.9784 85.9438L95.7284 86.0874L58.4891 107.587L58.2391 107.732L57.9891 107.587L20.7498 86.0874L20.4998 85.9438V42.3657L20.7498 42.2222L57.9891 20.7222L58.2391 20.5776L58.4891 20.7222L95.7284 42.2222L95.9784 42.3657V85.9438Z" stroke={FEATURES[currentIndex].color} strokeWidth="1.5" strokeOpacity="0.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                    <path d={POLYGON_PATH} fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
                                 </g>
                                 <defs>
-                                    <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="116.478" height="128.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                    <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="114.478" height="126" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                         <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                         <feOffset />
@@ -203,9 +198,6 @@ const WhyEagleLikes = () => {
                                     width={FEATURES[currentIndex].iconWidth}
                                     height={FEATURES[currentIndex].iconHeight}
                                     className="object-contain"
-                                    style={{
-                                        filter: `drop-shadow(0px 0px 6px ${FEATURES[currentIndex].color})`
-                                    }}
                                 />
                             </div>
                         </div>
