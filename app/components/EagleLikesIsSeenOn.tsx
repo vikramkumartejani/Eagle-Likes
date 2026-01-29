@@ -29,7 +29,7 @@ const EagleLikesIsSeenOn = () => {
                                     alt={brand.alt}
                                     width={brand.width}
                                     height={brand.height}
-                                    className="object-contain max-h-[43px] sm:max-h-[58px] w-auto transition-all duration-300"
+                                    className="object-contain transition-all duration-300"
                                 />
                             </div>
                         ))}
@@ -44,7 +44,7 @@ const EagleLikesIsSeenOn = () => {
                                     alt={brand.alt}
                                     width={brand.width}
                                     height={brand.height}
-                                    className="object-contain max-h-[43px] sm:max-h-[58px] w-auto transition-all duration-300"
+                                    className="object-contain transition-all duration-300"
                                 />
                             </div>
                         ))}
