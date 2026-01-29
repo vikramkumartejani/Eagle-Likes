@@ -1,8 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import RightShadow from './ui/RightShadow';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const POLYGON_PATH = "M57.2391 20L94.4782 41.5V84.5L57.2391 106L20 84.5V41.5L57.2391 20Z";
 
@@ -77,18 +77,52 @@ const FEATURES: Feature[] = [
 
 const WhyEagleLikes = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const isScrollingRef = useRef(false);
 
-    const nextSlide = () => {
-        if (currentIndex < FEATURES.length - 1) {
-            setCurrentIndex((prev) => prev + 1);
+    const scrollTo = (index: number) => {
+        if (scrollRef.current && scrollRef.current.children[index]) {
+            isScrollingRef.current = true;
+            const container = scrollRef.current;
+            const targetElement = container.children[index] as HTMLElement;
+
+            const targetLeft = targetElement.offsetLeft - (container.offsetWidth - targetElement.offsetWidth) / 2;
+
+            container.scrollTo({
+                left: targetLeft,
+                behavior: 'smooth'
+            });
+
+            setCurrentIndex(index);
+
+            setTimeout(() => {
+                isScrollingRef.current = false;
+            }, 500);
         }
     };
 
-    const prevSlide = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex((prev) => prev - 1);
+    const handleScroll = useCallback(() => {
+        if (isScrollingRef.current || !scrollRef.current) return;
+
+        const container = scrollRef.current;
+        const scrollPosition = container.scrollLeft + container.offsetWidth / 2;
+
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        Array.from(container.children).forEach((child, idx) => {
+            const childCenter = (child as HTMLElement).offsetLeft + (child as HTMLElement).offsetWidth / 2;
+            const distance = Math.abs(scrollPosition - childCenter);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestIndex = idx;
+            }
+        });
+
+        if (closestIndex !== currentIndex) {
+            setCurrentIndex(closestIndex);
         }
-    };
+    }, [currentIndex]);
 
     return (
         <section className="relative w-full pb-12 sm:pb-24 overflow-hidden border-b border-[#0663CD4D]">
@@ -129,7 +163,7 @@ const WhyEagleLikes = () => {
                                         <path d={POLYGON_PATH} fill={feature.color} fillOpacity="0.1" shapeRendering="crispEdges" />
                                     </g>
                                     <defs>
-                                        <filter id={`filter_polygon_${idx}`} x="0" y="0" width="114.478" height="126" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                        <filter id={`filter_polygon_${idx}`} x="-25%" y="-25%" width="150%" height="150%" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                             <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                             <feOffset />
@@ -165,84 +199,87 @@ const WhyEagleLikes = () => {
                     ))}
                 </div>
 
-                {/* Mobile Carousel */}
-                <div className="md:hidden flex flex-col items-center w-full">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={currentIndex}
-                            initial={{ opacity: 0, y: 0 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0.2, y: 0 }}
-                            transition={{ duration: 0.1 }}
-                            className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full max-w-87.5 transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] min-h-90"
-                        >
-                            {/* Icon Container with Polygon */}
-                            <div className="relative w-[115px] h-[126px] flex items-center justify-center mb-4">
-                                {/* Polygon Background */}
-                                <svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g filter={`url(#filter_polygon_mobile_${currentIndex})`}>
-                                        <path d={POLYGON_PATH} fill={FEATURES[currentIndex].color} fillOpacity="0.1" shapeRendering="crispEdges" />
-                                    </g>
-                                    <defs>
-                                        <filter id={`filter_polygon_mobile_${currentIndex}`} x="0" y="0" width="114.478" height="126" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                            <feOffset />
-                                            <feGaussianBlur stdDeviation="10" />
-                                            <feComposite in2="hardAlpha" operator="out" />
-                                            <feColorMatrix type="matrix" values={hexToRgbMatrix(FEATURES[currentIndex].color)} />
-                                            <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_${currentIndex}`} />
-                                            <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_${currentIndex}`} result="shape" />
-                                        </filter>
-                                    </defs>
-                                </svg>
+                {/* Mobile Slider - Exact requirements: All render at once, 10% peek, no design changes */}
+                <div className="md:hidden w-full overflow-visible">
+                    <div
+                        ref={scrollRef}
+                        onScroll={handleScroll}
+                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 px-4 -mx-4 pb-4"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                        {FEATURES.map((feature, idx) => (
+                            <div
+                                key={idx}
+                                className="min-w-[95%] snap-center"
+                            >
+                                <div className="bg-[#FFFFFF0D] rounded-[40px] px-5 py-5 flex flex-col items-center text-center border border-[#FFFFFF26] w-full transition-all duration-0 hover:bg-[#ffffff15] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-[#FFFFFF30] min-h-82">
+                                    {/* Icon Container with Polygon */}
+                                    <div className="relative w-[115px] h-[126px] flex items-center justify-center mb-4">
+                                        <svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g filter={`url(#filter_polygon_mobile_v3_${idx})`}>
+                                                <path d={POLYGON_PATH} fill={feature.color} fillOpacity="0.1" shapeRendering="crispEdges" />
+                                            </g>
+                                            <defs>
+                                                <filter id={`filter_polygon_mobile_v3_${idx}`} x="-25%" y="-25%" width="150%" height="150%" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                                    <feOffset />
+                                                    <feGaussianBlur stdDeviation="10" />
+                                                    <feComposite in2="hardAlpha" operator="out" />
+                                                    <feColorMatrix type="matrix" values={hexToRgbMatrix(feature.color)} />
+                                                    <feBlend mode="normal" in2="BackgroundImageFix" result={`effect1_dropShadow_mobile_v3_${idx}`} />
+                                                    <feBlend mode="normal" in="SourceGraphic" in2={`effect1_dropShadow_mobile_v3_${idx}`} result="shape" />
+                                                </filter>
+                                            </defs>
+                                        </svg>
 
-                                {/* Icon */}
-                                <div className="absolute inset-0 flex items-center justify-center z-10">
-                                    <Image
-                                        src={FEATURES[currentIndex].icon}
-                                        alt={FEATURES[currentIndex].title}
-                                        width={FEATURES[currentIndex].iconWidth}
-                                        height={FEATURES[currentIndex].iconHeight}
-                                        className="object-contain"
-                                        priority
-                                    />
+                                        <div className="absolute inset-0 flex items-center justify-center z-10">
+                                            <Image
+                                                src={feature.icon}
+                                                alt={feature.title}
+                                                width={feature.iconWidth}
+                                                height={feature.iconHeight}
+                                                className="object-contain"
+                                                priority
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-white text-[20px] font-semibold font-inter mb-4">
+                                        {feature.title}
+                                    </h3>
+
+                                    <p className="text-[#99A1AF] text-[12px] leading-5 px-1 font-normal font-inter">
+                                        {feature.description}
+                                    </p>
                                 </div>
                             </div>
-
-                            <h3 className="text-white text-[23px] font-semibold font-inter mb-4">
-                                {FEATURES[currentIndex].title}
-                            </h3>
-
-                            <p className="text-[#99A1AF] text-[15px] leading-6.5 px-1 font-normal font-inter">
-                                {FEATURES[currentIndex].description}
-                            </p>
-                        </motion.div>
-                    </AnimatePresence>
+                        ))}
+                    </div>
 
                     {/* Mobile Navigation Buttons */}
-                    <div className="flex items-center gap-3 mt-8">
+                    <div className="flex items-center justify-center gap-3 mt-4">
                         <button
-                            onClick={prevSlide}
+                            onClick={() => scrollTo(currentIndex - 1)}
                             disabled={currentIndex === 0}
                             className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${currentIndex === 0
                                 ? 'border border-[#FFFFFF66] text-white opacity-60 cursor-not-allowed'
-                                : 'bg-[#018DFF] text-white hover:bg-[#0070CC] cursor-pointer'
+                                : 'bg-[#018DFF] text-white hover:bg-[#0070CC] cursor-pointer shadow-[0_4px_12px_rgba(1,141,255,0.4)]'
                                 }`}
                         >
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="15 18 9 12 15 6"></polyline>
                             </svg>
                         </button>
                         <button
-                            onClick={nextSlide}
+                            onClick={() => scrollTo(currentIndex + 1)}
                             disabled={currentIndex === FEATURES.length - 1}
                             className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${currentIndex === FEATURES.length - 1
                                 ? 'border border-[#FFFFFF66] text-white opacity-60 cursor-not-allowed'
-                                : 'bg-[#018DFF] text-white hover:bg-[#0070CC] cursor-pointer'
+                                : 'bg-[#018DFF] text-white hover:bg-[#0070CC] cursor-pointer shadow-[0_4px_12px_rgba(1,141,255,0.4)]'
                                 }`}
                         >
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </button>
