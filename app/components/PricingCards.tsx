@@ -153,6 +153,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                         alt={plan.title}
                         width={plan.iconWidth}
                         height={plan.iconHeight}
+                        priority
                         className="object-contain w-(--mobile-w) h-(--mobile-h) sm:w-auto sm:h-auto"
                         style={{
                             '--mobile-w': `${plan.mobileIconWidth}px`,

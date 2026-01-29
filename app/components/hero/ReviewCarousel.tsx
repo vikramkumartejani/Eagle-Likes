@@ -73,7 +73,7 @@ const ReviewCarousel: React.FC = () => {
         });
     };
 
-    if (!isInView) return <div ref={containerRef} className="h-15 min-w-[166px] sm:min-w-68" />;
+    // Removed !isInView check to ensure SSR content is present
 
     return (
         <div ref={containerRef} className="h-15 flex items-center overflow-hidden relative min-w-[166px] sm:min-w-68">

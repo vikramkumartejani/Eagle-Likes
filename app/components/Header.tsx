@@ -233,6 +233,7 @@ export default function Header() {
                                 alt="Eagle Logo"
                                 width={164}
                                 height={35}
+                                priority
                                 className="hidden lg:block w-[164px] h-[35px] shrink-0"
                             />
                             <Image
@@ -240,6 +241,7 @@ export default function Header() {
                                 alt="Eagle Logo Mobile"
                                 width={110}
                                 height={25}
+                                priority
                                 className="block lg:hidden w-[110px] h-[25px] shrink-0"
                             />
                         </div>

@@ -161,13 +161,13 @@ const Hero = () => {
                     <div className='flex items-center gap-2 sm:gap-4 mb-[28px] sm:mb-10'>
                         <div className="flex gap-0.5 sm:gap-2">
                             {[1, 2, 3, 4, 5].map(i => (
-                                <Image key={i} src='/assets/star.svg' alt='star' className="sm:w-6 sm:h-6 w-4 h-4" width={24} height={24} />
+                                <Image key={i} src='/assets/star.svg' alt='star' className="sm:w-6 sm:h-6 w-4 h-4" width={24} height={24} priority />
                             ))}
                         </div>
                         <div className="flex -space-x-5 sm:-space-x-8">
                             {[1, 2, 3, 4].map((i) => (
                                 <div key={i} className="sm:w-14.75 sm:h-14.75 w-8 h-8 rounded-full overflow-hidden relative">
-                                    <Image src={`/assets/profile-${i}.png`} alt="User" fill className="object-cover" />
+                                    <Image src={`/assets/profile-${i}.png`} alt="User" fill className="object-cover" priority />
                                 </div>
                             ))}
                         </div>
@@ -207,6 +207,7 @@ const Hero = () => {
                                 alt='star'
                                 width={22}
                                 height={22}
+                                priority
                                 className="animate-star-scale w-[17.8px] sm:w-[22px]"
                                 style={{ animationDelay: `${index * 0.15}s` }}
                             />
