@@ -106,6 +106,8 @@ html {
   overflow-x: hidden;
   position: relative;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
 }
 
 body {
@@ -114,6 +116,8 @@ body {
   background: #050505;
   color: white;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .custom-scroll {
@@ -125,6 +129,10 @@ body {
   height: 14.24px;
   width: 14.24px;
   background: #FFFFFF1A;
+}
+/* Ensure iOS momentum scrolling */
+.custom-scroll {
+  -webkit-overflow-scrolling: touch;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
@@ -161,6 +169,7 @@ body {
 
 .animate-marquee {
   animation: marquee 25s linear infinite;
+  width: -webkit-max-content;
   width: max-content;
 }
 
@@ -175,6 +184,7 @@ body {
   }
 }
 
+/* Safari < 17 may not support @property. Keep keyframes animation working without it */
 @property --border-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -194,16 +204,22 @@ body {
 .animate-vip-border {
   --border-angle: 0deg;
   animation: border-rotate 1.5s linear infinite;
+  /* Fallback paint for older Safari where conic-gradient anim may glitch */
+  will-change: transform;
 }
 
 .vip-toggle-style {
+  /* Fallback background for old Safari */
+  background: #101828;
   background: linear-gradient(#101828, #101828) padding-box,
     conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
   border: 1px solid transparent !important;
   box-shadow: 0px 0px 12px 0px rgba(145, 70, 255, 0.5) !important;
+  -webkit-backface-visibility: hidden;
 }
 
 .vip-toggle-style.is-vip {
+  background: #101828;
   background: linear-gradient(#101828, #101828) padding-box,
     conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
 }
@@ -272,4 +288,46 @@ body {
 
 .animate-star-scale {
   animation: stars-animation 3s ease infinite both;
+}
+
+/* --- Cross-browser/iOS Safari fixes without changing your design --- */
+/* Ensure gradient text renders on iOS Safari (needs -webkit prefixes) */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.text-transparent {
+  /* Keep color transparent for all, and ensure Safari paints correctly */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Backdrop blur vendor prefix for older Safari */
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+/* Hide scrollbars utility used in sliders (Safari/iOS + others) */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;            /* Chrome/Safari */
+}
+
+/* Momentum scrolling on iOS */
+.scrollbar-hide,
+.custom-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fallbacks for text wrapping utilities on older Safari (no text-wrap support) */
+.text-wrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.text-nowrap {
+  white-space: nowrap;
 }

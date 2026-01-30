@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import Image from 'next/image';
 import RightShadow from "./ui/RightShadow";
 import LeftShadow from "./ui/LeftShadow";
 
