@@ -102,11 +102,18 @@
   }
 }
 
+html {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
 body {
   font-family: var(--font-open-sans), sans-serif;
   box-sizing: border-box;
   background: #050505;
   color: white;
+  width: 100%;
 }
 
 .custom-scroll {
@@ -187,6 +194,18 @@ body {
 .animate-vip-border {
   --border-angle: 0deg;
   animation: border-rotate 1.5s linear infinite;
+}
+
+.vip-toggle-style {
+  background: linear-gradient(#101828, #101828) padding-box,
+    conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0px 0px 12px 0px rgba(145, 70, 255, 0.5) !important;
+}
+
+.vip-toggle-style.is-vip {
+  background: linear-gradient(#101828, #101828) padding-box,
+    conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
 }
 
 @keyframes slide-up-out {

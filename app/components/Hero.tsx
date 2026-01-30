@@ -56,7 +56,7 @@ const Hero = () => {
 
 
     return (
-        <section className=" relative w-full overflow-hidden flex flex-col items-center justify-center pt-23.5 md:pt-48 pb-[26.72px] sm:pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
+        <section className="relative w-full overflow-hidden flex flex-col items-center justify-start sm:justify-center pt-23.5 md:pt-48 pb-[26.72px] sm:pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <div className='md:block hidden bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-237.5 absolute inset-0 top-0'></div>
             <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{ background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%" }}></div>
             <BackgroundGrid />
@@ -81,21 +81,12 @@ const Hero = () => {
 
                     {/* VIP Toggle (Preserved aesthetics) */}
                     <div
-                        className="animate-vip-border relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group"
-                        style={{
-                            background: "linear-gradient(#101828, #101828) padding-box, " +
-                                (isVip
-                                    ? "conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"
-                                    : "conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box"),
-                            border: "1px solid transparent",
-                            // Same glow effect with different intensity
-                            boxShadow: "0px 0px 12px 0px rgba(145, 70, 255, 0.5)"
-                        }}
+                        className={`animate-vip-border vip-toggle-style ${isVip ? 'is-vip' : ''} relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-[360px] sm:max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group mx-auto`}
                         onClick={() => handleVipToggle(!isVip)}
                     >
                         <div className='flex items-center gap-3'>
                             <ToggleSwitch checked={isVip} onChange={handleVipToggle} />
-                            <span className="text-white font-normal text-[16.82px] sm:text-[18px] leading-8 select-none">
+                            <span className="text-white font-normal text-[17px] sm:text-[18px] leading-8 select-none whitespace-nowrap">
                                 I need vip followers
                             </span>
                         </div>

@@ -127,7 +127,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
     return (
         <div
             onClick={() => onSelect(plan.type)}
-            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-visible group flex min-w-40 flex-col h-full bg-[#FFFFFF1A] snap-center border z-10
+            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-visible group flex min-w-40 flex-col max-w-[314px] h-full bg-[#FFFFFF1A] snap-center border z-10
                 ${isSelected ? '' : 'hover:border-white/10'}
             `}
             style={{
@@ -236,7 +236,7 @@ interface PricingCardsProps {
 
 const PricingCards: React.FC<PricingCardsProps> = ({ selectedPlan, onSelect }) => {
     return (
-        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 sm:gap-5 w-full max-w-[700px] px-3 sm:px-4 py-3 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
+        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 overflow-y-hidden sm:gap-5 w-full max-w-[700px] px-3 sm:px-4 py-3 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
             {PLAN_CONFIGS.map((plan) => (
                 <PricingCard
                     key={plan.type}
