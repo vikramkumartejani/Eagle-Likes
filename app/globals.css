@@ -102,6 +102,12 @@
   }
 }
 
+html {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
 body {
   font-family: var(--font-open-sans), sans-serif;
   box-sizing: border-box;
