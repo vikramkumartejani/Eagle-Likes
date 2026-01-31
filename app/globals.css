@@ -219,6 +219,12 @@ body {
   backface-visibility: hidden;
   transform: translateZ(0);
   background-origin: border-box;
+  /* Ensure fill and border layers clip correctly across iOS/production */
+  background-clip: padding-box, border-box;
+  overflow: hidden; /* prevent rotating border from painting outside */
+  clip-path: inset(0 round 9999px); /* enforce rounded clipping */
+  isolation: isolate; /* new stacking context for stable compositing */
+  min-height: 44px; /* matches h-11 (mobile); h-12 on sm is still respected */
 }
 
 /* Rotating gradient border behind inner fill */
