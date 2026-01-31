@@ -40,12 +40,12 @@ const PackageGrid: React.FC<PackageGridProps> = ({ selectedPlanType, selectedPac
                     `}
                 >
                     {/* Top part: Count */}
-                    <div className={`rounded-[15px] sm:rounded-[25px] w-full py-[15px] sm:py-[27px] text-[19px] sm:text-[35px] leading-tight sm:leading-tight font-semibold font-inter text-center text-white ${getGradient(pkg)}`}>
+                    <div className={`rounded-[15px] sm:rounded-[25px] w-full py-[15px] sm:py-[27px] min-h-[54px] sm:min-h-[92px] flex items-center justify-center text-[19px] sm:text-[35px] leading-tight sm:leading-tight font-semibold font-inter text-center text-white whitespace-nowrap ${getGradient(pkg)}`}>
                         {pkg.count}
                     </div>
 
                     {/* Bottom part: Discount */}
-                    <div className="w-full pt-2 sm:pt-3.75 pb-2 sm:pb-3.5 text-center text-[12.66px] sm:text-[23.43px] leading-tight sm:leading-tight font-normal">
+                    <div className="w-full pt-2 sm:pt-3.75 pb-2 sm:pb-3.5 min-h-[34px] sm:min-h-[50px] flex items-center justify-center text-center text-[12.66px] sm:text-[23.43px] leading-tight sm:leading-tight font-normal whitespace-nowrap">
                         {pkg.discount[selectedPlanType]}% off
                     </div>
                 </button>

@@ -136,7 +136,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
             }}
         >
             <div
-                className="relative z-10 flex justify-between items-start h-13.75 sm:h-18 pt-2.5 sm:pt-4.5 px-3 pb-2.25 sm:pb-3.5 rounded-t-[15px] sm:rounded-t-[19px]"
+                className="relative z-10 flex justify-between items-start h-14 sm:h-18 pt-2.5 sm:pt-4.5 px-3 pb-2 sm:pb-3.5 rounded-t-[15px] sm:rounded-t-[19px]"
                 style={{ background: plan.color }}
             >
                 <div className="text-white relative z-10">
@@ -147,7 +147,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                     </h3>
                 </div>
                 {/* Icon */}
-                <div className="absolute bottom-0 right-3 sm:right-4">
+                <div className="absolute bottom-0 right-3 sm:right-4 pointer-events-none select-none">
                     <Image
                         src={plan.icon}
                         alt={plan.title}
@@ -163,7 +163,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                 </div>
             </div>
 
-            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.75 pb-6.25 overflow-visible">
+            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.5 pb-6 overflow-visible">
                 <ul className="space-y-4">
                     {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-1.5 sm:gap-3">
@@ -208,7 +208,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
             </div>
 
             {/* Selection Circle */}
-            <div className="mt-8 flex justify-end absolute bottom-3.25 sm:bottom-4 right-[13.62px] sm:right-4.5 z-10">
+            <div className="mt-8 flex justify-end absolute bottom-3 sm:bottom-4 right-[13.62px] sm:right-4.5 z-10">
                 <div
                     className={`w-6 sm:w-8 h-6 sm:h-7.75 rounded-full flex items-center justify-center transition-all duration-300
                         ${isSelected ? 'border-0 border-transparent' : 'border-2 border-[#505050] bg-transparent'}
