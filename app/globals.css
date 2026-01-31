@@ -209,10 +209,8 @@ body {
 }
 
 .vip-toggle-style {
-  /* Fallback background for old Safari */
-  background: #101828;
-  background: linear-gradient(#101828, #101828) padding-box,
-    conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
+  position: relative;
+  background: transparent;
   border: 1px solid transparent !important;
   box-shadow: 0px 0px 12px 0px rgba(145, 70, 255, 0.5) !important;
   -webkit-backface-visibility: hidden;
@@ -220,10 +218,37 @@ body {
   transform: translateZ(0);
 }
 
-.vip-toggle-style.is-vip {
+/* Rotating gradient border behind inner fill */
+.vip-toggle-style::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(#EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
+  animation: vip-rotate 1.5s linear infinite;
+  z-index: 0;
+}
+.vip-toggle-style.is-vip::before {
+  background: conic-gradient(#EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
+}
+
+/* Solid inner background to create border window */
+.vip-toggle-style::after {
+  content: "";
+  position: absolute;
+  inset: 1px; /* border thickness */
+  border-radius: inherit;
   background: #101828;
-  background: linear-gradient(#101828, #101828) padding-box,
-    conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
+  z-index: 0;
+}
+
+/* Ensure content appears above the border layers */
+.vip-toggle-style > * { position: relative; z-index: 1; }
+
+@keyframes vip-rotate { to { transform: rotate(360deg); } }
+
+.vip-toggle-style.is-vip {
+  /* handled by ::before */
 }
 
 @keyframes slide-up-out {
