@@ -56,7 +56,7 @@ const Hero = () => {
 
 
     return (
-        <section className="relative w-full overflow-visible md:overflow-hidden flex flex-col items-center justify-start sm:justify-center pt-23.5 md:pt-48 pb-[26.72px] sm:pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
+        <section className="relative w-full overflow-hidden flex flex-col items-center justify-start sm:justify-center pt-23.5 md:pt-48 pb-[26.72px] sm:pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <div className='md:block hidden bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-237.5 absolute inset-0 top-0'></div>
             <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{ background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%)" }}></div>
             <BackgroundGrid />

@@ -32,7 +32,7 @@ const PackageGrid: React.FC<PackageGridProps> = ({ selectedPlanType, selectedPac
                 <button
                     key={pkg.count}
                     onClick={() => onPackageSelect(pkg)}
-                    className={`bg-[#FFFFFF1A] flex flex-col cursor-pointer items-center justify-center rounded-[16px] sm:rounded-[26px] border transition-all duration-200 group
+                    className={`bg-[#FFFFFF1A] flex flex-col cursor-pointer items-center justify-center rounded-[16px] sm:rounded-[26px] border transition-all duration-200 overflow-hidden group
                          ${selectedPackage.count === pkg.count
                             ? 'border-[#FFFFFF33]'
                             : 'border-[#FFFFFF1A]'
