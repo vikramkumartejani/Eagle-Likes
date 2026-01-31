@@ -209,19 +209,24 @@ body {
 }
 
 .vip-toggle-style {
-  /* Fallback background for old Safari */
+  position: relative;
+  /* Solid inner background */
   background: #101828;
-  background: linear-gradient(#101828, #101828) padding-box,
-    conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
   border: 1px solid transparent !important;
   box-shadow: 0px 0px 12px 0px rgba(145, 70, 255, 0.5) !important;
   -webkit-backface-visibility: hidden;
 }
-
-.vip-toggle-style.is-vip {
-  background: #101828;
-  background: linear-gradient(#101828, #101828) padding-box,
-    conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
+/* Gradient border via pseudo-element to avoid iOS seam artifacts */
+.vip-toggle-style::before {
+  content: "";
+  position: absolute;
+  inset: -1px; /* extend one pixel to sit under the transparent border */
+  border-radius: inherit;
+  background: conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
+  z-index: -1;
+}
+.vip-toggle-style.is-vip::before {
+  background: conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
 }
 
 @keyframes slide-up-out {
