@@ -22,7 +22,7 @@ const openSans = Open_Sans({
 });
 
 const arial = localFont({
-  src: "../public/font-arial/arial.ttf",
+  src: "./fonts/arial.ttf",
   variable: "--font-arial",
   display: "swap",
 });
