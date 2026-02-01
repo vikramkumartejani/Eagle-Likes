@@ -254,7 +254,7 @@ body {
 }
 
 .vip-toggle-style.is-vip::before {
-  opacity: 0;
+  opacity: 1;
 }
 
 .vip-toggle-style > * {
@@ -265,7 +265,7 @@ body {
 .vip-toggle-style.is-vip {
   background: #101828;
   background: linear-gradient(#101828, #101828) padding-box,
-    conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
+    conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
   background-origin: border-box;
 }
 
