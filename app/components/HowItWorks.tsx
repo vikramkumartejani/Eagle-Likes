@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import RightShadow from './ui/RightShadow';
 import LeftShadow from './ui/LeftShadow';
