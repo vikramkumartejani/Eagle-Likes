@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 export const FaqItem = ({ question, answer, initialOpen = false }: {
     question: string;
@@ -7,6 +7,40 @@ export const FaqItem = ({ question, answer, initialOpen = false }: {
     initialOpen?: boolean;
 }) => {
     const [isOpen, setIsOpen] = useState(initialOpen);
+    const contentRef = useRef<HTMLDivElement | null>(null);
+    const [contentHeight, setContentHeight] = useState(0);
+
+    // Measure content height for smooth max-height animation (iOS-safe)
+    const measure = () => {
+        if (contentRef.current) {
+            setContentHeight(contentRef.current.scrollHeight);
+        }
+    };
+
+    // Measure before paint to avoid flash when initially open
+    useLayoutEffect(() => {
+        measure();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isOpen]);
+
+    useEffect(() => {
+        measure();
+        const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
+        if (contentRef.current && ro) ro.observe(contentRef.current);
+
+        const onResize = () => measure();
+        window.addEventListener('resize', onResize);
+
+        const raf = requestAnimationFrame(measure);
+
+        return () => {
+            window.removeEventListener('resize', onResize);
+            if (ro && contentRef.current) ro.unobserve(contentRef.current);
+            if (ro) ro.disconnect();
+            cancelAnimationFrame(raf);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className={`bg-[#FFFFFF0D] border border-[#FFFFFF26] rounded-[15px] overflow-hidden ${isOpen ? "shadow-lg" : ""}`}>
@@ -23,8 +57,11 @@ export const FaqItem = ({ question, answer, initialOpen = false }: {
                     </svg>
                 </span>
             </button>
-            <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
-                <div className="overflow-hidden">
+            <div
+                className={`overflow-hidden gpu transition-[max-height,opacity] duration-500 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+                style={{ maxHeight: isOpen ? contentHeight : 0 }}
+            >
+                <div ref={contentRef}>
                     <div className="px-3 sm:px-6 pb-4 sm:pb-6 text-[#99A1AF] text-[13px] sm:text-[16px] leading-6 sm:leading-6.5 font-medium">
                         {answer}
                     </div>

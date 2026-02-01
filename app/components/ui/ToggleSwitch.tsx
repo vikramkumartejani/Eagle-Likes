@@ -20,7 +20,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ checked, onChange }) => {
                 }`}
         >
             <span
-                className={`absolute left-[3px] top-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-white rounded-full transition-all duration-300 ease-in-out ${checked ? 'translate-x-[20px]' : 'translate-x-[-1px]'
+                className={`absolute left-[3px] top-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-white rounded-full transition-all duration-300 ease-in-out ${checked ? 'sm:translate-x-[24px] translate-x-[20px]' : 'translate-x-[-1px]'
                     }`}
             />
         </button>

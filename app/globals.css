@@ -203,6 +203,7 @@ body {
 }
 
 .vip-toggle-style {
+  position: relative;
   /* Fallback background for old Safari */
   background: #101828;
   background: linear-gradient(#101828, #101828) padding-box,
@@ -235,6 +236,31 @@ body {
 
 
 
+
+.vip-toggle-style::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(#101828, #101828) padding-box,
+    conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box, border-box;
+  opacity: 1;
+  transition: opacity 300ms ease;
+  will-change: opacity;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vip-toggle-style.is-vip::before {
+  opacity: 0;
+}
+
+.vip-toggle-style > * {
+  position: relative;
+  z-index: 1;
+}
 
 .vip-toggle-style.is-vip {
   background: #101828;
@@ -355,28 +381,4 @@ body {
 
 .text-nowrap {
   white-space: nowrap;
-}
-
-/* --- Performance utilities (safe for older iPhones) --- */
-/* Defer rendering of offscreen sections without changing layout */
-.cv-auto {
-  content-visibility: auto;
-  /* Reserve space to avoid layout shift until content is painted */
-  contain-intrinsic-size: 700px;
-}
-
-/* Force GPU compositing on elements with heavy transforms (optional helper) */
-.gpu {
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-/* Respect reduced motion preference to avoid costly animations on some devices */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
