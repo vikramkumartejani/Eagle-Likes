@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import ToggleSwitch from './ui/ToggleSwitch';
@@ -54,7 +55,6 @@ const Hero = () => {
         }));
     };
 
-
     return (
         <section className="relative w-full overflow-x-hidden overflow-y-visible flex flex-col items-center justify-start sm:justify-center pt-23.5 md:pt-48 pb-[26.72px] sm:pb-18.75 border-b-[1.5px] border-[#0663CD4D]">
             <div className='md:block hidden bg-linear-to-b from-[rgba(6,99,205,0.20)] from-[76.44%] to-[rgba(3,50,103,0.00)] w-full h-237.5 absolute inset-0 top-0'></div>
@@ -102,7 +102,6 @@ const Hero = () => {
                     </div>
                 </div>
 
-
                 <PricingCards selectedPlan={selectedPlanType} onSelect={handlePlanSelect} />
 
                 <div className='px-3 w-full text-center flex items-center justify-center flex-col'>
@@ -147,8 +146,6 @@ const Hero = () => {
                                 ></span>
                                 <span className="relative z-10">Buy Now</span>
                             </button>
-
-
                         </div>
 
                         {/* Social Proof */}

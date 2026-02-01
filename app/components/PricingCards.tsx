@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import DifferenceTooltip from './ui/DifferenceTooltip';
-
 
 export type PlanType = 'premium' | 'active' | 'vip';
 
@@ -116,7 +115,6 @@ const PLAN_CONFIGS: PlanConfig[] = [
     },
 ];
 
-
 interface PricingCardProps {
     plan: PlanConfig;
     isSelected: boolean;
@@ -127,7 +125,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
     return (
         <div
             onClick={() => onSelect(plan.type)}
-            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-hidden group flex min-w-40 flex-col max-w-[314px] h-full bg-[#FFFFFF1A] snap-center border z-10
+            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-hidden group flex min-w-40 flex-col max-w-[314px] h-full min-h-[250px] sm:min-h-[270px] bg-[#FFFFFF1A] snap-center border z-10
                 ${isSelected ? '' : 'hover:border-white/10'}
             `}
             style={{
@@ -146,7 +144,6 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                         ))}
                     </h3>
                 </div>
-                {/* Icon */}
                 <div className="absolute bottom-0 right-3 sm:right-4 pointer-events-none select-none">
                     <Image
                         src={plan.icon}
@@ -163,7 +160,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                 </div>
             </div>
 
-            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.5 pb-6 overflow-visible">
+            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.5 pb-8 overflow-visible">
                 <ul className="space-y-4">
                     {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-1.5 sm:gap-3">
@@ -207,7 +204,6 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                 </ul>
             </div>
 
-            {/* Selection Circle */}
             <div className="mt-8 flex justify-end absolute bottom-3 sm:bottom-4 right-[13.62px] sm:right-4.5 z-10">
                 <div
                     className={`w-6 sm:w-8 h-6 sm:h-7.75 rounded-full flex items-center justify-center transition-all duration-300
@@ -227,7 +223,6 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
         </div >
     );
 };
-
 
 interface PricingCardsProps {
     selectedPlan: PlanType;
