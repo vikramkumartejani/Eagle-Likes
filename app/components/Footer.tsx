@@ -85,6 +85,8 @@ const Footer = () => {
                     alt="layer"
                     width={230}
                     height={100}
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
 
@@ -186,25 +188,25 @@ const Footer = () => {
 
 const PaymentIconVisa = () => (
     <div className='bg-white rounded-[5px] border border-[#D6DCE5] h-7 w-10 flex items-center justify-center'>
-        <Image src="/assets/visa.svg" alt="Visa" width={28} height={10} />
+        <Image src="/assets/visa.svg" alt="Visa" width={28} height={10} loading="lazy" decoding="async" />
     </div>
 );
 
 const PaymentIconMastercard = () => (
     <div className='bg-white rounded-[5px] border border-[#D6DCE5] h-7 w-10 flex items-center justify-center'>
-        <Image src="/assets/mastercard.svg" alt="mastercard" width={24} height={15} />
+        <Image src="/assets/mastercard.svg" alt="mastercard" width={24} height={15} loading="lazy" decoding="async" />
     </div>
 );
 
 const PaymentIconAmex = () => (
     <div className='bg-[#006FCF] rounded-[5px] border border-[#D6DCE5] h-7 w-10 flex items-center justify-end'>
-        <Image src="/assets/american-express.svg" alt="american-express" width={21} height={16} />
+        <Image src="/assets/american-express.svg" alt="american-express" width={21} height={16} loading="lazy" decoding="async" />
     </div>
 );
 
 const PaymentIconApplePay = () => (
     <div className='bg-white rounded-[5px] border border-[#D6DCE5] h-7 w-10 flex items-center justify-center'>
-        <Image src="/assets/apple-pay.svg" alt="apple-pay" width={27.74} height={11.38} className='pt-0.5' />
+        <Image src="/assets/apple-pay.svg" alt="apple-pay" width={27.74} height={11.38} className='pt-0.5' loading="lazy" decoding="async" />
     </div>
 );
 

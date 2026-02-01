@@ -137,6 +137,8 @@ const BenefitsOfBuyingFollowers = () => {
                                         width={benefit.iconWidth}
                                         height={benefit.iconHeight}
                                         className="object-contain"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                             </div>
@@ -191,7 +193,8 @@ const BenefitsOfBuyingFollowers = () => {
                                             width={benefit.iconWidth}
                                             height={benefit.iconHeight}
                                             className="object-contain"
-                                            priority
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
                                 </div>

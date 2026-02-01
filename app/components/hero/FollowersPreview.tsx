@@ -8,7 +8,7 @@ const FollowersPreview: React.FC = () => {
             <div className="pb-3 sm:pb-6">
                 <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3.25 border-b border-[#50505033] sm:border-[#FFFFFF33]">
                     <div className="flex items-center gap-[9px] sm:gap-3.5">
-                        <Image src='/assets/user-icon.svg' alt='user-icon' width={24} height={26} className='sm:w-6 w-[15px]' />
+                        <Image src='/assets/user-icon.svg' alt='user-icon' width={24} height={26} className='sm:w-6 w-[15px]' decoding="async" />
                         <span className="text-[14px] sm:text-[24px] leading-6 font-semibold text-white">Followers Preview</span>
                     </div>
                     <div className="bg-[#FFFFFF33] px-[7px] sm:px-3 h-[26.27px] sm:h-10.75 rounded-[60px] flex items-center gap-1 sm:gap-1.5">
@@ -23,7 +23,7 @@ const FollowersPreview: React.FC = () => {
                     {FOLLOWERS_UPDATES.map((update, idx) => (
                         <div key={idx} className="text-nowrap flex items-center gap-[7px] sm:gap-3 pl-1 sm:pl-[7.12px] pr-[9px] sm:pr-[14.24px] rounded-[10.65px] sm:rounded-[17px] bg-[#EDEDED1A] sm:bg-[#EDEDED0D] border border-[#FFFFFF26] sm:border-[#FFFFFF1A] shrink-0 w-auto h-[34px] sm:h-14.25">
                             <div className="w-[26.27px] sm:w-11 h-[26.27px] sm:h-11 rounded-full bg-gray-700 overflow-hidden relative shrink-0">
-                                <Image src={update.avatar} alt="User" fill sizes="44px" className="object-cover" />
+                                <Image src={update.avatar} alt="User" fill sizes="(max-width: 640px) 26px, 44px" className="object-cover" loading="lazy" decoding="async" />
                             </div>
                             <div className="w-full flex justify-between gap-[7px] sm:gap-3">
                                 <p className='text-[9.94px] sm:text-[16.62px] leading-5 sm:leading-6 font-normal'>

@@ -356,3 +356,27 @@ body {
 .text-nowrap {
   white-space: nowrap;
 }
+
+/* --- Performance utilities (safe for older iPhones) --- */
+/* Defer rendering of offscreen sections without changing layout */
+.cv-auto {
+  content-visibility: auto;
+  /* Reserve space to avoid layout shift until content is painted */
+  contain-intrinsic-size: 700px;
+}
+
+/* Force GPU compositing on elements with heavy transforms (optional helper) */
+.gpu {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Respect reduced motion preference to avoid costly animations on some devices */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

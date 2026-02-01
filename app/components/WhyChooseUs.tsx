@@ -128,7 +128,7 @@ const WhyChooseUs = () => {
                     <div className="bg-[#121212] border-2 sm:border-4 border-[#01AAFF] rounded-[20px] sm:rounded-[40px] pb-11 pt-2 px-3 md:px-[18.74px] shadow-[0_0_60px_rgba(1,170,255,0.15)] scale-[1.02]">
                         {/* Header inside the blue card */}
                         <div className="flex items-center justify-center h-12.5 sm:h-16">
-                            <Image src="/assets/logo.png" alt="logo" width={196} height={42} className='sm:w-[180px] w-[96px]' />
+                            <Image src="/assets/logo.png" alt="logo" width={196} height={42} className='sm:w-[180px] w-[96px]' loading="lazy" decoding="async" />
                         </div>
                         {eagleLikesItems.map((item, idx) => (
                             <div key={idx} className="w-full h-8 sm:h-11.5 flex items-center gap-1.5 md:gap-2.5 border-b-[0.81px] border-white">

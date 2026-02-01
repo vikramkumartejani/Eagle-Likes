@@ -30,6 +30,8 @@ const EagleLikesIsSeenOn = () => {
                                     width={brand.width}
                                     height={brand.height}
                                     className="object-contain transition-all duration-300"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                         ))}

@@ -32,11 +32,11 @@ const WhyAreInstagramFollowersImportant = () => {
                             <p className='max-w-97.5 text-[#99A1AF] text-[15px] sm:text-[18px] leading-5 sm:leading-7 font-semibold font-inter'>Buying Instagram followers can help you grow faster and establish instant credibility in a competitive space. A larger follower count makes your profile look trustworthy, attracts real engagement, and increases your chances of being discovered by new audiences.</p>
                             <p className='mt-2 max-w-99 text-[#99A1AF] text-[14px] sm:text-[16px] leading-5 sm:leading-7 font-normal font-inter'>Whether you’re a brand, influencer, or creator, more followers can boost visibility, strengthen your reputation, and open doors to new opportunities and collaborations.</p>
                         </div>
-                        <Image src='/assets/why-buy-instagram-followers.jpg' alt='image' width={380} height={540} className='rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]' style={{ boxShadow: "0px 7px 30px 0px #1489E999" }} />
+                        <Image src='/assets/why-buy-instagram-followers.jpg' alt='image' width={380} height={540} className='rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]' style={{ boxShadow: "0px 7px 30px 0px #1489E999" }} loading="lazy" decoding="async" sizes="(max-width: 768px) 300px, 380px" />
                     </div>
 
                     <div className='flex items-center justify-between gap-9 md:gap-6 flex-col md:flex-row'>
-                        <Image src='/assets/boost-organic-growth.jpg' alt='image' width={380} height={540} className='rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]' style={{ boxShadow: "0px 7px 30px 0px #1489E999" }} />
+                        <Image src='/assets/boost-organic-growth.jpg' alt='image' width={380} height={540} className='rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]' style={{ boxShadow: "0px 7px 30px 0px #1489E999" }} loading="lazy" decoding="async" sizes="(max-width: 768px) 300px, 380px" />
                         <div className='max-w-99.5 text-center md:text-left'>
                             <h2 className='mb-[25px] sm:mb-8 text-[30px] sm:text-[48px] leading-[30px] sm:leading-13.75 font-bold font-rethink capitalize'>Boost Organic Growth</h2>
                             <p className='max-w-97.5 text-[#99A1AF] text-[15px] sm:text-[18px] leading-5 sm:leading-7 font-semibold font-inter'>Boost your organic growth on Instagram by buying followers from Eagle Likes. Our high-quality, real followers help increase your visibility and attract genuine engagement. With a stronger follower base, your content reaches more people naturally, enhancing credibility and trust</p>

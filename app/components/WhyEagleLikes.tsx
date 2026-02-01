@@ -131,6 +131,8 @@ const WhyEagleLikes = () => {
                                         width={feature.iconWidth}
                                         height={feature.iconHeight}
                                         className="object-contain"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                             </div>
@@ -180,7 +182,8 @@ const WhyEagleLikes = () => {
                                             width={feature.iconWidth}
                                             height={feature.iconHeight}
                                             className="object-contain"
-                                            priority
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
                                 </div>

@@ -81,13 +81,15 @@ const SocialMediaGrowth = () => {
                             alt="Instagram Growth Strategy"
                             fill
                             className="object-cover"
-                            priority
+                            sizes="(max-width: 1024px) 100vw, 480px"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
 
                     {/* instagram icon */}
                     <div className='rounded-[14px] w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center absolute -top-[26px] left-[24px] sm:-top-[35.23px] sm:left-[31.61px]' style={{ background: "linear-gradient(135deg, #9810FA 0%, #E60076 100%)", boxShadow: "0px 25px 50px -12px #AD46FF80", animation: "float 3s ease-in-out infinite", animationDelay: "0s" }}>
-                        <Image src='/assets/svgs/instagram.svg' alt='instagram' width={24} height={24} className='sm:w-8 sm:h-8' />
+                        <Image src='/assets/svgs/instagram.svg' alt='instagram' width={24} height={24} className='sm:w-8 sm:h-8' decoding="async" />
                     </div>
 
                     {/* heart icon */}
@@ -241,6 +243,9 @@ const SocialMediaGrowth = () => {
                                         alt="User"
                                         fill
                                         className='object-cover'
+                                        sizes="32px"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                             ))}

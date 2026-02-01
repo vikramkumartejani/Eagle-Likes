@@ -47,6 +47,8 @@ const YourPrivacyIsOurFocus = () => {
                             height={540}
                             className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]"
                             style={{ boxShadow: "0px 7px 30px 0px #1489E999" }}
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
 
@@ -58,6 +60,8 @@ const YourPrivacyIsOurFocus = () => {
                             height={540}
                             className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]"
                             style={{ boxShadow: "0px 7px 30px 0px #1489E999" }}
+                            loading="lazy"
+                            decoding="async"
                         />
                         <div className="max-w-99.5 text-center md:text-left">
                             <h2 className="mb-[25px] sm:mb-8 text-[30px] sm:text-[48px] leading-[30px] sm:leading-13.75 font-bold font-inter capitalize text-white">
@@ -142,6 +146,8 @@ const YourPrivacyIsOurFocus = () => {
                                     alt="star"
                                     width={20}
                                     height={20}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h3 className="text-white text-[20px] sm:text-[24px] leading-[30px] sm:leading-9 font-normal my-2.5 sm:my-2 font-arial-custom">
                                     Real
@@ -212,17 +218,19 @@ const YourPrivacyIsOurFocus = () => {
                             width={460}
                             height={480}
                             className="object-cover"
+                            loading="lazy"
+                            decoding="async"
                         />
                         <div className="absolute bottom-4 sm:bottom-5 right-4 sm:right-5 flex items-end flex-col">
                             <div className="w-fit bg-[#101828CC] border border-[#FFFFFF33] rounded-xl p-[11.98px] sm:p-[13px] flex items-center justify-between gap-2 sm:gap-2.5" style={{ boxShadow: "0px 25px 50px -12px #00000040" }}>
-                                <Image src='/assets/heart-icon.svg' alt="icon" height={36} width={36} className="sm:w-9 w-8" />
+                                <Image src='/assets/heart-icon.svg' alt="icon" height={36} width={36} className="sm:w-9 w-8" loading="lazy" decoding="async" />
                                 <div className="space-y-1">
                                     <p className="text-[13px] sm:text-[14px] leading-3.5 text-white font-normal">+2.4K Likes</p>
                                     <p className="text-[11px] sm:text-[12px] leading-3.5 text-[#99A1AF] font-normal">Last 24 hours</p>
                                 </div>
                             </div>
                             <div className="mt-[26px] sm:mt-9 bg-[#101828CC] border border-[#FFFFFF33] rounded-xl p-[11.98px] sm:p-[13px] flex items-center justify-between gap-2 sm:gap-2.5" style={{ boxShadow: "0px 25px 50px -12px #00000040" }}>
-                                <Image src='/assets/messages.svg' alt="icon" height={36} width={36} className="sm:w-9 w-8" />
+                                <Image src='/assets/messages.svg' alt="icon" height={36} width={36} className="sm:w-9 w-8" loading="lazy" decoding="async" />
                                 <p className="text-[13px] sm:text-[14px] leading-3.5 text-white font-normal">+856 Comments</p>
                             </div>
                         </div>
