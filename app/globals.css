@@ -202,10 +202,11 @@ body {
 }
 
 .animate-vip-border {
+  /* Keep custom-prop animation for modern browsers (no harm if unused) */
   --border-angle: 0deg;
   animation: border-rotate 1.5s linear infinite;
-  /* Fallback paint for older Safari where conic-gradient anim may glitch */
   will-change: transform;
+  position: relative;
 }
 
 .vip-toggle-style {
@@ -234,15 +235,58 @@ body {
 
 
 /* Ensure content appears above the border layers */
-
-
-
-
 .vip-toggle-style.is-vip {
   background: #101828;
   background: linear-gradient(#101828, #101828) padding-box,
     conic-gradient(from var(--border-angle), #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
   background-origin: border-box;
+}
+
+/* iOS Safari-specific fallback: draw rotating border via pseudo-elements */
+@supports (-webkit-touch-callout: none) {
+  .animate-vip-border.vip-toggle-style {
+    --vip-gradient: conic-gradient(from 0deg, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
+    background: #101828 !important;
+    border: 1px solid transparent !important;
+    border-radius: 9999px;
+    overflow: hidden;
+    position: relative;
+    clip-path: inset(0 round 9999px);
+    isolation: isolate;
+  }
+  .animate-vip-border.vip-toggle-style.is-vip {
+    --vip-gradient: conic-gradient(from 0deg, #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
+  }
+  .animate-vip-border.vip-toggle-style::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--vip-gradient);
+    animation: spin-rotate 1.5s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .animate-vip-border.vip-toggle-style::after {
+    content: "";
+    position: absolute;
+    inset: 1px; /* border thickness */
+    border-radius: inherit;
+    background: #101828;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .animate-vip-border.vip-toggle-style > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@keyframes spin-rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes slide-up-out {
