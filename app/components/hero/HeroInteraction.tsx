@@ -53,7 +53,7 @@ export const HeroInteraction = () => {
             {/* VIP Toggle */}
             <div className='px-3 w-full max-w-[360px] sm:max-w-91.75'>
                 <div
-                    className={`animate-vip-border vip-toggle-style ${isVip ? 'is-vip' : ''} relative inline-flex items-center justify-center px-3.5 sm:px-4 w-full h-11 sm:h-12 rounded-full cursor-pointer group mx-auto`}
+                    className={`animate-vip-border vip-toggle-style ${isVip ? 'is-vip' : ''} relative inline-flex items-center justify-center px-[14px] sm:px-4 w-full h-11 sm:h-12 rounded-full cursor-pointer group mx-auto`}
                     onClick={() => handleVipToggle(!isVip)}
                 >
                     <div className='flex items-center justify-between sm:gap-3 gap-2 flex-1 w-full'>
