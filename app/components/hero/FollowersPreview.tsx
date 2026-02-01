@@ -23,7 +23,7 @@ const FollowersPreview: React.FC = () => {
                     {FOLLOWERS_UPDATES.map((update, idx) => (
                         <div key={idx} className="text-nowrap flex items-center gap-[7px] sm:gap-3 pl-1 sm:pl-[7.12px] pr-[9px] sm:pr-[14.24px] rounded-[10.65px] sm:rounded-[17px] bg-[#EDEDED1A] sm:bg-[#EDEDED0D] border border-[#FFFFFF26] sm:border-[#FFFFFF1A] shrink-0 w-auto h-[34px] sm:h-14.25">
                             <div className="w-[26.27px] sm:w-11 h-[26.27px] sm:h-11 rounded-full bg-gray-700 overflow-hidden relative shrink-0">
-                                <Image src={update.avatar} alt="User" fill sizes="44px" unoptimized className="object-cover" />
+                                <Image src={update.avatar} alt="User" fill sizes="44px" className="object-cover" />
                             </div>
                             <div className="w-full flex justify-between gap-[7px] sm:gap-3">
                                 <p className='text-[9.94px] sm:text-[16.62px] leading-5 sm:leading-6 font-normal'>

@@ -76,6 +76,7 @@
   src: url('/font-arial/ARIAL.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .font-arial-custom {
@@ -130,6 +131,7 @@ body {
   width: 14.24px;
   background: #FFFFFF1A;
 }
+
 /* Ensure iOS momentum scrolling */
 .custom-scroll {
   -webkit-overflow-scrolling: touch;
@@ -221,10 +223,14 @@ body {
   background-origin: border-box;
   /* Ensure fill and border layers clip correctly across iOS/production */
   background-clip: padding-box, border-box;
-  overflow: hidden; /* prevent rotating border from painting outside */
-  clip-path: inset(0 round 9999px); /* enforce rounded clipping */
-  isolation: isolate; /* new stacking context for stable compositing */
-  min-height: 44px; /* matches h-11 (mobile); h-12 on sm is still respected */
+  overflow: hidden;
+  /* prevent rotating border from painting outside */
+  clip-path: inset(0 round 9999px);
+  /* enforce rounded clipping */
+  isolation: isolate;
+  /* new stacking context for stable compositing */
+  min-height: 44px;
+  /* matches h-11 (mobile); h-12 on sm is still respected */
 }
 
 /* Rotating gradient border behind inner fill */
@@ -317,6 +323,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
 }
+
 .text-transparent {
   /* Keep color transparent for all, and ensure Safari paints correctly */
   color: transparent;
@@ -331,11 +338,15 @@ body {
 
 /* Hide scrollbars utility used in sliders (Safari/iOS + others) */
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none;    /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;            /* Chrome/Safari */
+  display: none;
+  /* Chrome/Safari */
 }
 
 /* Momentum scrolling on iOS */
@@ -349,6 +360,7 @@ body {
   white-space: normal;
   overflow-wrap: anywhere;
 }
+
 .text-nowrap {
   white-space: nowrap;
 }

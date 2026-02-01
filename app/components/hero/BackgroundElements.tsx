@@ -9,11 +9,11 @@ export const BackgroundGrid = () => (
 );
 
 export const HeroRightImage = () => (
-    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" priority fetchPriority="high" unoptimized width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
+    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" priority fetchPriority="high" width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
 );
 
 export const HeroLeftImage = () => (
-    <Image src="/assets/left-shadow-hero.svg" alt="Background Grid" priority fetchPriority="high" unoptimized width={213} height={447} className='absolute left-0 top-80 md:block hidden' />
+    <Image src="/assets/left-shadow-hero.svg" alt="Background Grid" width={213} height={447} className='absolute left-0 top-80 md:block hidden' />
 );
 
 export const LeftShadow = () => (
