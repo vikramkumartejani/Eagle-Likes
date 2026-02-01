@@ -71,7 +71,7 @@ const Hero = () => {
 
                 <div className='px-3 text-center'>
                     {/* Headlines */}
-                    <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4 mx-auto max-w-2xl">
+                    <h1 className="text-[26px] sm:text-[54px] leading-8 sm:leading-15 font-rethink font-bold text-center mb-4 mx-auto max-w-2xl overflow-visible">
                         Buy Instagram Followers <br /> with <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#018DFF_48%,#00FFFF_85%)]">Fast Delivery!</span>
                     </h1>
 

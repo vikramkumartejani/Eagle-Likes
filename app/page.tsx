@@ -16,7 +16,7 @@ import RightShadow from "./components/ui/RightShadow";
 
 export default function Home() {
   return (
-    <div className="text-white">
+    <div className="text-white overflow-x-hidden">
       <Header />
       <Hero />
       <EagleLikesIsSeenOn />
