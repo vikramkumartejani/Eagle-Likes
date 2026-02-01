@@ -125,7 +125,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
     return (
         <div
             onClick={() => onSelect(plan.type)}
-            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-visible group flex min-w-40 flex-col max-w-[314px] h-full min-h-[250px] sm:min-h-[270px] bg-[#FFFFFF1A] snap-center border z-10
+            className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-visible group flex min-w-40 flex-col max-w-[314px] h-[322px] sm:h-auto bg-[#FFFFFF1A] snap-center border z-10
                 ${isSelected ? '' : 'hover:border-white/10'}
             `}
             style={{
@@ -160,7 +160,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
                 </div>
             </div>
 
-            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.5 pb-8 overflow-visible">
+            <div className="relative z-10 grow pl-3 pr-4 sm:pr-4.5 pt-3.5 sm:pt-4.5 pb-8 overflow-y-auto overflow-x-visible">
                 <ul className="space-y-4">
                     {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-1.5 sm:gap-3">
