@@ -81,24 +81,26 @@ const Hero = () => {
 
                     {/* VIP Toggle (Preserved aesthetics) */}
                     <div
-                        className={`animate-vip-border vip-toggle-style ${isVip ? 'is-vip' : ''} relative inline-flex items-center justify-between px-3.5 sm:px-4 w-full max-w-[360px] sm:max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group mx-auto`}
+                        className={`animate-vip-border vip-toggle-style ${isVip ? 'is-vip' : ''} relative inline-flex items-center justify-center px-3.5 sm:px-4 w-full max-w-[360px] sm:max-w-91.75 h-11 sm:h-12 rounded-full cursor-pointer group mx-auto`}
                         onClick={() => handleVipToggle(!isVip)}
                     >
-                        <div className='flex items-center gap-3'>
-                            <ToggleSwitch checked={isVip} onChange={handleVipToggle} />
-                            <span className="text-white font-normal text-[17px] sm:text-[18px] leading-8 select-none whitespace-nowrap">
-                                I need vip followers
-                            </span>
-                        </div>
-                        <DifferenceTooltip
-                            title="VIP Followers"
-                            content="Fit for high-engaged Instagrammers! VIP treatment followers are our highest quality packages, highly active, with real engagement, interactive stories, dynamic carousels, and have 5-10x more followers than following."
-                            color="#9146FF"
-                        >
-                            <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
-                                <Image src='/assets/info.svg' alt='info' width={20} height={20} />
+                        <div className='flex items-center justify-between gap-3 flex-1'>
+                            <div className='flex items-center gap-3'>
+                                <ToggleSwitch checked={isVip} onChange={handleVipToggle} />
+                                <span className="text-white font-normal text-[17px] sm:text-[18px] leading-8 select-none whitespace-nowrap">
+                                    I need vip followers
+                                </span>
                             </div>
-                        </DifferenceTooltip>
+                            <DifferenceTooltip
+                                title="VIP Followers"
+                                content="Fit for high-engaged Instagrammers! VIP treatment followers are our highest quality packages, highly active, with real engagement, interactive stories, dynamic carousels, and have 5-10x more followers than following."
+                                color="#9146FF"
+                            >
+                                <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
+                                    <Image src='/assets/info.svg' alt='info' width={20} height={20} />
+                                </div>
+                            </DifferenceTooltip>
+                        </div>
                     </div>
                 </div>
 
