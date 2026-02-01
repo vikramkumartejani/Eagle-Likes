@@ -253,6 +253,9 @@ body {
     position: relative;
     clip-path: inset(0 round 9999px);
     isolation: isolate;
+    /* Enforce stable height on iOS to avoid layout jitter during animation */
+    height: 44px;
+    min-height: 44px;
   }
   .animate-vip-border.vip-toggle-style.is-vip {
     --vip-gradient: conic-gradient(from 0deg, #EE1D52, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
@@ -267,6 +270,11 @@ body {
     z-index: 0;
     pointer-events: none;
     will-change: transform;
+    /* Improve rendering stability on iOS */
+    transform-origin: center center;
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
   .animate-vip-border.vip-toggle-style::after {
     content: "";
@@ -276,10 +284,19 @@ body {
     background: #101828;
     z-index: 1;
     pointer-events: none;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
   .animate-vip-border.vip-toggle-style > * {
     position: relative;
     z-index: 2;
+  }
+  /* Match desktop height on sm+ breakpoints for iOS */
+  @media (min-width: 640px) {
+    .animate-vip-border.vip-toggle-style {
+      height: 48px;
+      min-height: 48px;
+    }
   }
 }
 
