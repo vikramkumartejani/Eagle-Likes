@@ -1,6 +1,7 @@
 import React from 'react';
 import RightShadow from './ui/RightShadow';
 import LeftShadow from './ui/LeftShadow';
+import { arial } from '../fonts';
 
 interface Step {
     id: string;
@@ -61,7 +62,7 @@ const STEPS: Step[] = [
 
 const HowItWorks = () => {
     return (
-        <section className="w-full pt-10 pb-[43px] sm:pb-[124px] sm:pt-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative">
+        <section className={`${arial.variable} w-full pt-10 pb-[43px] sm:pb-[124px] sm:pt-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative`}>
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12.5">
                     <h2 className="text-[30px] sm:text-[48px] leading-8 sm:leading-12 font-bold text-white mb-4 sm:mb-6 font-inter">

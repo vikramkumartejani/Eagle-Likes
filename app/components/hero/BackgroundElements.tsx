@@ -2,14 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 
 export const BackgroundGrid = () => (
-    <div className="absolute inset-0 z-20 w-full mx-auto mt-12.75 md:mt-24 pointer-events-none -ml-[5px]">
-        <Image src="/assets/grid.svg" alt="Background Grid" width={762} height={365} priority fetchPriority="high" unoptimized className='md:block hidden object-contain mx-auto' />
-        <Image src="/assets/svg-grid-mb.svg" alt="Background Grid" width={374} height={221} priority fetchPriority="high" unoptimized className='md:hidden block object-contain mx-auto' />
+    <div className="absolute inset-0 z-0 w-full mx-auto mt-12.75 md:mt-24 pointer-events-none -ml-[5px]">
+        <Image src="/assets/grid.svg" alt="Background Grid" width={762} height={365} className='md:block hidden object-contain mx-auto' />
+        <Image src="/assets/svg-grid-mb.svg" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' />
     </div>
 );
 
 export const HeroRightImage = () => (
-    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" priority fetchPriority="high" width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
+    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' />
 );
 
 export const HeroLeftImage = () => (

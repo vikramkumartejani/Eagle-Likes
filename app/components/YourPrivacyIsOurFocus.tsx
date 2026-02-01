@@ -2,10 +2,11 @@ import React from "react";
 import Image from 'next/image';
 import RightShadow from "./ui/RightShadow";
 import LeftShadow from "./ui/LeftShadow";
+import { arial } from "../fonts";
 
 const YourPrivacyIsOurFocus = () => {
     return (
-        <div className="w-full pt-20 lg:pt-38.75 pb-[50px] md:pb-40.25 px-4 relative">
+        <div className={`${arial.variable} w-full pt-20 lg:pt-38.75 pb-[50px] md:pb-40.25 px-4 relative`}>
             <div className="max-w-269.5 mx-auto relative z-20">
                 {/* Heading */}
                 <div className="text-center">
