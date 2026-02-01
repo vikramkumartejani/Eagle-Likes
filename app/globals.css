@@ -243,7 +243,7 @@ body {
 }
 
 /* iOS Safari-specific fallback: draw rotating border via pseudo-elements */
-@supports (-webkit-touch-callout: none) {
+@supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) {
   .animate-vip-border.vip-toggle-style {
     --vip-gradient: conic-gradient(from 0deg, #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF);
     background: #101828 !important;
@@ -300,9 +300,16 @@ body {
   }
 }
 
+@-webkit-keyframes spin-rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 @keyframes spin-rotate {
   to {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -412,4 +419,18 @@ body {
 }
 .text-nowrap {
   white-space: nowrap;
+}
+
+/* Ensure animation still runs (slower) when reduced motion is enabled */
+@media (prefers-reduced-motion: reduce) {
+  .animate-vip-border {
+    animation-duration: 2.5s;
+    animation-play-state: running;
+  }
+  @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) {
+    .animate-vip-border.vip-toggle-style::before {
+      animation-duration: 2.5s;
+      animation-play-state: running;
+    }
+  }
 }
