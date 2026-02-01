@@ -36,7 +36,7 @@
   --font-rethinksans: "Rethink_Sans", sans-serif;
   --font-inter: "Inter", sans-serif;
   --font-opensans: "Open_Sans", sans-serif;
-  --font-arial: "Arial", sans-serif;
+  --font-arial: var(--font-arial), sans-serif;
 }
 
 @theme inline {
@@ -71,16 +71,8 @@
   --font-arial: var(--font-arial);
 }
 
-@font-face {
-  font-family: 'Arial Custom';
-  src: url('/font-arial/ARIAL.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 .font-arial-custom {
-  font-family: 'Arial Custom', sans-serif;
+  font-family: var(--font-arial), sans-serif;
 }
 
 
