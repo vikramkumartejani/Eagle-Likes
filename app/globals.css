@@ -242,8 +242,6 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(#101828, #101828) padding-box,
-    conic-gradient(from var(--border-angle), #EE1D52, #9146FF, #01AAFF, #EE1D52, #9146FF, #01AAFF) border-box !important;
   border: 1px solid transparent !important;
   background-clip: padding-box, border-box;
   opacity: 1;
