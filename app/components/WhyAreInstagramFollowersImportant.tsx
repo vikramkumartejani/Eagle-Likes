@@ -46,13 +46,13 @@ const WhyAreInstagramFollowersImportant = () => {
                 </div>
             </div>
             <div className='absolute -bottom-155 md:-bottom-120 left-0'>
-                <LeftShadow/>
+                {/* <LeftShadow/> */}
             </div>
             <div className='absolute -bottom-10 right-0 md:hidden block'>
-                <RightShadow/>
+                {/* <RightShadow/> */}
             </div>
             <div className='absolute top-30 left-0 md:hidden block'>
-                <LeftShadow/>
+                {/* <LeftShadow/> */}
             </div>
         </div>
     )

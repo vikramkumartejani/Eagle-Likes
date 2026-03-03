@@ -78,7 +78,7 @@ const WhyEagleLikes = () => {
         <section className="relative w-full pb-12 sm:pb-24 overflow-hidden border-b border-[#0663CD4D]">
             {/* Right Shadow */}
             <div className="absolute right-0 -top-20 md:-top-30 z-0 pointer-events-none">
-                <RightShadow />
+                {/* <RightShadow /> */}
             </div>
 
             <div className="relative z-20 max-w-269.5 mx-auto px-4 xl:px-0">

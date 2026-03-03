@@ -13,9 +13,9 @@ const Hero = () => {
             <BackgroundGrid />
             <HeroRightImage />
             <HeroLeftImage />
-            <LeftShadow />
-            <RightShadow />
-            <LeftBottomShadow />
+            {/* <LeftShadow /> */}
+            {/* <RightShadow /> */}
+            {/* <LeftBottomShadow /> */}
             <TopBlueGlow />
 
             <div className="relative z-10 container mx-auto flex flex-col items-center">

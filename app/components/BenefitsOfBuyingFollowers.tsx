@@ -76,7 +76,7 @@ const BenefitsOfBuyingFollowers = () => {
     return (
         <div className="relative w-full pt-12.25 pb-18 md:py-25 lg:pb-50.5 lg:pt-38 border-t-[1.5px] border-[#0663CD4D]">
             <div className='absolute -bottom-60 md:-bottom-80 right-0'>
-                <RightShadow />
+                {/* <RightShadow /> */}
             </div>
             <div className="relative z-20 max-w-269.5 mx-auto px-4 xl:px-0">
                 {/* Heading */}

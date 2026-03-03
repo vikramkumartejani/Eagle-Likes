@@ -238,16 +238,16 @@ const YourPrivacyIsOurFocus = () => {
                 </div>
             </div>
             <div className="absolute top-180 md:-top-50 right-0">
-                <RightShadow />
+                {/* <RightShadow /> */}
             </div>
             <div className="absolute bottom-84 right-0">
-                <RightShadow />
+                {/* <RightShadow /> */}
             </div>
             <div className="absolute top-360 md:top-84 left-0">
-                <LeftShadow />
+                {/* <LeftShadow /> */}
             </div>
             <div className="absolute -bottom-50 md:-bottom-110 left-0">
-                <LeftShadow />
+                {/* <LeftShadow /> */}
             </div>
         </div>
     );

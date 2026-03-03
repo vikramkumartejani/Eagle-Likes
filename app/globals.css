@@ -153,11 +153,11 @@ body {
 
 @keyframes marquee {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -165,6 +165,7 @@ body {
   animation: marquee 25s linear infinite;
   width: -webkit-max-content;
   width: max-content;
+  will-change: transform;
 }
 
 
@@ -382,6 +383,34 @@ body {
 }
 
 .gpu {
-  will-change: transform, opacity;
   transform: translateZ(0);
+}
+
+/* content-visibility: auto lets the browser skip rendering off-screen sections */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Reduce animations for users who prefer reduced motion (inc. low-power mode) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-star-scale,
+  .animate-vip-border,
+  .animate-slide-up-out,
+  .animate-slide-up-in {
+    animation: none !important;
+  }
+}
+
+/* Reduce animation intensity on mobile for smoother scrolling */
+@media (max-width: 768px) {
+  .animate-float {
+    animation-duration: 6s;
+  }
+
+  .animate-star-scale {
+    animation-duration: 6s;
+  }
 }

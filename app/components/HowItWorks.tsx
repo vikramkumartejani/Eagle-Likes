@@ -93,7 +93,7 @@ const HowItWorks = () => {
                             </div>
 
                             {/* Icon */}
-                            <div className={`w-14 min-h-14 rounded-2xl flex items-center justify-center mb-6 border backdrop-blur-sm
+                            <div className={`w-14 min-h-14 rounded-2xl flex items-center justify-center mb-6 border
                                 ${step.iconBgColor} ${step.iconBorderColor} ${step.iconColor}
                             `}>
                                 {step.icon}
@@ -113,10 +113,10 @@ const HowItWorks = () => {
             </div>
 
             <div className="absolute right-0 -bottom-50 md:-top-20">
-                <RightShadow />
+                {/* <RightShadow /> */}
             </div>
             <div className="absolute left-0 -top-20 md:hidden block">
-                <LeftShadow />
+                {/* <LeftShadow /> */}
             </div>
         </section>
     );

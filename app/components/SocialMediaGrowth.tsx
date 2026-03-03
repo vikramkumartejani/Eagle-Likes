@@ -67,10 +67,10 @@ const SocialMediaGrowth = () => {
         <section className="relative w-full pb-14 pt-8 md:py-24 px-4 lg:pl-20 lg:pr-5">
             {/* Left Side Shadow */}
             <div className="absolute left-0 -top-60 md:top-1/2 md:-translate-y-1/2 pointer-events-none z-0">
-                <LeftShadow />
+                {/* <LeftShadow /> */}
             </div>
             <div className="absolute right-0 bottom-24 z-0 md:hidden block">
-                <RightShadow />
+                {/* <RightShadow /> */}
             </div>
             <div className="max-w-249 mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-14 lg:gap-1 relative z-20">
                 {/* Left Side */}
@@ -162,7 +162,7 @@ const SocialMediaGrowth = () => {
                     </div>
 
                     {/* Stats Overlay Card */}
-                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-64 sm:max-w-90 mx-auto bg-[#101828F2] backdrop-blur-md rounded-[14px] border border-[#FFFFFF33] px-6 py-4 grid grid-cols-3 shadow-[0px_25px_50px_-12px_#00000040]">
+                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-64 sm:max-w-90 mx-auto bg-[#101828F7] rounded-[14px] border border-[#FFFFFF33] px-6 py-4 grid grid-cols-3 shadow-[0px_25px_50px_-12px_#00000040]">
                         <div className="flex flex-col">
                             <span className="text-white text-[18px] sm:text-[24px] leading-6 sm:leading-8 font-bold font-inter text-nowrap">125K</span>
                             <span className="text-[#FFFFFF99] text-[10px] sm:text-[12px] leading-4 font-semibold font-inter">Followers</span>
