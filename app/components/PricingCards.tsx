@@ -125,6 +125,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, isSelected, onSelect })
     return (
         <div
             onClick={() => onSelect(plan.type)}
+            data-plan={plan.type}
             className={`relative rounded-[15px] sm:rounded-[20px] cursor-pointer transition-all duration-300 overflow-visible group flex min-w-40 flex-col max-w-[314px] h-[322px] sm:h-auto bg-[#FFFFFF1A] snap-center border z-10
                 ${isSelected ? '' : 'hover:border-white/10'}
             `}
@@ -229,8 +230,25 @@ interface PricingCardsProps {
 }
 
 const PricingCards: React.FC<PricingCardsProps> = ({ selectedPlan, onSelect }) => {
+    const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            const selectedCard = container.querySelector(`[data-plan="${selectedPlan}"]`);
+            // Only scroll into view if we're on mobile/tablet (less than 1024px)
+            // to avoid jarring shifts on desktop where all cards are visible.
+            if (selectedCard && window.innerWidth < 520) {
+                selectedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+    }, [selectedPlan]);
+
     return (
-        <div className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 overflow-y-visible sm:gap-5 w-full max-w-[700px] px-3 sm:px-4 py-3 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide">
+        <div
+            ref={scrollContainerRef}
+            className="grid grid-flow-col auto-cols-[minmax(160px,1fr)] lg:auto-cols-auto lg:grid-cols-3 gap-3.75 overflow-y-visible sm:gap-5 w-full max-w-[700px] px-3 sm:px-4 py-3 mx-auto mt-[25px] overflow-x-auto snap-x scrollbar-hide"
+        >
             {PLAN_CONFIGS.map((plan) => (
                 <PricingCard
                     key={plan.type}

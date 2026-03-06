@@ -45,9 +45,9 @@ const YourPrivacyIsOurFocus = () => {
                             alt="image"
                             width={380}
                             height={540}
-                            className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px] object-cover h-[330px] lg:h-[540px]"
+                            className="rounded-[80px] sm:rounded-[120px] w-[240px] md:w-[380px] object-cover h-[330px] md:h-[540px]"
                             style={{ boxShadow: "0px 7px 30px 0px #1489E999" }}
-                            loading="lazy"
+                            priority
                             decoding="async"
                             sizes="(max-width: 1024px) 240px, 380px"
                         />
@@ -59,7 +59,7 @@ const YourPrivacyIsOurFocus = () => {
                             alt="image"
                             width={380}
                             height={540}
-                            className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]  object-cover h-[330px] lg:h-[540px]"
+                            className="rounded-[80px] sm:rounded-[120px] w-[240px] md:w-[380px] object-cover h-[330px] md:h-[540px]"
                             style={{ boxShadow: "0px 7px 30px 0px #1489E999" }}
                             loading="lazy"
                             decoding="async"
@@ -220,7 +220,7 @@ const YourPrivacyIsOurFocus = () => {
                             width={460}
                             height={480}
                             className="object-cover"
-                            loading="lazy"
+                            priority
                             decoding="async"
                         />
                         <div className="absolute bottom-4 sm:bottom-5 right-4 sm:right-5 flex items-end flex-col">

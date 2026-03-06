@@ -108,7 +108,8 @@ export const HeaderClient = ({ menuItems }: HeaderClientProps) => {
                                 width={110}
                                 height={25}
                                 priority
-                                className="block lg:hidden w-[110px] h-[25px] shrink-0"
+                                unoptimized
+                                className="block lg:hidden shrink-0"
                             />
                         </div>
 
@@ -204,7 +205,7 @@ export const HeaderClient = ({ menuItems }: HeaderClientProps) => {
                             <div className="flex xl:hidden  items-center w-[182px] h-[17.6px] gap-4.5 ">
                                 <div className="flex items-center  w-[140px] h-[17.6px] gap-2.5 ">
                                     <span className="text-white text-center font-sans text-[14px] font-semibold capitalize leading-normal">
-                                        5.0{" "}
+                                        5.0
                                     </span>
 
                                     <div className="flex items-center gap-[6.28px]">

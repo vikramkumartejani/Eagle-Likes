@@ -12,7 +12,7 @@ export const FaqItem = ({ question, answer, initialOpen = false }: {
     const toggle = useCallback(() => setIsOpen(prev => !prev), []);
 
     return (
-        <div className={`bg-[#FFFFFF0D] border border-[#FFFFFF26] rounded-[15px] overflow-hidden ${isOpen ? "shadow-lg" : ""}`}>
+        <div className={`bg-[#FFFFFF0D] border transition-all duration-300 rounded-[15px] overflow-hidden ${isOpen ? "border-[#FFFFFF40] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]" : "border-[#FFFFFF26]"}`}>
             <button
                 onClick={toggle}
                 className="w-full flex items-center justify-between px-3 sm:px-5 py-3.5 sm:py-6 text-left cursor-pointer group"
@@ -27,14 +27,10 @@ export const FaqItem = ({ question, answer, initialOpen = false }: {
                 </span>
             </button>
             <div
-                className="transition-[grid-template-rows,opacity] duration-500 ease-in-out grid"
-                style={{
-                    gridTemplateRows: isOpen ? '1fr' : '0fr',
-                    opacity: isOpen ? 1 : 0,
-                }}
+                className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
             >
-                <div className="overflow-hidden" ref={contentRef}>
-                    <div className="px-3 sm:px-6 pb-4 sm:pb-6 text-[#99A1AF] text-[13px] sm:text-[16px] leading-6 sm:leading-6.5 font-medium">
+                <div className="overflow-hidden">
+                    <div className="px-3 sm:px-6 pb-4 sm:pb-6 text-[#99A1AF] text-[13px] sm:text-[16px] leading-6 sm:leading-6.5 font-medium pt-1">
                         {answer}
                     </div>
                 </div>
