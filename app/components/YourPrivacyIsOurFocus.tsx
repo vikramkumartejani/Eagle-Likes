@@ -45,10 +45,11 @@ const YourPrivacyIsOurFocus = () => {
                             alt="image"
                             width={380}
                             height={540}
-                            className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]"
+                            className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px] object-cover h-[330px] lg:h-[540px]"
                             style={{ boxShadow: "0px 7px 30px 0px #1489E999" }}
                             loading="lazy"
                             decoding="async"
+                            sizes="(max-width: 1024px) 240px, 380px"
                         />
                     </div>
 
@@ -58,10 +59,11 @@ const YourPrivacyIsOurFocus = () => {
                             alt="image"
                             width={380}
                             height={540}
-                            className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]"
+                            className="rounded-[80px] sm:rounded-[120px] w-[300px] md:w-[380px]  object-cover h-[330px] lg:h-[540px]"
                             style={{ boxShadow: "0px 7px 30px 0px #1489E999" }}
                             loading="lazy"
                             decoding="async"
+                            sizes="(max-width: 1024px) 240px, 380px"
                         />
                         <div className="max-w-99.5 text-center md:text-left">
                             <h2 className="mb-[25px] sm:mb-8 text-[30px] sm:text-[48px] leading-[30px] sm:leading-13.75 font-bold font-inter capitalize text-white">

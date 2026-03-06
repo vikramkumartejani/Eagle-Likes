@@ -66,13 +66,13 @@ export const LeftBottomShadow = () => (
 export const TopBlueGlow = () => (
     <div className="flex w-full justify-center pointer-events-none">
         <div
-            className='absolute top-0'
+            className="absolute -top-[100px] lg:-top-[289px] -z-10 w-[310px] h-[246px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
             style={{
-                width: 979,
-                height: 490,
-                background: "radial-gradient(ellipse at 50% 0%, rgba(0,103,219,0.8) 0%, transparent 60%)",
+                background: "rgba(0, 103, 219, 0.80)",
+                filter: "blur(100px)",
+                WebkitFilter: "blur(100px)",
+                willChange: "filter",
             }}
-            aria-hidden="true"
-        />
+        ></div>
     </div>
 );
