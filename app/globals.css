@@ -256,7 +256,7 @@ body {
   opacity: 1;
 }
 
-.vip-toggle-style > * {
+.vip-toggle-style>* {
   position: relative;
   z-index: 1;
 }
@@ -314,6 +314,8 @@ body {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes stars-animation {
@@ -332,6 +334,8 @@ body {
 
 .animate-star-scale {
   animation: stars-animation 3s ease infinite both;
+  will-change: transform, scale;
+  transform: translateZ(0);
 }
 
 /* --- Cross-browser/iOS Safari fixes without changing your design --- */
@@ -394,6 +398,7 @@ body {
 
 /* Reduce animations for users who prefer reduced motion (inc. low-power mode) */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-marquee,
   .animate-float,
   .animate-star-scale,

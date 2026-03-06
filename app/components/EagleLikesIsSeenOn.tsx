@@ -19,7 +19,7 @@ const EagleLikesIsSeenOn = () => {
             </p>
 
             <div className="relative w-full overflow-hidden max-w-266.25 mx-auto">
-                <div className="flex flex-nowrap animate-marquee items-center">
+                <div className="flex flex-nowrap animate-marquee items-center will-change-transform transform-gpu">
                     {/* First set of items */}
                     <div className="flex items-center gap-10 mx-5 sm:mx-7 shrink-0">
                         {BRANDS.map((brand, idx) => (

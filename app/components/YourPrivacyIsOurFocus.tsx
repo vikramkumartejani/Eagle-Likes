@@ -220,7 +220,7 @@ const YourPrivacyIsOurFocus = () => {
                             width={460}
                             height={480}
                             className="object-cover"
-                            priority
+                            loading="eager"
                             decoding="async"
                         />
                         <div className="absolute bottom-4 sm:bottom-5 right-4 sm:right-5 flex items-end flex-col">

@@ -137,7 +137,7 @@ const BenefitsOfBuyingFollowers = () => {
                                         width={benefit.iconWidth}
                                         height={benefit.iconHeight}
                                         className="object-contain"
-                                        priority
+                                        loading="eager"
                                         decoding="async"
                                     />
                                 </div>
