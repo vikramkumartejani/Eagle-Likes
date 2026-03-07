@@ -1,5 +1,14 @@
-import React from 'react';
-import { HeaderClient } from "./HeaderClient";
+"use client"
+import { ChevronDown, X } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import ChevronSvg from "../../public/assets/svgs/chevron-svg.svg";
+import ProfileSvg from "../../public/assets/svgs/profile-svg.svg";
+import StarBoxSvg from "../../public/assets/svgs/starbox-svg.svg";
+import MenuSvg from "../../public/assets/svgs/menu-svg.svg";
+import EagleLogo from "../../public/assets/navbar/eagle-logo.svg";
+import EagleLogoMobile from "../../public/assets/navbar/eagle-logo-mb.svg";
+import Image from "next/image";
 
 interface DropdownLink {
     id: string;
@@ -15,6 +24,58 @@ interface MenuItem {
 }
 
 export default function Header() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const [mobileOpenDropdowns, setMobileOpenDropdowns] = useState<Set<string>>(
+        new Set()
+    );
+    const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+    useEffect(() => {
+        // Update scroll state
+        const onScroll = () => {
+            if (typeof window === "undefined") return;
+            setIsScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        // run once to set initial state
+        onScroll();
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                activeDropdown &&
+                dropdownRefs.current[activeDropdown] &&
+                !dropdownRefs.current[activeDropdown]?.contains(event.target as Node)
+            ) {
+                setActiveDropdown(null);
+            }
+        };
+
+        if (activeDropdown) {
+            document.addEventListener("mousedown", handleClickOutside);
+            return () =>
+                document.removeEventListener("mousedown", handleClickOutside);
+        }
+    }, [activeDropdown]);
+
+    // Close dropdown on escape key
+    useEffect(() => {
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setActiveDropdown(null);
+            }
+        };
+
+        document.addEventListener("keydown", handleEscape);
+        return () => document.removeEventListener("keydown", handleEscape);
+    }, []);
+
     const menuItems: MenuItem[] = [
         {
             id: "tiktok",
@@ -152,7 +213,250 @@ export default function Header() {
         { id: "contact_us", title: "CONTACT US", ref: "/contact" },
     ];
 
+    const toggleMobileDropdown = (menuId: string) => {
+        setMobileOpenDropdowns((prev) => {
+            const newSet = new Set(prev);
+            if (newSet.has(menuId)) {
+                newSet.delete(menuId);
+            } else {
+                newSet.add(menuId);
+            }
+            return newSet;
+        });
+    };
+
     return (
-        <HeaderClient menuItems={menuItems} />
+        <>
+            <nav
+                className={`fixed left-0 right-0 top-0 z-40  border-b border-blue-100 ${mobileMenuOpen || isScrolled ? "bg-black-100" : "bg-transparent"
+                    } `}
+            >
+                <div className="max-w-[1240px] mx-auto pt-[15px] pb-[11px] lg:py-[23px] px-4 xl:px-0 relative overflow-visible">
+                    <div className="flex items-center justify-between lg:gap-[87px]">
+                        <div className="w-[110px] h-[25px] lg:w-[164px] lg:h-[35px] lg:aspect-164/35">
+                            <EagleLogo
+                                width={164}
+                                height={35}
+                                className="hidden lg:block w-[164px] h-[35px] shrink-0"
+                            />
+                            <EagleLogoMobile
+                                width={110}
+                                height={25}
+                                className="block lg:hidden w-[110px] h-[25px] shrink-0"
+                            />
+                        </div>
+
+                        <div className="hidden xl:flex items-center gap-6">
+                            {menuItems.map((menu) => (
+                                <div
+                                    key={menu.id}
+                                    className="relative"
+                                    ref={(el) => {
+                                        dropdownRefs.current[menu.id] = el;
+                                    }}
+                                    onMouseEnter={() => {
+                                        if (menu.dropdown) {
+                                            setActiveDropdown(menu.id);
+                                        }
+                                    }}
+                                    onMouseLeave={() => {
+                                        setActiveDropdown(null);
+                                    }}
+                                >
+                                    <Link
+                                        href={menu.ref}
+                                        className="flex items-center gap-2.5 text-white text-base font-normal leading-normal hover:underline transition-colors duration-250"
+                                        data-testid={`button-menu-${menu.id}`}
+                                        onClick={() => console.log(`${menu.title} clicked`)}
+                                    >
+                                        {menu.title}
+                                        {menu.dropdown && (
+                                            <ChevronSvg
+                                                className={`w-[6px] h-[5px] transition-transform duration-250 ${activeDropdown === menu.id ? "rotate-180" : ""
+                                                    }`} />
+                                        )}
+                                    </Link>
+                                    {/* Desktop Dropdown */}
+                                    {menu.dropdown && (
+                                        <div
+                                            className={`absolute top-full left-0 w-64 pt-3 z-50 transition-all duration-300 ease-in-out ${activeDropdown === menu.id
+                                                ? "opacity-100 translate-y-0 pointer-events-auto"
+                                                : "opacity-0 translate-y-2 pointer-events-none"
+                                                }`}
+                                            role="menu"
+                                            aria-label={`${menu.title} submenu`}
+                                            aria-hidden={activeDropdown !== menu.id}
+                                        >
+                                            <div className="bg-[#050505]/95 border border-white/10 rounded-xl shadow-2xl overflow-hidden py-1.5 ring-1 ring-white/5">
+                                                {menu.dropdown.map((item) => (
+                                                    <Link
+                                                        key={item.id}
+                                                        href={item.ref}
+                                                        className="group relative flex items-center px-5 py-3 text-[#A0A0A0] text-[15px] font-medium transition-all duration-200 hover:text-white"
+                                                        role="menuitem"
+                                                        data-testid={`dropdown-item-${item.id}`}
+                                                        onClick={() => {
+                                                            setActiveDropdown(null);
+                                                        }}
+                                                    >
+                                                        <div className="absolute inset-0 bg-linear-to-r from-[#0663CD]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                                        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#0663CD] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                                        <span className="relative z-10 transition-transform duration-200 group-hover:translate-x-1">
+                                                            {item.title}
+                                                        </span>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <button
+                                className="hidden xl:flex w-[91px] h-[41px] px-7 py-3.5 justify-center items-center gap-2.5 hover:bg-blue-100 rounded-[10px] border border-blue-100  transition-colors duration-300 cursor-pointer"
+                                data-testid="button-login"
+                                onClick={() => console.log("Login clicked")}
+                            >
+                                <ProfileSvg
+                                    className="min-w-4 h-4.5 text-white"
+                                    width={16}
+                                    height={18}
+                                />
+                                <span className="text-white text-[15px] font-bold capitalize">
+                                    Login
+                                </span>
+                            </button>
+
+                            <div className="flex xl:hidden  items-center w-[182px] h-[17.6px] gap-4.5 ">
+                                <div className="flex items-center  w-[140px] h-[17.6px] gap-2.5 ">
+                                    <span className="text-white text-center text-[14px] font-semibold capitalize leading-normal">
+                                        5.0{" "}
+                                    </span>
+
+                                    <div className="flex items-center gap-[6.28px]">
+                                        {[1, 2, 3, 4, 5].map((i) => (
+                                            <StarBoxSvg
+                                                key={i}
+                                                className="w-[17px] h-[17px]"
+                                                data-testid={`star-${i}`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <button
+                                    className="text-white cursor-pointer"
+                                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                    data-testid="button-mobile-menu"
+                                    aria-label="Toggle mobile menu"
+                                >
+                                    {mobileMenuOpen ? (
+                                        <X className="w-6 h-6" />
+                                    ) : (
+                                        <MenuSvg className="w-6 h-5" />
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Mobile menu: absolute overlay under the nav (smooth expand/collapse) */}
+                </div>
+            </nav>
+
+            <div
+                className={
+                    `bg-black-100 fixed left-0 right-0 top-12.5 z-50 overflow-y-auto transition-all duration-300 ease-in-out` +
+                    (mobileMenuOpen ? " max-h-[92vh]" : " max-h-0")
+                }
+                data-testid="mobile-menu"
+                aria-hidden={!mobileMenuOpen}
+            >
+                <div className="px-4 py-4">
+                    {menuItems.map((menu) => (
+                        <div
+                            key={menu.id}
+                            className="py-1 border-b border-blue-100/20 last:border-b-0"
+                        >
+                            {menu.dropdown ? (
+                                <div>
+                                    <button
+                                        className="w-full flex items-center justify-between text-white hover:text-blue-100 text-base font-medium transition-all duration-300 ease-in-out py-2"
+                                        data-testid={`button-mobile-menu-${menu.id}`}
+                                        onClick={() => toggleMobileDropdown(menu.id)}
+                                        aria-expanded={mobileOpenDropdowns.has(menu.id)}
+                                        aria-controls={`mobile-dropdown-${menu.id}`}
+                                    >
+                                        <span>{menu.title}</span>
+                                        <ChevronDown
+                                            className={`w-4 h-4 transition-transform duration-300 ${mobileOpenDropdowns.has(menu.id) ? "rotate-180" : ""
+                                                }`}
+                                        />
+                                    </button>
+
+                                    {/* Mobile Dropdown */}
+                                    <div
+                                        id={`mobile-dropdown-${menu.id}`}
+                                        className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileOpenDropdowns.has(menu.id)
+                                            ? "max-h-96 opacity-100"
+                                            : "max-h-0 opacity-0"
+                                            }`}
+                                        role="region"
+                                        aria-labelledby={`mobile-menu-${menu.id}`}
+                                    >
+                                        <div className="pl-4 pb-2">
+                                            {menu.dropdown.map((item) => (
+                                                <Link
+                                                    key={item.id}
+                                                    href={item.ref}
+                                                    className="block py-2.5 text-white/90 hover:text-blue-100 hover:translate-x-1 text-sm font-normal leading-normal transition-all duration-300 ease-in-out"
+                                                    data-testid={`button-mobile-menu-${item.id}`}
+                                                    onClick={() => {
+                                                        console.log(`${item.title} clicked`);
+                                                        setMobileMenuOpen(false);
+                                                        setMobileOpenDropdowns(new Set());
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link
+                                    href={menu.ref}
+                                    className="w-full block text-white hover:text-blue-100 hover:translate-x-1 text-base font-medium transition-all duration-300 ease-in-out py-2"
+                                    data-testid={`button-mobile-menu-${menu.id}`}
+                                    onClick={() => {
+                                        console.log(`${menu.title} clicked`);
+                                        setMobileMenuOpen(false);
+                                    }}
+                                >
+                                    {menu.title}
+                                </Link>
+                            )}
+                        </div>
+                    ))}
+
+                    <div className="pt-4 sm:hidden">
+                        <button
+                            className="w-full border border-blue-100 text-white hover:bg-blue-100 gap-2 flex items-center justify-center py-2 rounded-lg transition-colors duration-300"
+                            onClick={() => {
+                                console.log("Login clicked");
+                                setMobileMenuOpen(false);
+                            }}
+                        >
+                            <ProfileSvg className="w-4 h-4.5 text-white" />
+                            <span className="ml-2 text-white font-opensans text-[15px] font-bold capitalize">
+                                Login
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }
