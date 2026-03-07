@@ -53,9 +53,9 @@ export const RightShadow = () => (
     ></div>
 );
 
-// export const LeftBottomShadow = () => (
-//     <div className="absolute -z-10 max-lg:-right-[202px] top-[203px] lg:-left-[216px] lg:-top-[147px] w-[292px] h-64 lg:w-[517px] lg:h-[517px] rounded-[292px] lg:rounded-[517px] shrink-0 bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
-// );
+export const LeftBottomShadow = () => (
+    <div className="lg:block hidden absolute -z-10 lg:-left-[187px] lg:-left-[321px] bottom-10 w-[292px] h-64 lg:w-[517px] lg:h-[517px] shrink-0 rounded-[292px] lg:rounded-[517px] bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
+);
 
 export const TopBlueGlow = () => (
     <div

@@ -112,12 +112,10 @@ const HowItWorks = () => {
                 </div>
             </div>
 
-            <div className="absolute right-0 -bottom-50 md:-top-20">
-                {/* <RightShadow /> */}
-            </div>
-            <div className="absolute left-0 -top-20 md:hidden block">
-                {/* <LeftShadow /> */}
-            </div>
+            {/* Desktop Shadow */}
+            <div className="hidden lg:block absolute -z-10 -right-[321px] bottom-[-20px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
+            {/* Mobile Shadow */}
+            <div className="block lg:hidden absolute -z-10 -right-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
         </section>
     );
 };

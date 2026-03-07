@@ -239,18 +239,15 @@ const YourPrivacyIsOurFocus = () => {
                     </div>
                 </div>
             </div>
-            <div className="absolute top-180 md:-top-50 right-0">
-                {/* <RightShadow /> */}
-            </div>
-            <div className="absolute bottom-84 right-0">
-                {/* <RightShadow /> */}
-            </div>
-            <div className="absolute top-360 md:top-84 left-0">
-                {/* <LeftShadow /> */}
-            </div>
-            <div className="absolute -bottom-50 md:-bottom-110 left-0">
-                {/* <LeftShadow /> */}
-            </div>
+            {/* Desktop Shadow */}
+            <div className="hidden lg:block absolute -z-10 -right-[321px] top-[0px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
+            {/* Mobile Shadow */}
+            <div className="block lg:hidden absolute -z-10 -right-[140px] top-[30px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
+
+            {/* Desktop Shadow */}
+            <div className="hidden lg:block absolute -z-10 -left-[321px] bottom-[-20px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
+            {/* Mobile Shadow */}
+            <div className="block lg:hidden absolute -z-10 -left-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
         </div>
     );
 };

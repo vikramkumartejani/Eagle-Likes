@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import ReviewCarousel from './hero/ReviewCarousel';
-import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, TopBlueGlow, HeroLeftImage } from './hero/BackgroundElements';
+import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, TopBlueGlow, HeroLeftImage, LeftBottomShadow } from './hero/BackgroundElements';
 import FollowersPreview from './hero/FollowersPreview';
 import { HeroInteraction } from './hero/HeroInteraction';
 
@@ -18,7 +18,7 @@ const Hero = () => {
             <HeroLeftImage />
             <LeftShadow />
             <RightShadow />
-            {/* <LeftBottomShadow /> */}
+            <LeftBottomShadow />
             <TopBlueGlow />
 
             <div className="relative z-10 container mx-auto flex flex-col items-center">
