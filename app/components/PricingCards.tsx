@@ -235,11 +235,21 @@ const PricingCards: React.FC<PricingCardsProps> = ({ selectedPlan, onSelect }) =
     React.useEffect(() => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
-            const selectedCard = container.querySelector(`[data-plan="${selectedPlan}"]`);
-            // Only scroll into view if we're on mobile/tablet (less than 1024px)
-            // to avoid jarring shifts on desktop where all cards are visible.
-            if (selectedCard && window.innerWidth < 520) {
-                selectedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            const selectedCard = container.querySelector(`[data-plan="${selectedPlan}"]`) as HTMLElement;
+
+            // Only scroll within the container if we are on mobile
+            if (selectedCard && window.innerWidth < 1024) {
+                const containerWidth = container.offsetWidth;
+                const cardOffsetLeft = selectedCard.offsetLeft;
+                const cardWidth = selectedCard.offsetWidth;
+
+                // Calculate position to center the card in the container
+                const targetScroll = cardOffsetLeft - (containerWidth / 2) + (cardWidth / 2);
+
+                container.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
             }
         }
     }, [selectedPlan]);

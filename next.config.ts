@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  turbopack: {} as any,
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule: any) =>
