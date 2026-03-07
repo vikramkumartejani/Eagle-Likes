@@ -68,7 +68,7 @@ export const HeroInteraction = () => {
                             content="Fit for high-engaged Instagrammers! VIP treatment followers are our highest quality packages, highly active, with real engagement, interactive stories, dynamic carousels, and have 5-10x more followers than following."
                             color="#9146FF"
                         >
-                            <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
+                            <div className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors">
                                 <Image src='/assets/info.svg' alt='info' width={20} height={20} />
                             </div>
                         </DifferenceTooltip>
