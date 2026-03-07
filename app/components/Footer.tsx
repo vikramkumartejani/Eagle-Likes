@@ -79,12 +79,13 @@ const Footer = () => {
         <footer className="bg-black text-white pt-10 sm:pt-20 px-5 relative overflow-hidden">
 
             {/* Background Image - Left Side */}
-            <div className="absolute left-0 bottom-0 w-62.5 select-none z-0">
-                <Image
-                    src="/assets/footer-left-image.svg"
+            <div className="absolute -left-[40%] sm:-left-[15%] bottom-10 sm:bottom-0 select-none z-0 opacity-80">
+                <img
+                    src="/assets/9fd5bc22d11741f98f4c3fc7e5231221c29b8035.png"
                     alt="layer"
-                    width={230}
-                    height={100}
+                    width={500}
+                    height={447}
+                    className='w-[400px] sm:w-[500px]'
                     loading="lazy"
                     decoding="async"
                 />
