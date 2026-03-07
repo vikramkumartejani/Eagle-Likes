@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import ReviewCarousel from './hero/ReviewCarousel';
-import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, LeftBottomShadow, TopBlueGlow, HeroLeftImage } from './hero/BackgroundElements';
+import { BackgroundGrid, HeroRightImage, LeftShadow, RightShadow, TopBlueGlow, HeroLeftImage } from './hero/BackgroundElements';
 import FollowersPreview from './hero/FollowersPreview';
 import { HeroInteraction } from './hero/HeroInteraction';
 
@@ -12,11 +12,12 @@ const Hero = () => {
             <div className='block md:hidden w-full h-199.25 absolute inset-0 top-0' style={{
                 background: "linear-gradient(180deg, rgba(6, 99, 205, 0.195) 19.23%, rgba(0, 0, 0, 0.195) 100%)"
             }}></div>
+
             <BackgroundGrid />
             <HeroRightImage />
             <HeroLeftImage />
-            {/* <LeftShadow /> */}
-            {/* <RightShadow /> */}
+            <LeftShadow />
+            <RightShadow />
             {/* <LeftBottomShadow /> */}
             <TopBlueGlow />
 

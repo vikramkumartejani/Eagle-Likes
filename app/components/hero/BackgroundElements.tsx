@@ -1,5 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
+import HeroNetLeft from "../../../public/assets/hero/hero-net-left.svg";
+import HeroNetRight from "../../../public/assets//hero/hero-net-right.svg";
+
 
 export const BackgroundGrid = () => (
     <div className="absolute inset-0 z-0 w-full mx-auto mt-12.75 md:mt-24 pointer-events-none -ml-[5px]">
@@ -9,68 +12,59 @@ export const BackgroundGrid = () => (
 );
 
 export const HeroRightImage = () => (
-    <Image src="/assets/right-shadow-hero.png" alt="Background Grid" width={460} height={447} className='absolute -right-62 top-6 z-10 md:block hidden opacity-30' loading="lazy" decoding="async" />
+    <div className="hidden lg:block absolute right-0 top-[22px] w-[213px] h-[447px] shrink-0 aspect-213/447 z-0">
+        <HeroNetRight
+            className="w-full h-full"
+            preserveAspectRatio="xMidYMid meet"
+        />
+    </div>
 );
 
 export const HeroLeftImage = () => (
-    <Image src="/assets/left-shadow-hero.svg" alt="Background Grid" width={213} height={447} className='absolute left-0 top-80 md:block hidden' loading="lazy" decoding="async" />
+    <div className="absolute z-10 left-0 top-120 w-[177px] h-[422px] shrink-0 aspect-177/422">
+        <HeroNetLeft
+            className="w-full h-full"
+            preserveAspectRatio="xMidYMid meet"
+        />
+    </div>
 );
 
 export const LeftShadow = () => (
-    <div className="hidden md:block absolute -z-10 top-[4%] -left-10 pointer-events-none"
+    <div
+        className="absolute -z-10 -right-[123px] top-[10%] lg:-right-[479px] lg:top-[380px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
         style={{
-            width: 427,
-            height: 979,
-            background: "radial-gradient(ellipse at center, rgba(0,103,219,0.8) 0%, transparent 60%)",
+            background: "rgba(0, 103, 219, 0.80)",
+            filter: "blur(100px)",
+            WebkitFilter: "blur(100px)",
+            willChange: "filter",
         }}
-        aria-hidden="true"
-    />
+    ></div>
 );
 
 export const RightShadow = () => (
-    <div className="hidden md:block absolute -z-10 top-[10%] right-0 lg:top-[170px] pointer-events-none"
+    <div
+        className="absolute -z-10 -left-[143px] top-[11px] lg:-left-[352px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
         style={{
-            width: 300,
-            height: 979,
-            background: "radial-gradient(ellipse at center, rgba(0,103,219,0.8) 0%, transparent 60%)",
+            background: "rgba(0, 103, 219, 0.80)",
+            filter: "blur(100px)",
+            WebkitFilter: "blur(100px)",
+            willChange: "filter",
         }}
-        aria-hidden="true"
-    />
+    ></div>
 );
 
-export const LeftBottomShadow = () => (
-    <div className="absolute left-0 bottom-45 md:bottom-0 z-0 pointer-events-none">
-        {/* Desktop */}
-        <div
-            className='md:block hidden'
-            style={{
-                width: 323,
-                height: 918,
-                background: "radial-gradient(ellipse at center, rgba(0,103,219,0.32) 0%, transparent 70%)",
-            }}
-            aria-hidden="true"
-        />
-        {/* Mobile */}
-        <div
-            className='block md:hidden'
-            style={{
-                width: 301,
-                height: 678,
-                background: "radial-gradient(ellipse at center, rgba(0,103,219,0.32) 0%, transparent 70%)",
-            }}
-            aria-hidden="true"
-        />
-    </div>
-);
+// export const LeftBottomShadow = () => (
+//     <div className="absolute -z-10 max-lg:-right-[202px] top-[203px] lg:-left-[216px] lg:-top-[147px] w-[292px] h-64 lg:w-[517px] lg:h-[517px] rounded-[292px] lg:rounded-[517px] shrink-0 bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
+// );
 
 export const TopBlueGlow = () => (
-    <div className="flex w-full justify-center pointer-events-none">
-        <div
-            className="absolute -top-[100px] lg:-top-[289px] -z-10 w-[310px] h-[246px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-full"
-            style={{
-                background: "radial-gradient(circle, rgba(0, 103, 219, 0.45) 0%, rgba(0, 103, 219, 0) 70%)",
-                transform: "translateZ(0)",
-            }}
-        ></div>
-    </div>
+    <div
+        className="absolute -top-[100px] lg:-top-[289px] -z-10 w-[310px] h-[246px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+        style={{
+            background: "rgba(0, 103, 219, 0.80)",
+            filter: "blur(100px)",
+            WebkitFilter: "blur(100px)",
+            willChange: "filter",
+        }}
+    ></div>
 );
