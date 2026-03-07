@@ -223,7 +223,6 @@ body {
   /* new stacking context for stable compositing */
   min-height: 44px;
   /* matches h-11 (mobile); h-12 on sm is still respected */
-  clip-path: inset(4 round 9999px);
 }
 
 /* Rotating gradient border behind inner fill */
