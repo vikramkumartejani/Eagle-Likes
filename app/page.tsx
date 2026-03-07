@@ -51,23 +51,23 @@ export default function Home() {
       <Header />
       <Hero />
       <EagleLikesIsSeenOn />
-      <div className="cv-auto">
+      <div>
         <WhyEagleLikes />
         <SocialMediaGrowth />
       </div>
-      <section className="cv-auto">
+      <section>
         <HowItWorks />
       </section>
-      <section className="cv-auto">
+      <section>
         <WhyAreInstagramFollowersImportant />
       </section>
-      <section className="cv-auto">
+      <section>
         <WhyChooseUs />
       </section>
-      <section className="cv-auto">
+      <section>
         <YourPrivacyIsOurFocus />
       </section>
-      <div className="relative z-10 cv-auto">
+      <div className="relative z-10">
         <BenefitsOfBuyingFollowers />
         <Faq />
         {/* Left Bottom Shadow */}
@@ -75,7 +75,7 @@ export default function Home() {
           {/* <LeftShadow /> */}
         </div>
       </div>
-      <div className="cv-auto">
+      <div>
         <Footer />
       </div>
     </div>
