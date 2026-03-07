@@ -6,7 +6,7 @@ import { arial } from "../fonts";
 
 const YourPrivacyIsOurFocus = () => {
     return (
-        <div className={`${arial.variable} w-full pt-20 lg:pt-38.75 pb-[50px] md:pb-40.25 px-4 relative`}>
+        <div className={`${arial.variable} gpu w-full pt-20 lg:pt-38.75 pb-[50px] md:pb-40.25 px-4 relative`}>
             <div className="max-w-269.5 mx-auto relative z-20">
                 {/* Heading */}
                 <div className="text-center">
@@ -242,12 +242,12 @@ const YourPrivacyIsOurFocus = () => {
             {/* Desktop Shadow */}
             <div className="hidden lg:block absolute -z-10 -right-[321px] top-[0px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
             {/* Mobile Shadow */}
-            <div className="block lg:hidden absolute -z-10 -right-[140px] top-[30px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
+            <div className="block lg:hidden absolute -z-10 -right-[140px] top-[30px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[70px]"></div>
 
             {/* Desktop Shadow */}
             <div className="hidden lg:block absolute -z-10 -left-[321px] bottom-[-20px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
             {/* Mobile Shadow */}
-            <div className="block lg:hidden absolute -z-10 -left-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
+            <div className="block lg:hidden absolute -z-10 -left-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[70px]"></div>
         </div>
     );
 };

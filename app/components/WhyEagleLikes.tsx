@@ -75,7 +75,7 @@ const FEATURES: Feature[] = [
 
 const WhyEagleLikes = () => {
     return (
-        <section className="relative w-full pb-12 sm:pb-24 border-b border-[#0663CD4D] overflow-hidden">
+        <section className="relative gpu w-full pb-12 sm:pb-24 border-b border-[#0663CD4D] overflow-hidden">
             {/* Desktop Shadow */}
             <div className="hidden lg:block absolute -z-10 -right-[321px] top-20 w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
 

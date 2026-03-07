@@ -5,7 +5,7 @@ import RightShadow from './ui/RightShadow'
 
 const WhyAreInstagramFollowersImportant = () => {
     return (
-        <div className='w-full pt-[43px] lg:pt-31 pb-20 md:pb-40.25 px-3.5 relative overflow-visible'>
+        <div className='w-full gpu pt-[43px] lg:pt-31 pb-20 md:pb-40.25 px-3.5 relative overflow-visible'>
             <div className='max-w-269.5 mx-auto'>
                 {/* Heading */}
                 <div className="text-center">
@@ -48,7 +48,7 @@ const WhyAreInstagramFollowersImportant = () => {
             {/* Desktop Shadow */}
             <div className="hidden lg:block absolute -z-10 -left-[321px] bottom-[-150px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
             {/* Mobile Shadow */}
-            <div className="block lg:hidden absolute -z-10 -left-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
+            <div className="block lg:hidden absolute -z-10 -left-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
 
             <div className='absolute -bottom-10 right-0 md:hidden block'>
                 {/* <RightShadow/> */}

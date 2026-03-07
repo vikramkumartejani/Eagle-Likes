@@ -62,7 +62,7 @@ const STEPS: Step[] = [
 
 const HowItWorks = () => {
     return (
-        <section className={`${arial.variable} w-full pt-10 pb-[43px] sm:pb-[124px] sm:pt-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative`}>
+        <section className={`${arial.variable} gpu w-full pt-10 pb-[43px] sm:pb-[124px] sm:pt-20 border-b-[1.5px] border-[#0663CD4D] px-5 relative`}>
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12.5">
                     <h2 className="text-[30px] sm:text-[48px] leading-8 sm:leading-12 font-bold text-white mb-4 sm:mb-6 font-inter">
@@ -115,7 +115,7 @@ const HowItWorks = () => {
             {/* Desktop Shadow */}
             <div className="hidden lg:block absolute -z-10 -right-[321px] bottom-[-20px] w-[517px] h-[517px] shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px]"></div>
             {/* Mobile Shadow */}
-            <div className="block lg:hidden absolute -z-10 -right-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[100px] will-change-transform"></div>
+            <div className="block lg:hidden absolute -z-10 -right-[140px] top-[300px] w-[292px] h-64 shrink-0 rounded-full bg-[rgba(0,103,219,0.32)] blur-[70px]"></div>
         </section>
     );
 };

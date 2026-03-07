@@ -64,7 +64,7 @@ const STATS_DATA: StatData[] = [
 
 const SocialMediaGrowth = () => {
     return (
-        <section className="relative w-full pb-14 pt-8 md:py-24 px-4 lg:pl-20 lg:pr-5">
+        <section className="relative gpu w-full pb-14 pt-8 md:py-24 px-4 lg:pl-20 lg:pr-5">
             {/* Left Side Shadow */}
             <div className="absolute left-0 -top-60 md:top-1/2 md:-translate-y-1/2 pointer-events-none z-0">
                 <LeftShadow />
@@ -88,7 +88,7 @@ const SocialMediaGrowth = () => {
                     </div>
 
                     {/* instagram icon */}
-                    <div className='rounded-[14px] w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center absolute -top-[26px] left-[24px] sm:-top-[35.23px] sm:left-[31.61px]' style={{ background: "linear-gradient(135deg, #9810FA 0%, #E60076 100%)", boxShadow: "0px 25px 50px -12px #AD46FF80", animation: "float 3s ease-in-out infinite", animationDelay: "0s", willChange: "transform", transform: "translateZ(0)" }}>
+                    <div className='rounded-[14px] w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center absolute -top-[26px] left-[24px] sm:-top-[35.23px] sm:left-[31.61px]' style={{ background: "linear-gradient(135deg, #9810FA 0%, #E60076 100%)", boxShadow: "0px 25px 50px -12px #AD46FF80", animation: "float 3s ease-in-out infinite", animationDelay: "0s", transform: "translateZ(0)" }}>
                         <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22.9459 2.69946H9.44831C5.72106 2.69946 2.69952 5.721 2.69952 9.44825V22.9458C2.69952 26.6731 5.72106 29.6946 9.44831 29.6946H22.9459C26.6731 29.6946 29.6947 26.6731 29.6947 22.9458V9.44825C29.6947 5.721 26.6731 2.69946 22.9459 2.69946Z" stroke="white" strokeWidth="2.69951" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M21.5961 15.3468C21.7627 16.4702 21.5708 17.6174 21.0478 18.6254C20.5248 19.6334 19.6972 20.4508 18.6829 20.9614C17.6685 21.4719 16.519 21.6497 15.3978 21.4692C14.2766 21.2888 13.2408 20.7595 12.4378 19.9565C11.6348 19.1535 11.1055 18.1177 10.9251 16.9965C10.7446 15.8753 10.9223 14.7258 11.4329 13.7114C11.9435 12.6971 12.7609 11.8695 13.7689 11.3465C14.7769 10.8234 15.9241 10.6316 17.0475 10.7982C18.1933 10.9681 19.2541 11.502 20.0732 12.3211C20.8923 13.1402 21.4262 14.201 21.5961 15.3468Z" stroke="white" strokeWidth="2.69951" strokeLinecap="round" strokeLinejoin="round" />
@@ -104,7 +104,6 @@ const SocialMediaGrowth = () => {
                                 "0px 4px 6px -4px #F6339A66, 0px 10px 15px -3px #F6339A66",
                             animation: "float 3s ease-in-out infinite",
                             animationDelay: "0.5s",
-                            willChange: "transform",
                             transform: "translateZ(0)"
                         }}
                     >
@@ -120,7 +119,6 @@ const SocialMediaGrowth = () => {
                             boxShadow: "0px 4px 6px -4px #00B8DB66, 0px 10px 15px -3px #00B8DB66",
                             animation: "float 3s ease-in-out infinite",
                             animationDelay: "1s",
-                            willChange: "transform",
                             transform: "translateZ(0)"
                         }}
                     >
@@ -130,7 +128,7 @@ const SocialMediaGrowth = () => {
                     </div>
 
                     {/* youtube icon */}
-                    <div className='rounded-[14px] w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center absolute top-[48px] -right-9 sm:top-[63.77px] sm:-right-12' style={{ background: "linear-gradient(135deg, #E7000B 0%, #FB2C36 100%)", boxShadow: "0px 25px 50px -12px #FB2C3680", animation: "float 3s ease-in-out infinite", animationDelay: "1.5s", willChange: "transform", transform: "translateZ(0)" }}>
+                    <div className='rounded-[14px] w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center absolute top-[48px] -right-9 sm:top-[63.77px] sm:-right-12' style={{ background: "linear-gradient(135deg, #E7000B 0%, #FB2C36 100%)", boxShadow: "0px 25px 50px -12px #FB2C3680", animation: "float 3s ease-in-out infinite", animationDelay: "1.5s", transform: "translateZ(0)" }}>
                         <svg width="25" height="25" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[33px] sm:h-[33px]">
                             <path d="M3.33627 22.6863C2.40402 18.2868 2.40402 13.7408 3.33627 9.34134C3.45876 8.89457 3.69543 8.48737 4.02301 8.15979C4.35058 7.83222 4.75778 7.59554 5.20456 7.47305C12.362 6.2873 19.6659 6.2873 26.8233 7.47305C27.2701 7.59554 27.6773 7.83222 28.0049 8.15979C28.3325 8.48737 28.5691 8.89457 28.6916 9.34134C29.6239 13.7408 29.6239 18.2868 28.6916 22.6863C28.5691 23.133 28.3325 23.5402 28.0049 23.8678C27.6773 24.1954 27.2701 24.4321 26.8233 24.5546C19.6659 25.7406 12.362 25.7406 5.20456 24.5546C4.75778 24.4321 4.35058 24.1954 4.02301 23.8678C3.69543 23.5402 3.45876 23.133 3.33627 22.6863Z" stroke="white" strokeWidth="2.66899" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M13.3449 20.0175L20.0174 16.014L13.3449 12.0105V20.0175Z" stroke="white" strokeWidth="2.66899" strokeLinecap="round" strokeLinejoin="round" />
@@ -138,14 +136,14 @@ const SocialMediaGrowth = () => {
                     </div>
 
                     {/* tiktok icon */}
-                    <div className='rounded-[14px] border border-[#FFFFFF33] w-[53px] h-[53px] sm:w-[70.75px] sm:h-[70.75px] flex items-center justify-center absolute bottom-[100px] -right-7 sm:bottom-35.75 sm:-right-[34.38px]' style={{ background: "linear-gradient(135deg, #000000 0%, #101828 100%)", boxShadow: "0px 25px 50px -12px #00B8DB4D", animation: "float 3s ease-in-out infinite", animationDelay: "2s", willChange: "transform", transform: "translateZ(0)" }}>
+                    <div className='rounded-[14px] border border-[#FFFFFF33] w-[53px] h-[53px] sm:w-[70.75px] sm:h-[70.75px] flex items-center justify-center absolute bottom-[100px] -right-7 sm:bottom-35.75 sm:-right-[34.38px]' style={{ background: "linear-gradient(135deg, #000000 0%, #101828 100%)", boxShadow: "0px 25px 50px -12px #00B8DB4D", animation: "float 3s ease-in-out infinite", animationDelay: "2s", transform: "translateZ(0)" }}>
                         <svg width="26" height="26" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[35px] sm:h-[35px]">
                             <path d="M28.0006 9.56221C26.5758 9.24889 25.2869 8.49226 24.3188 7.4009C23.3507 6.30955 22.7532 4.93956 22.6121 3.48755V2.85864H17.6809V22.3976C17.6819 23.2646 17.4101 24.1099 16.9039 24.8138C16.3978 25.5177 15.6831 26.0445 14.8609 26.3197C14.0387 26.5948 13.1508 26.6042 12.323 26.3467C11.4951 26.0891 10.7693 25.5776 10.2483 24.8846C9.78159 24.2712 9.49578 23.5395 9.42323 22.7721C9.35068 22.0047 9.49429 21.2323 9.83781 20.5423C10.1813 19.8523 10.7111 19.2722 11.3671 18.8675C12.0231 18.4629 12.7793 18.2499 13.5501 18.2525C13.9764 18.2501 14.4005 18.3128 14.8079 18.4384V13.4357C14.3338 13.377 13.8561 13.3531 13.3786 13.3642C11.6195 13.4112 9.91233 13.9702 8.46608 14.9726C7.01984 15.975 5.8973 17.3775 5.23593 19.0081C4.57456 20.6388 4.40306 22.427 4.74244 24.1536C5.08182 25.8803 5.91734 27.4705 7.14669 28.7295C8.40663 30.0105 10.0189 30.888 11.7787 31.2506C13.5385 31.6132 15.3664 31.4444 17.03 30.7658C18.6937 30.0871 20.1181 28.9292 21.1222 27.4392C22.1263 25.9492 22.6648 24.1944 22.6692 22.3976V12.3923C24.6581 13.813 27.043 14.5729 29.4871 14.5649V9.70514C29.007 9.70712 28.528 9.65922 28.0578 9.56221H28.0006Z" fill="white" />
                         </svg>
                     </div>
 
                     {/* twitter icon */}
-                    <div className='rounded-[14px] w-12.5 h-[50px] sm:w-[65.87px] sm:h-[65.87px] flex items-center justify-center absolute bottom-[100px] -left-10 sm:bottom-[185.86px] sm:-left-[64.83px]' style={{ background: "linear-gradient(135deg, #2B7FFF 0%, #155DFC 100%)", boxShadow: "0px 25px 50px -12px #2B7FFF80", animation: "float 3s ease-in-out infinite", animationDelay: "2.5s", willChange: "transform", transform: "translateZ(0)" }}>
+                    <div className='rounded-[14px] w-12.5 h-[50px] sm:w-[65.87px] sm:h-[65.87px] flex items-center justify-center absolute bottom-[100px] -left-10 sm:bottom-[185.86px] sm:-left-[64.83px]' style={{ background: "linear-gradient(135deg, #2B7FFF 0%, #155DFC 100%)", boxShadow: "0px 25px 50px -12px #2B7FFF80", animation: "float 3s ease-in-out infinite", animationDelay: "2.5s", transform: "translateZ(0)" }}>
                         <svg width="25" height="25" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[33px] sm:h-[33px]">
                             <path d="M30.1896 5.48902C30.1896 5.48902 29.229 8.37076 27.4451 10.1547C29.6407 23.8772 14.5459 33.8947 2.74451 26.0728C5.76347 26.2101 8.78243 25.2495 10.978 23.3283C4.11676 21.27 0.686125 13.1736 4.11676 6.86128C7.13572 10.4291 11.8014 12.4875 16.4671 12.3503C15.232 6.58683 21.9561 3.29342 26.0728 7.13573C27.5823 7.13573 30.1896 5.48902 30.1896 5.48902Z" stroke="white" strokeWidth="2.74451" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -158,7 +156,6 @@ const SocialMediaGrowth = () => {
                             boxShadow: "0px 4px 6px -4px #00C95066, 0px 10px 15px -3px #00C95066",
                             animation: "float 3s ease-in-out infinite",
                             animationDelay: "3s",
-                            willChange: "transform",
                             transform: "translateZ(0)"
                         }}
                     >
