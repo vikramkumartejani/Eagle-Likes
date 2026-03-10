@@ -101,6 +101,8 @@ html {
   width: 100%;
   -webkit-text-size-adjust: 100%;
   color-scheme: dark;
+  /* Prevent overscroll background flashes on iOS */
+  background-color: #050505;
 }
 
 body {
@@ -111,6 +113,10 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Create its own compositing layer to avoid black flashes on iOS during scroll/zoom */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .custom-scroll {
@@ -201,6 +207,9 @@ body {
   animation: border-rotate 1.5s linear infinite;
   /* Fallback paint for older Safari where conic-gradient anim may glitch */
   will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .vip-toggle-style {
@@ -315,6 +324,7 @@ body {
   animation: float 3s ease-in-out infinite;
   will-change: transform;
   transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @keyframes stars-animation {
@@ -335,6 +345,7 @@ body {
   animation: stars-animation 3s ease infinite both;
   will-change: transform, scale;
   transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* --- Cross-browser/iOS Safari fixes without changing your design --- */
@@ -348,12 +359,15 @@ body {
   /* Keep color transparent for all, and ensure Safari paints correctly */
   color: transparent;
   -webkit-text-fill-color: transparent;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Backdrop blur vendor prefix for older Safari */
 .backdrop-blur-sm {
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  /* Keep minimal radius to avoid heavy rasterization on mobile */
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
 /* Hide scrollbars utility used in sliders (Safari/iOS + others) */
@@ -362,6 +376,8 @@ body {
   /* IE/Edge */
   scrollbar-width: none;
   /* Firefox */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -373,6 +389,8 @@ body {
 .scrollbar-hide,
 .custom-scroll {
   -webkit-overflow-scrolling: touch;
+  /* Avoid layout thrash by reserving paint area */
+  contain: paint;
 }
 
 /* Fallbacks for text wrapping utilities on older Safari (no text-wrap support) */
@@ -387,12 +405,14 @@ body {
 
 .gpu {
   transform: translateZ(0);
+  will-change: transform;
 }
 
 /* content-visibility: auto lets the browser skip rendering off-screen sections */
 .cv-auto {
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
+  contain: layout paint style;
 }
 
 /* Reduce animations for users who prefer reduced motion (inc. low-power mode) */
@@ -416,5 +436,10 @@ body {
 
   .animate-star-scale {
     animation-duration: 6s;
+  }
+
+  /* Reduce shadow intensity on small screens */
+  .shadow-lg, .shadow-xl, .shadow-2xl {
+    --tw-shadow-color: rgba(0,0,0,0.35);
   }
 }
