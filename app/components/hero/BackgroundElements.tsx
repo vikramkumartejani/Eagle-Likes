@@ -12,7 +12,7 @@ export const BackgroundGrid = () => (
 );
 
 export const HeroRightImage = () => (
-    <div className="hidden lg:block absolute right-0 top-[22px] w-[213px] h-[447px] shrink-0 aspect-213/447 z-0">
+    <div className="md:block hidden absolute right-0 top-[22px] w-[213px] h-[447px] shrink-0 aspect-213/447 z-0">
         <HeroNetRight
             className="w-full h-full"
             preserveAspectRatio="xMidYMid meet"
@@ -21,7 +21,7 @@ export const HeroRightImage = () => (
 );
 
 export const HeroLeftImage = () => (
-    <div className="absolute z-10 left-0 top-80 sm:top-120 w-[177px] h-[422px] shrink-0 aspect-177/422">
+    <div className="md:block hidden absolute z-10 left-0 top-80 sm:top-120 w-[177px] h-[422px] shrink-0 aspect-177/422">
         <HeroNetLeft
             className="w-full h-full"
             preserveAspectRatio="xMidYMid meet"
@@ -31,7 +31,7 @@ export const HeroLeftImage = () => (
 
 export const LeftShadow = () => (
     <div
-        className="absolute -z-10 -right-[123px] top-[10%] blur-[70px] lg:blur-[100px] lg:-right-[479px] lg:top-[380px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
+        className="md:block hidden absolute -z-10 -right-[123px] top-[10%] blur-[70px] lg:blur-[100px] lg:-right-[479px] lg:top-[380px] w-[170px] h-[460px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[460px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             // filter: "blur(100px)",
@@ -43,7 +43,7 @@ export const LeftShadow = () => (
 
 export const RightShadow = () => (
     <div
-        className="absolute -z-10 -left-[143px] top-[20%] blur-[70px] lg:blur-[100px] lg:-left-[352px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
+        className="md:block hidden absolute -z-10 -left-[143px] top-[20%] blur-[70px] lg:blur-[100px] lg:-left-[352px] lg:top-[280px] w-[179px] h-[457px] lg:w-[579px] lg:h-[579px] shrink-0 rounded-[457px] lg:rounded-[579px]"
         style={{
             background: "rgba(0, 103, 219, 0.80)",
             // filter: "blur(100px)",
