@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <div className="text-white overflow-x-hidden">
       <Header />
-      <Hero />
+      {/* <Hero /> */}
       <EagleLikesIsSeenOn />
       <div>
         <WhyEagleLikes />
