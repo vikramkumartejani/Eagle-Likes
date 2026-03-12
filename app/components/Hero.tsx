@@ -14,12 +14,12 @@ const Hero = () => {
             }}></div>
 
             <BackgroundGrid />
-            <HeroRightImage />
+            {/* <HeroRightImage />
             <HeroLeftImage />
             <LeftShadow />
             <RightShadow />
             <LeftBottomShadow />
-            <TopBlueGlow />
+            <TopBlueGlow /> */}
 
             <div className="relative z-10 container mx-auto flex flex-col items-center">
 
