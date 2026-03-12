@@ -405,7 +405,6 @@ body {
 
 .gpu {
   transform: translateZ(0);
-  will-change: transform;
 }
 
 /* content-visibility: auto lets the browser skip rendering off-screen sections */
