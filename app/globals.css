@@ -103,6 +103,14 @@ html {
   color-scheme: dark;
   /* Prevent overscroll background flashes on iOS */
   background-color: #050505;
+  /* Fix iPhone scrolling issues */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  /* Prevent iPhone zoom/scroll glitches */
+  touch-action: pan-y;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -113,10 +121,12 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Create its own compositing layer to avoid black flashes on iOS during scroll/zoom */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  /* Remove heavy GPU acceleration that causes iPhone glitches */
   backface-visibility: hidden;
+  /* Fix iPhone zoom/scroll issues */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  touch-action: pan-y;
 }
 
 .custom-scroll {
