@@ -103,14 +103,6 @@ html {
   color-scheme: dark;
   /* Prevent overscroll background flashes on iOS */
   background-color: #050505;
-  /* Fix iPhone scrolling issues */
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none;
-  /* Prevent iPhone zoom/scroll glitches */
-  touch-action: pan-y;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 body {
@@ -121,12 +113,6 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Remove heavy GPU acceleration that causes iPhone glitches */
-  backface-visibility: hidden;
-  /* Fix iPhone zoom/scroll issues */
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none;
-  touch-action: pan-y;
 }
 
 .custom-scroll {
@@ -418,18 +404,14 @@ body {
   }
 }
 
-/* Disable animations completely on mobile for iPhone Safari */
+/* Reduce animation intensity on mobile for smoother scrolling */
 @media (max-width: 768px) {
-  .animate-float,
-  .animate-star-scale,
-  .animate-vip-border,
-  .animate-slide-up-out,
-  .animate-slide-up-in {
-    animation: none !important;
+  .animate-float {
+    animation-duration: 6s;
   }
 
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
+  .animate-star-scale {
+    animation-duration: 6s;
   }
 
   /* Reduce shadow intensity on small screens */
