@@ -181,9 +181,7 @@ body {
   animation: marquee 25s linear infinite;
   width: -webkit-max-content;
   width: max-content;
-  will-change: transform;
 }
-
 
 .font-responsive-heading {
   font-family: var(--font-rethink);
@@ -216,9 +214,6 @@ body {
   --border-angle: 0deg;
   animation: border-rotate 1.5s linear infinite;
   /* Fallback paint for older Safari where conic-gradient anim may glitch */
-  will-change: transform;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -232,9 +227,6 @@ body {
   box-shadow: 0px 0px 12px 0px rgba(145, 70, 255, 0.5) !important;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  transform: translateZ(0);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
   transition: all 0.3s ease;
   /* overflow: visible allows the glow/shadow to be seen */
   overflow: visible;
@@ -253,8 +245,6 @@ body {
 /* Ensure content appears above the border layers */
 
 
-
-
 .vip-toggle-style::before {
   content: "";
   position: absolute;
@@ -264,7 +254,6 @@ body {
   background-clip: padding-box, border-box;
   opacity: 1;
   transition: opacity 300ms ease;
-  will-change: opacity;
   pointer-events: none;
   z-index: 0;
 }
@@ -332,8 +321,6 @@ body {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
-  will-change: transform;
-  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -353,8 +340,6 @@ body {
 
 .animate-star-scale {
   animation: stars-animation 3s ease infinite both;
-  will-change: transform, scale;
-  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -369,8 +354,6 @@ body {
   /* Keep color transparent for all, and ensure Safari paints correctly */
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
 /* Backdrop blur vendor prefix for older Safari */
@@ -386,8 +369,6 @@ body {
   /* IE/Edge */
   scrollbar-width: none;
   /* Firefox */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -437,14 +418,18 @@ body {
   }
 }
 
-/* Reduce animation intensity on mobile for smoother scrolling */
+/* Disable animations completely on mobile for iPhone Safari */
 @media (max-width: 768px) {
-  .animate-float {
-    animation-duration: 6s;
+  .animate-float,
+  .animate-star-scale,
+  .animate-vip-border,
+  .animate-slide-up-out,
+  .animate-slide-up-in {
+    animation: none !important;
   }
 
-  .animate-star-scale {
-    animation-duration: 6s;
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
   }
 
   /* Reduce shadow intensity on small screens */
