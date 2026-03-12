@@ -7,7 +7,7 @@ import HeroNetRight from "../../../public/assets//hero/hero-net-right.svg";
 export const BackgroundGrid = () => (
     <div className="absolute inset-0 z-0 w-full mx-auto mt-12.75 md:mt-24 pointer-events-none -ml-[5px]">
         <Image src="/assets/grid.svg" alt="Background Grid" width={762} height={365} className='md:block hidden object-contain mx-auto' priority />
-        <Image src="/assets/svg-grid-mb.svg" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' priority />
+        <Image src="/assets/svg-grid-mb.svg" alt="Background Grid" width={374} height={221} className='md:hidden block object-contain mx-auto' />
     </div>
 );
 
